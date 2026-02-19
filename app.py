@@ -1274,7 +1274,12 @@ with col_main:
                                 veto_threshold = 10
                                 
                             # If AI says candidate is a FAIL (< Threshold), we Knockout.
-                            if ai_score < veto_threshold:
+                            # [FIX] Panic Mode / Force Survival Bypass
+                            # If this candidate was rescued via Panic Mode, we DO NOT filter them out based on AI Score.
+                            # We allow them to pass with a lower score, or keep them as is.
+                            is_panic = cand.get("panic_mode", False) or cand.get("force_survival", False)
+                            
+                            if ai_score < veto_threshold and not is_panic:
                                 mixed_score = 0
                                 
                                 # Special message for Liked candidates that fail
@@ -1299,6 +1304,7 @@ with col_main:
                     
                     # [Modified] Filter & Limit
                     # 1. Filter out candidates with Score < 20 (Lowered from 30)
+                    status_text.text(f"📊 최종 필터링 중... (AI 검토 완료: {len(candidates_to_rerank)}명)")
                     final_results = [c for c in candidates_to_rerank if c['score'] >= 20]
                     
                     # 2. Limit to Top 10
