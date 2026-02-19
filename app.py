@@ -176,13 +176,25 @@ def load_scoring_rules():
 SCORING_RULES = load_scoring_rules()
 
 # --- [HOTFIX] Version Control & Cache Clearing ---
-APP_VERSION = "2.9.8 (UI & Filter Polish)" # Incremented to force reset
+# --- [HOTFIX] Version Control & Cache Clearing ---
+APP_VERSION = "3.5.0 (Semantic Scoring)" # Updated for V3.5
 if "app_version" not in st.session_state or st.session_state.app_version != APP_VERSION:
     st.cache_resource.clear()
     for key in list(st.session_state.keys()):
         del st.session_state[key]
     st.session_state.app_version = APP_VERSION
     print(f"LOG: Cache Cleared & Session Reset for Version {APP_VERSION}")
+
+# --- Initialize Session State ---
+if "pipeline_logs" not in st.session_state:
+    st.session_state.pipeline_logs = []
+
+if "search_strategy" not in st.session_state:
+    # Default to V3.5 Recall Mode
+    st.session_state.search_strategy = {"mode": "recall", "top_k": 500, "rerank": 100}
+
+if "rpl_cutline" not in st.session_state:
+    st.session_state.rpl_cutline = 45
 
 # ---
 # [Cache Management]
@@ -194,7 +206,7 @@ def clear_analysis_cache():
     st.cache_resource.clear()
 
 # Page config
-st.set_page_config(page_title="AI Headhunter", page_icon="🕵️", layout="wide")
+st.set_page_config(page_title="AI Headhunter V3.5", page_icon="🕵️", layout="wide")
 
 # --- CSS Styling (Clean White/Black + High Contrast Inputs) ---
 st.markdown("""
