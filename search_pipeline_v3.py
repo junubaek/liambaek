@@ -31,17 +31,72 @@ class SearchPipelineV3:
             if hasattr(query_vector, "tolist"):
                 query_vector = query_vector.tolist()
             
-            raw = self.pc.query(
-                vector=query_vector,
-                top_k=top_k,
-                include_metadata=True,
-                namespace=""
-            )
+            # Wrapper: query(self, vector, top_k=10, filter_meta=None, namespace="ns1")
+            # It internally sets includeMetadata=True
+            
+            # [V4.2] Dimensionality Check & Namespace Fix
+            # The index is 768 dimensions (found via debug).
+            # If query_vector is 1536, we MUST truncate or the query will fail.
+            if len(query_vector) == 1536:
+                # Simple truncation (works for OpenAI new embeddings)
+                query_vector = query_vector[:768]
+                print("LOG: Truncated query vector from 1536 to 768 dim.")
+
+            raw = None
+            try:
+                # [V4.2] Primary Namespace: "ns1"
+                # Debugging revealed data is in "ns1" (8000+ vectors).
+                raw = self.pc.query(
+                    vector=query_vector,
+                    top_k=top_k,
+                    namespace="ns1"
+                )
+            except TypeError as e:
+                 # Fallback for old/custom client
+                 # Try without namespace for older clients
+                 print(f"Pipeline V3 Warning (TypeError): {e}. Retrying without namespace.")
+                 raw = self.pc.query(
+                    vector=query_vector,
+                    top_k=top_k
+                )
+
+            except Exception as e_inner:
+                print(f"Pipeline V3 Warning (Namespace 'ns1'): {e_inner}")
+                trace["warning"] = f"ns1 failed: {e_inner}"
+
+            # Fallback 1: Try Default Namespace ("") if ns1 failed
+            if not raw or not raw.get("matches"):
+                 try:
+                    print("LOG: Fallback to namespace ''")
+                    raw = self.pc.query(
+                        vector=query_vector,
+                        top_k=top_k,
+                        namespace=""
+                    )
+                 except Exception: pass
+                 
+            # Fallback 2: Try None (some libs treat None as default)
+            if not raw or not raw.get("matches"):
+                 try:
+                    print("LOG: Fallback to namespace None")
+                    raw = self.pc.query(
+                        vector=query_vector,
+                        top_k=top_k,
+                        namespace=None
+                    )
+                 except Exception: pass
+
         except Exception as e:
             print(f"Pipeline V3 Error (Vector Search): {e}")
+            trace["error"] = str(e) # Capture error for UI
             return [], trace
 
-        if not raw or "matches" not in raw:
+        if not raw:
+            trace["error"] = "Pinecone Query returned None"
+            return [], trace
+            
+        if "matches" not in raw:
+            trace["error"] = f"Pinecone response missing 'matches': {raw.keys()}"
             return [], trace
 
         candidates = raw["matches"]
