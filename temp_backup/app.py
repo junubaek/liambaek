@@ -16,14 +16,6 @@ from search_strategy import decide_search_strategy
 from feedback_weight import calculate_feedback_weight
 from jd_analyzer import JDAnalyzer
 from jd_analyzer_v2 import JDAnalyzerV2 # [Phase 2.1]
-# [PHASE 3] New Modules Import
-import jd_analyzer_v3
-from resume_scoring import calculate_rpl
-from explanation_engine import generate_explanation
-from search_pipeline_v3 import SearchPipelineV3
-import altair as alt # Visualization
-import hashlib # For history
-import os
 
 
 # --- [HOTFIX] Monkey Patch OpenAIClient for Cloud Deployment ---
@@ -393,24 +385,10 @@ with st.sidebar:
     else:
         st.session_state.strategy = {"mode": "recall", "top_k": 60, "rerank": 15}
 
-    # [SIDEBAR] RPL Slider (Phase 3)
-    st.sidebar.markdown("---")
-    st.sidebar.subheader("📄 서류 통과 기준 (RPL)")
-    rpl_cutline = st.sidebar.slider(
-        "최소 합격 점수",
-        min_value=30,
-        max_value=90,
-        value=st.session_state.get("rpl_cutline", 55),
-        step=5,
-        key="rpl_slider_key",
-        help="후보가 너무 적으면 낮추고, 많으면 높이세요."
-    )
-    st.session_state["rpl_cutline"] = rpl_cutline
-
     # [NEW] Debug Expander in Sidebar
     with st.expander("디버그 정보", expanded=False):
         st.write("현재 세션 상태:")
-        st.write(st.session_state.to_dict()) # Fix for non-serializable objects maybe?
+        st.json(st.session_state.to_dict())
 
 # --- Helper: Save Feedback ---
 import hashlib
@@ -463,85 +441,6 @@ def save_feedback(candidate_name, reason, feedback_type="negative", jd_text="", 
     
     with open(file_path, "w", encoding="utf-8") as f:
         json.dump(existing_data, f, indent=2, ensure_ascii=False)
-
-# --- Helper: Phase 3 History & Estimations ---
-def save_jd_rpl_history(jd_text, jd_analysis, results, cutline):
-    # Save statistics for future recommendation tuning
-    jd_hash = get_jd_hash(jd_text)
-    history_file = "jd_rpl_history.json"
-    
-    # Calculate Stats
-    scores = [r.get('rpl_score', 0) for r in results]
-    if not scores: return
-    
-    avg_score = sum(scores) / len(scores)
-    pass_rate = len([s for s in scores if s >= cutline]) / len(scores) * 100
-    
-    entry = {
-        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-        "jd_hash": jd_hash,
-        "difficulty_score": estimate_jd_difficulty(jd_analysis), # Calc on fly
-        "avg_rpl": avg_score,
-        "pass_rate_at_cutline": pass_rate,
-        "cutline_used": cutline,
-        "candidate_count": len(results)
-    }
-    
-    history = []
-    if os.path.exists(history_file):
-        try:
-            with open(history_file, "r", encoding="utf-8") as f:
-                history = json.load(f)
-        except: pass
-        
-    history.append(entry)
-    with open(history_file, "w", encoding="utf-8") as f:
-        json.dump(history, f, indent=2)
-
-def estimate_jd_difficulty(jd_analysis):
-    # 0 (Easy) to 10 (Hard)
-    # Factors: Number of Must Skills, Specificity, Niche Role
-    score = 5 # Base
-    
-    if not jd_analysis: return 5
-    
-    # Factor 1: Must Skills Count
-    must_count = len(jd_analysis.get('must_skills', []) or jd_analysis.get('must', []))
-    if must_count > 5: score += 2
-    elif must_count < 3: score -= 1
-    
-    # Factor 2: Role Specificity (Heuristic)
-    role = jd_analysis.get('canonical_role', '' if not jd_analysis else jd_analysis.get('role', ''))
-    if "Head" in role or "Lead" in role or "Principal" in role:
-        score += 2
-        
-    return min(max(score, 1), 10)
-
-def recommend_rpl_cutline(jd_analysis, result_scores):
-    # Dynamic Cutline Recommendation
-    # Goal: Ensure at least 3-5 candidates pass, but keep quality high.
-    
-    if not result_scores: return 55
-    
-    # Sort scores descending
-    sorted_scores = sorted(result_scores, reverse=True)
-    
-    # Target: Top 5th candidate's score
-    target_idx = min(4, len(sorted_scores) - 1)
-    target_score = sorted_scores[target_idx]
-    
-    # Baseline constraints
-    difficulty = estimate_jd_difficulty(jd_analysis)
-    
-    # If difficult JD, lower the bar slightly
-    base_cut = 60 - (difficulty * 2) # e.g. Diff=5 -> 50, Diff=8 -> 44
-    
-    # Hybrid: Weight actual distribution (70%) + Baseline (30%)
-    recommended = (target_score * 0.7) + (base_cut * 0.3)
-    
-    # Round to nearest 5
-    return int(round(recommended / 5) * 5)
-
 
 # --- Helper: Seniority Extraction ---
 SENIORITY_MAP = {
@@ -953,24 +852,11 @@ with col_main:
                     # [V3.0] Wide Funnel: Top-K 300 for ALL strategies
                     new_strategy = {"mode": "precision", "top_k": 300, "rerank": 50}
                     
-                    
-                    # [V3.5] Strategy Tuning: Favor Recall Mode
-                    # The user reported strict keyword matching issues.
-                    # We default to 'Recall Mode' (Top-K 500, Rerank 100) unless confidence is extremely high (e.g. > 90).
-                    if conf_score_val < 90:
-                        new_strategy = {"mode": "recall", "top_k": 500, "rerank": 100}
-                        st.session_state.search_strategy = new_strategy
-                        st.toast(f"🔎 Recall Mode Activated (Conf: {conf_score_val})")
+                    if conf_score_val < 80:
+                        new_strategy = {"mode": "recall", "top_k": 300, "rerank": 100}
+                        st.toast(f"🔎 Recall Mode (Conf: {conf_score_val}) - Broadening Search")
                     else:
-                        new_strategy = {"mode": "precision", "top_k": 300, "rerank": 50}
-                        st.session_state.search_strategy = new_strategy
                         st.toast(f"🎯 Precision Mode (Conf: {conf_score_val})")
-                    
-                    st.session_state.analysis_data_v3["search_strategy"] = new_strategy
-                    
-                    # [V3.5] Default Cutline: 45 (Lowered from 55)
-                    if "rpl_cutline" not in st.session_state:
-                        st.session_state.rpl_cutline = 45
 
                     # [Fix 1.1] Save to Session State (Single Source of Truth)
                     # [V2.9.9] Auto-Fallback Logic
@@ -1060,61 +946,56 @@ with col_main:
                     
                     vec = openai.embed_content(weighted_query)
                     
+                    # [PHASE 3] Sequential Filtering Pipeline Integration
+                    from search_pipeline import SearchPipeline
                     
-                    # [PHASE 3] Search Pipeline V3 Integration
-                    # ----------------------------------------
+                    pipeline = SearchPipeline(pinecone, openai)
                     
-                    # 1. Vector Embedding (Query)
-                    # Use V3 signals for embedding
-                    role = st.session_state.analysis_data_v3.get("canonical_role", "Unknown")
-                    core_signals = st.session_state.analysis_data_v3.get("core_signals", [])
-                    context_signals = st.session_state.analysis_data_v3.get("context_signals", [])
-                    
-                    # Text for embedding
-                    query_text = f"Role: {role}, Skills: {', '.join(core_signals)}, Context: {', '.join(context_signals)}"
-                    
-                    query_vector = openai.embed_content(query_text)
-                    
-                    # 2. Run Pipeline V3
-                    pipeline = SearchPipelineV3(pinecone)
-                    
-                    # Use Strategy Top-K
+                    # Run Pipeline
+                    # [V3.0] Wide Funnel: Always request 300 candidates
+                    # Use strategy top_k which matches this (300)
                     top_k_val = st.session_state.search_strategy.get("top_k", 300)
                     
-                    # Execute
-                    raw_results = pipeline.run(
-                        jd_analysis=st.session_state.analysis_data_v3,
-                        query_vector=query_vector,
-                        top_k=top_k_val
-                    )
+                    # Create a context copy to not mutate session state
+                    run_context = st.session_state.analysis_data_v3.copy()
                     
-                    # 3. Save History & Recommend Cutline
-                    # Current user cutline
-                    current_cut = st.session_state.get("rpl_cutline", 55)
-                    
-                    save_jd_rpl_history(
-                        jd_text=st.session_state.jd_text,
-                        jd_analysis=st.session_state.analysis_data_v3,
-                        results=raw_results,
-                        cutline=current_cut
-                    )
-                    
-                    rec_cut = recommend_rpl_cutline(
-                        st.session_state.analysis_data_v3, 
-                        [r['rpl_score'] for r in raw_results]
-                    )
-                    st.session_state.recommended_cutline = rec_cut
-                    
-                    # 4. Store Results
-                    st.session_state.search_results = raw_results
-                    st.session_state.formatted_matches = raw_results # For compatibility
-                    
-                    # Log
-                    st.session_state.pipeline_logs.append(f"SEARCH V3: Retrieved {len(raw_results)} candidates.")
-                    st.session_state.pipeline_logs.append(f"RPL Cutline: User={current_cut}, Recommended={rec_cut}")
+                    # If Product Role, Cap confidence at 79 for Matrix Filter to avoid +1 penalty
+                    if is_product_role and run_context.get("confidence_score", 0) >= 80:
+                        print(f"DEBUG: Softening Matrix Filter for {inferred} (Conf 100 -> 79)")
+                        run_context["confidence_score"] = 79
 
-                    st.session_state.step = "results"
-                    st.rerun()
+                    formatted_matches, pipeline_logs = pipeline.run(
+                        jd_context=run_context,
+                        query_text=weighted_query,
+                        top_k=top_k_val,
+                        query_vector=vec
+                    )
+                    
+                    # Store Logs in Session State for UI
+                    st.session_state.pipeline_logs = pipeline_logs
+
+                    # [Force Recall] If matches are too low in Precision Mode, retry with Recall Mode
+                    if len(formatted_matches) < 5 and st.session_state.analysis_data_v3.get("confidence_score", 0) >= 80:
+                        st.toast("⚠️ 검증된 인재가 부족합니다. 'Recall Mode'로 전환하여 탐색 범위를 넓힙니다. (Auto-Retry)")
+                        print("LOG: Force Recall Triggered")
+                        
+                        relaxed_context = st.session_state.analysis_data_v3.copy()
+                        relaxed_context["search_strategy"] = {"mode": "recall", "top_k": 300, "rerank": 15}
+                        relaxed_context["years_range"] = {} 
+                        relaxed_context["min_years"] = 0
+                        relaxed_context["negative_signals"] = [] 
+                        relaxed_context["confidence_score"] = 0 
+                        
+                        formatted_matches, retry_logs = pipeline.run(
+                            jd_context=relaxed_context,
+                            query_text=weighted_query,
+                            top_k=300,
+                            query_vector=vec # Reuse vector
+                        )
+                        )
+                        st.session_state.pipeline_logs.extend(["--- RETRY (Recall Mode + No Filters) ---"] + retry_logs)
+                        
+                        st.session_state.pipeline_logs.extend(["--- RETRY (Recall Mode + No Filters) ---"] + retry_logs)
                         
                     # [V2.9.9d] PANIC MODE: Last Resort (Moved Out)
                     # Independently check if results are still low (< 3).
@@ -1159,35 +1040,36 @@ with col_main:
                             print(f"Panic Mode Error: {e}")
                             st.session_state.pipeline_logs.append(f"Panic Mode Error: {e}")
                     
-                   # ==========================
-    # STEP 2: JD Analysis (AI)
-    # ==========================
-    elif st.session_state.step == "analyze":
-        with st.spinner("🤖 AI가 JD를 분석하여 '서류 통과 기준'을 수립 중입니다..."):
-            try:
-                # [PHASE 3] Use JDAnalyzerV3
-                analyzer = jd_analyzer_v3.JDAnalyzerV3()
-                analysis_result = analyzer.analyze(jd_text)
-                
-                # Store in Session State
-                st.session_state.analysis_data_v3 = analysis_result
-                
-                # Save Summary for UI
-                role = analysis_result.get("canonical_role", "Unknown")
-                core_signals = analysis_result.get("core_signals", [])
-                st.session_state.jd_summary = f"{role} ({', '.join(core_signals[:3])}...)"
-                
-                # Log
-                st.session_state.pipeline_logs.append(f"JD ANALYSIS V3: Role={role}")
+                     # 2.5 Fetch Liked Candidates (Explicit Restore)
+                    liked_candidates = []
+                    if liked_candidate_ids:
+                        try:
+                            # Fetch requires list of IDs
+                            fetched_data = pinecone.fetch(ids=list(liked_candidate_ids))
+                            if fetched_data and 'vectors' in fetched_data:
+                                for vid, vdata in fetched_data['vectors'].items():
+                                    # Convert to standard match format
+                                    v_meta = vdata.get('metadata', {})
+                                    liked_candidates.append({
+                                        "data": v_meta,
+                                        "score": 1000.0, # Artificial boost to ensure top rank
+                                        "id": vid,
+                                        "vector_score": 1.0,
+                                        "is_liked": True,
+                                        "ai_reason": "Previously Liked Candidate (Restored)",
+                                        "matrix_score": 10 # Boost matrix score too
+                                    })
+                        except Exception as e:
+                            print(f"Error fetching liked candidates: {e}")
 
-                st.session_state.step = "results" # Skip review to speed up
-                st.rerun()
-                
-            except Exception as e:
-                st.error(f"Analysis Error: {e}")
-                print(f"Analysis Error: {e}")
-                if st.button("Retry"):
-                    st.rerun()    
+                    # Merge Liked Candidates
+                    initial_matches = []
+                    seen_ids = set()
+                    
+                    for lc in liked_candidates:
+                        initial_matches.append(lc)
+                        seen_ids.add(lc['id'])
+                        
                     for m in formatted_matches:
                         if m['id'] not in seen_ids:
                             initial_matches.append(m)
@@ -1392,12 +1274,7 @@ with col_main:
                                 veto_threshold = 10
                                 
                             # If AI says candidate is a FAIL (< Threshold), we Knockout.
-                            # [FIX] Panic Mode / Force Survival Bypass
-                            # If this candidate was rescued via Panic Mode, we DO NOT filter them out based on AI Score.
-                            # We allow them to pass with a lower score, or keep them as is.
-                            is_panic = cand.get("panic_mode", False) or cand.get("force_survival", False)
-                            
-                            if ai_score < veto_threshold and not is_panic:
+                            if ai_score < veto_threshold:
                                 mixed_score = 0
                                 
                                 # Special message for Liked candidates that fail
@@ -1421,15 +1298,8 @@ with col_main:
                     candidates_to_rerank.sort(key=lambda x: x['score'], reverse=True)
                     
                     # [Modified] Filter & Limit
-                    # [Modified] Filter & Limit
                     # 1. Filter out candidates with Score < 20 (Lowered from 30)
-                    status_text.text(f"📊 최종 필터링 중... (AI 검토 완료: {len(candidates_to_rerank)}명)")
-                    
-                    # [V3.3 FIX] Always keep Panic/Force Survival candidates regardless of score
-                    final_results = [
-                        c for c in candidates_to_rerank 
-                        if c['score'] >= 20 or c.get("panic_mode") or c.get("force_survival")
-                    ]
+                    final_results = [c for c in candidates_to_rerank if c['score'] >= 20]
                     
                     # 2. Limit to Top 10
                     st.session_state.search_results = final_results[:10]
