@@ -699,7 +699,9 @@ with col_main:
                             "confidence_score": parsed_jd.get("confidence_score", 0),
                             "ambiguity": parsed_jd.get("ambiguity", False),
                             # [V2.7] Search Contract Integration
-                            "search_contract": parsed_jd.get("search_contract", {})
+                            "search_contract": parsed_jd.get("search_contract", {}),
+                            # [V3.4] Feature: Difficulty Score
+                            "difficulty": parsed_jd.get("difficulty", {})
                         }
                         
                         st.session_state.step = "review" # Move to next step
@@ -733,7 +735,19 @@ with col_main:
             seniority_str = st.session_state.analysis_data_v3.get('seniority', 'N/A')
             
             st.info(f"🧠 **AI 추론 역할**: {inferred} | 📅 **경력 요건**: {range_str} ({seniority_str})")
-        
+            
+            # [V3.4] Difficulty Analysis UI
+            diff = st.session_state.analysis_data_v3.get("difficulty", {})
+            if diff:
+                d_score = diff.get("score", 0)
+                d_level = diff.get("level", "Medium")
+                d_desc = diff.get("description", "")
+                d_cut = diff.get("suggested_cutline", 20)
+                
+                c_d1, c_d2 = st.columns([1, 2])
+                c_d1.metric("JD 난이도", f"{d_score}/100", delta=d_level, delta_color="inverse")
+                c_d2.info(f"**{d_desc}**\n\n추천 컷라인(Veto): **{d_cut}점**")
+
         with st.expander("🕵️‍♂️ 헤드헌터 심층 분석 (Hidden & Negative Signals)", expanded=True):
             col_a, col_b = st.columns(2)
             with col_a:
@@ -790,8 +804,36 @@ with col_main:
                 domain_txt = st.text_area("domain", value=", ".join(d_val), height=150, label_visibility="collapsed")
             
             st.write("")
-            submitted_search = st.form_submit_button("인재 검색 시작 🔍", use_container_width=True)
             
+            # [Step 2 Buttons]
+            c_btn1, c_btn2 = st.columns([1, 1])
+            with c_btn1:
+                submitted_save = st.form_submit_button("💾 조건 저장 (RPL History)", use_container_width=True)
+            with c_btn2:
+                submitted_search = st.form_submit_button("인재 검색 시작 🔍", type="primary", use_container_width=True)
+            
+            # Handle Save
+            if submitted_save:
+                # Update Session first
+                st.session_state.analysis_data_v3["must"] = [x.strip() for x in must_txt.split(",") if x.strip()]
+                st.session_state.analysis_data_v3["nice"] = [x.strip() for x in nice_txt.split(",") if x.strip()]
+                st.session_state.analysis_data_v3["domain"] = [x.strip() for x in domain_txt.split(",") if x.strip()]
+                
+                # Log to Notion
+                title = st.session_state.analysis_data_v3.get("role", "Unknown Role") + " Search"
+                try:
+                    res = notion.log_search_history(
+                        title, 
+                        st.session_state.analysis_data_v3, 
+                        st.session_state.analysis_data_v3.get("difficulty", {})
+                    )
+                    if res:
+                        st.toast("RPL 조건이 Notion에 저장되었습니다!", icon="💾")
+                    else:
+                        st.toast("Notion 저장 실패 (DB 확인 필요)", icon="⚠️")
+                except Exception as e:
+                    st.error(f"Save Error: {e}")
+
             if submitted_search:
                 # Update Analysis Data with User Edits
                 st.session_state.analysis_data_v3["must"] = [x.strip() for x in must_txt.split(",") if x.strip()]

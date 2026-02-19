@@ -44,7 +44,11 @@ class JDAnalyzerV2:
         # 3. Strategy Decision
         strategy = decide_search_strategy(final_conf)
         
-        # 4. Integrate Results
+        # 4. Difficulty Assessment (V3.4 Feature)
+        difficulty = self._calculate_difficulty(semantic_data)
+        semantic_data["difficulty"] = difficulty
+        
+        # 5. Integrate Results
         # Ensure semantic_data has all keys expected by app.py
         semantic_data["confidence_score"] = int(final_conf * 100)
         semantic_data["is_ambiguous"] = (final_conf < 0.7)
@@ -54,6 +58,59 @@ class JDAnalyzerV2:
         # The prompt already ensures compatibility.
         
         return semantic_data
+
+    def _calculate_difficulty(self, data: dict) -> dict:
+        """
+        Calculates JD Difficulty Score (0-100) and suggests a Cutline.
+        Factors:
+        - Specificity (Length of Must Haves)
+        - Seniority (Higher = Harder)
+        - Niche Keywords (e.g. AI, Blockchain, Quant)
+        """
+        score = 30 # Base difficulty
+        
+        # 1. Skill Complexity
+        must_skills = data.get("must_skills", [])
+        score += len(must_skills) * 5  # +5 per skill
+        
+        # 2. Seniority Impact
+        seniority = data.get("seniority", "Junior").lower()
+        if "lead" in seniority or "manager" in seniority:
+            score += 20
+        elif "senior" in seniority or "head" in seniority:
+            score += 15
+        elif "c-level" in seniority or "director" in seniority:
+            score += 30
+            
+        # 3. Domain Niche Check
+        domain = data.get("domain", "").lower()
+        niche_domains = ["blockchain", "ai", "machine learning", "quant", "crypto", "security", "defense"]
+        if any(nd in domain for nd in niche_domains):
+            score += 15
+            
+        # Cap Score
+        score = min(score, 95)
+        
+        # Leveling
+        if score >= 70:
+            level = "Hard"
+            cutline = 20 # Lower cutline for hard roles (Recall focused)
+            desc = "🔥 매우 어려움 (시장 인재 부족 예상)"
+        elif score >= 50:
+            level = "Medium"
+            cutline = 30 
+            desc = "⚖️ 보통 (적절한 타겟팅 필요)"
+        else:
+            level = "Easy"
+            cutline = 40 # Higher cutline for easy roles (Precision focused)
+            desc = "✅ 무난함 (다수의 후보자 예상)"
+            
+        return {
+            "score": score,
+            "level": level,
+            "suggested_cutline": cutline,
+            "description": desc
+        }
 
     def _extract_semantics(self, jd_text: str) -> dict:
         """

@@ -283,8 +283,26 @@ class HeadhunterDB:
     def search_db_id(self, name_or_id):
         # Wrapper to find ID by name or just verify ID
         # ... logic if needed, or just let main leverage client directly ...
-        # For now, just exposing client methods via db.client is enough for main_ingest.
-        pass
+        return self.client.search_db_by_name(name_or_id)
+
+    def log_search_history(self, title, criteria, difficulty):
+        """Logs the Search Condition (RPL) to the PROGRAM database."""
+        db_id = self.client.search_db_by_name("PROGRAM")
+        if not db_id:
+            print("Database 'PROGRAM' not found.")
+            return None
+            
+        print(f"Logging history to PROGRAM ({db_id})...")
+        
+        properties = {
+            "Name": {"title": [{"text": {"content": title}}]},
+            "Criteria JSON": {"rich_text": [{"text": {"content": json.dumps(criteria, ensure_ascii=False)[:2000]}}]},
+            "Difficulty": {"select": {"name": difficulty.get("level", "Medium")}},
+            "Score": {"number": difficulty.get("score", 0)},
+            "Status": {"status": {"name": "Active"}} # Optional
+        }
+        
+        return self.client.create_page(db_id, properties)
 
 if __name__ == "__main__":
     # Test block
