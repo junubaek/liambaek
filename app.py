@@ -1303,9 +1303,15 @@ with col_main:
                     candidates_to_rerank.sort(key=lambda x: x['score'], reverse=True)
                     
                     # [Modified] Filter & Limit
+                    # [Modified] Filter & Limit
                     # 1. Filter out candidates with Score < 20 (Lowered from 30)
                     status_text.text(f"📊 최종 필터링 중... (AI 검토 완료: {len(candidates_to_rerank)}명)")
-                    final_results = [c for c in candidates_to_rerank if c['score'] >= 20]
+                    
+                    # [V3.3 FIX] Always keep Panic/Force Survival candidates regardless of score
+                    final_results = [
+                        c for c in candidates_to_rerank 
+                        if c['score'] >= 20 or c.get("panic_mode") or c.get("force_survival")
+                    ]
                     
                     # 2. Limit to Top 10
                     st.session_state.search_results = final_results[:10]
