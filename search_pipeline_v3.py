@@ -1,6 +1,5 @@
-
 import streamlit as st
-from resume_scoring import calculate_rpl
+from resume_scoring import calculate_rpl, calculate_pass_probability
 from explanation_engine import generate_explanation
 
 class SearchPipelineV3:
@@ -10,11 +9,15 @@ class SearchPipelineV3:
     def run(self, jd_analysis, query_vector, top_k=300):
         """
         Executes the screening-oriented search pipeline.
-        Stage 1: Broad Vector Recall
-        Stage 2: Explicit Disqualifier Filter
-        Stage 3: RPL Scoring & Explanation
-        Stage 4: Ranking & Cutline
+        Returns: (final_results, trace_log)
         """
+        trace = {
+            "stage1_retrieved": 0,
+            "stage2_survivors": 0,
+            "stage3_scored": 0,
+            "stage4_final": 0
+        }
+
         # ---------------------------
         # Stage 1: Broad Recall
         # ---------------------------
@@ -36,12 +39,13 @@ class SearchPipelineV3:
             )
         except Exception as e:
             print(f"Pipeline V3 Error (Vector Search): {e}")
-            return []
+            return [], trace
 
         if not raw or "matches" not in raw:
-            return []
+            return [], trace
 
         candidates = raw["matches"]
+        trace["stage1_retrieved"] = len(candidates)
         
         # ---------------------------
         # Stage 2: Explicit Disqualifier ONLY
@@ -63,6 +67,8 @@ class SearchPipelineV3:
                 continue  # ❗ Explicitly disqualified
                 
             filtered.append(c)
+            
+        trace["stage2_survivors"] = len(filtered)
 
         # ---------------------------------------
         # Stage 3: RPL Scoring (Resume Pass Likelihood) & Explanation
@@ -75,12 +81,14 @@ class SearchPipelineV3:
             # [V3.4] Hybrid Scoring: Pass vector_score for semantic baseline
             vec_score = candidate.get('score', 0) # Use 'score' from Pinecone match as vector_score
             rpl_score = calculate_rpl(jd_analysis, data, vector_score=vec_score)
+            pass_prob = calculate_pass_probability(rpl_score)
             
             # Prepare candidate dict for final results
             processed_candidate = {
                 "id": cand_id,
                 "data": data,
                 "rpl_score": rpl_score,
+                "pass_probability": pass_prob, # [New]
                 "vector_score": vec_score,
                 "explanation": None, # Initialize explanation as None
                 "ai_eval_score": rpl_score # Map to existing UI field for compatibility
@@ -98,10 +106,14 @@ class SearchPipelineV3:
                 processed_candidate['explanation'] = explanation
                 final_results.append(processed_candidate)
 
+        trace["stage3_scored"] = len(final_results)
+
         # ---------------------------
         # Stage 4: Sort
         # ---------------------------
         # Sort by RPL Score descending
-        scored.sort(key=lambda x: x["rpl_score"], reverse=True)
+        final_results.sort(key=lambda x: x["rpl_score"], reverse=True)
+        
+        trace["stage4_final"] = len(final_results)
 
-        return scored
+        return final_results, trace

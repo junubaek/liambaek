@@ -1076,7 +1076,16 @@ with col_main:
                     # [PHASE 3] Search Pipeline V3 Integration
                     # ----------------------------------------
                     
-                    # 1. Vector Embedding (Query)
+                    # [V4.0] Logic Safeguard: Force Recall for Junior Roles
+                    # Junior roles often lack specific keywords (like "Financial Modeling"), so Precision Mode kills them.
+                    # We force Recall Mode if seniority is Junior or Entry.
+                    if seniority_str in ["Junior", "Entry", "0-2"]:
+                        new_strategy = {"mode": "recall", "top_k": 500, "rerank": 100}
+                        st.session_state.search_strategy = new_strategy
+                        st.session_state.analysis_data_v3["search_strategy"] = new_strategy
+                        st.toast(f"👶 Junior Role Detected -> Forced Recall Mode")
+
+                    # 3. Vector Embedding (Query)
                     # Use V3 signals for embedding
                     role = st.session_state.analysis_data_v3.get("canonical_role", "Unknown")
                     core_signals = st.session_state.analysis_data_v3.get("core_signals", [])
@@ -1087,22 +1096,25 @@ with col_main:
                     
                     query_vector = openai.embed_content(query_text)
                     
-                    # 2. Run Pipeline V3
+                    # 4. Run Pipeline V3
                     pipeline = SearchPipelineV3(pinecone)
                     
                     # Use Strategy Top-K
                     top_k_val = st.session_state.search_strategy.get("top_k", 300)
                     
-                    # Execute
-                    raw_results = pipeline.run(
+                    # Execute (Unpack Tuple)
+                    raw_results, trace_log = pipeline.run(
                         jd_analysis=st.session_state.analysis_data_v3,
                         query_vector=query_vector,
                         top_k=top_k_val
                     )
                     
-                    # 3. Save History & Recommend Cutline
+                    # Store Trace
+                    st.session_state.latest_trace_log = trace_log
+
+                    # 5. Save History & Recommend Cutline
                     # Current user cutline
-                    current_cut = st.session_state.get("rpl_cutline", 55)
+                    current_cut = st.session_state.get("rpl_cutline", 45)
                     
                     save_jd_rpl_history(
                         jd_text=st.session_state.jd_text,
@@ -1111,65 +1123,28 @@ with col_main:
                         cutline=current_cut
                     )
                     
-                    rec_cut = recommend_rpl_cutline(
-                        st.session_state.analysis_data_v3, 
-                        [r['rpl_score'] for r in raw_results]
-                    )
+                    # Recommendation Logic (Optimized for Low Sample)
+                    rec_cut = 55
+                    if len(raw_results) < 20:
+                        rec_cut = 40 # Lower if few candidates
+                    else:
+                        rec_cut = recommend_rpl_cutline(
+                            st.session_state.analysis_data_v3, 
+                            [r['rpl_score'] for r in raw_results]
+                        )
                     st.session_state.recommended_cutline = rec_cut
                     
-                    # 4. Store Results
+                    # 6. Store Results
                     st.session_state.search_results = raw_results
                     st.session_state.formatted_matches = raw_results # For compatibility
                     
                     # Log
                     st.session_state.pipeline_logs.append(f"SEARCH V3: Retrieved {len(raw_results)} candidates.")
+                    st.session_state.pipeline_logs.append(f"TRACE: {trace_log}")
                     st.session_state.pipeline_logs.append(f"RPL Cutline: User={current_cut}, Recommended={rec_cut}")
 
                     st.session_state.step = "results"
                     st.rerun()
-                        
-                    # [V2.9.9d] PANIC MODE: Last Resort (Moved Out)
-                    # Independently check if results are still low (< 3).
-                    # Triggers REGARDLESS of confidence score or previous retries.
-                    if len(formatted_matches) < 3:
-                        st.session_state.pipeline_logs.append(f"DEBUG: Checking Panic Mode... Matches={len(formatted_matches)}")
-                        
-                        # Only trigger if we haven't already filled it with retry results
-                        # (Retry might have failed too)
-                        
-                        st.toast("🛡️ 최후 수단: 모든 AI 필터를 해제하고 원본 데이터를 표시합니다. (Panic Mode)", icon="🚨")
-                        print("LOG: Panic Mode Triggered (Direct Vector Search)")
-                        st.session_state.pipeline_logs.append("--- PANIC MODE (Direct Vector Search) ---")
-                        
-                        try:
-                            # Direct Query
-                            # Use the original vector 'vec'
-                            raw_res = pinecone.query(
-                                vector=vec, 
-                                top_k=20, 
-                                namespace="" 
-                            )
-                            
-                            if raw_res and 'matches' in raw_res:
-                                # We APPEND to existing matches if any, or replace?
-                                # If we have 0, replace. If we have 1, maybe keep it?
-                                # Let's keep existing and append new ones, avoiding duplicates.
-                                existing_ids = {m['id'] for m in formatted_matches}
-                                
-                                for m in raw_res['matches']:
-                                    if m['id'] not in existing_ids:
-                                        formatted_matches.append({
-                                            "id": m['id'],
-                                            "score": m['score'] * 100, 
-                                            "data": m['metadata'],
-                                            "vector_score": m['score'],
-                                            "matrix_score": 0, 
-                                            "panic_mode": True
-                                        })
-                                        existing_ids.add(m['id'])
-                        except Exception as e:
-                            print(f"Panic Mode Error: {e}")
-                            st.session_state.pipeline_logs.append(f"Panic Mode Error: {e}")
                     
                    # ==========================
     # STEP 2: JD Analysis (AI)
