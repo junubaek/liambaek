@@ -992,7 +992,7 @@ with col_main:
                             top_k=300,
                             query_vector=vec # Reuse vector
                         )
-                        )
+
                         st.session_state.pipeline_logs.extend(["--- RETRY (Recall Mode + No Filters) ---"] + retry_logs)
                         
                         st.session_state.pipeline_logs.extend(["--- RETRY (Recall Mode + No Filters) ---"] + retry_logs)
