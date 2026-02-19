@@ -966,31 +966,37 @@ with col_main:
                     new_strategy = {"mode": "precision", "top_k": 300, "rerank": 50}
                     
                     
-                    # [V3.5] Strategy Tuning: Favor Recall Mode
-                    # The user reported strict keyword matching issues.
-                    # We default to 'Recall Mode' (Top-K 500, Rerank 100) unless confidence is extremely high (e.g. > 90).
-                    if conf_score_val < 90:
-                        new_strategy = {"mode": "recall", "top_k": 500, "rerank": 100}
+                    # [V5.0] Precision Tuning: Default to Precision Mode
+                    # V4.2 fixed connectivity, so we can be stricter.
+                    
+                    # Strategy Toggle UI
+                    use_recall_mode = st.toggle("🔍 넓게 검색하기 (Recall Mode)", value=False, help="체크하면 더 많은 후보를 가져오지만, 정확도는 떨어질 수 있습니다.")
+
+                    if use_recall_mode or conf_score_val < 80:
+                        new_strategy = {"mode": "recall", "top_k": 600, "rerank": 150}
                         st.session_state.search_strategy = new_strategy
-                        st.toast(f"🔎 Recall Mode Activated (Conf: {conf_score_val})")
+                        if not use_recall_mode:
+                            st.toast(f"🔎 신뢰도 낮음({conf_score_val}) → Recall Mode 자동 적용")
+                        else:
+                            st.toast(f"🔎 Recall Mode Activated (User Selection)")
                     else:
+                        # Precision Mode (Default)
                         new_strategy = {"mode": "precision", "top_k": 300, "rerank": 50}
                         st.session_state.search_strategy = new_strategy
-                        st.toast(f"🎯 Precision Mode (Conf: {conf_score_val})")
+                        st.toast(f"🎯 Precision Mode (Default)")
+
+                    # [V5.0] Default Cutline: 55 (Restored from 45)
+                    if "rpl_cutline" not in st.session_state:
+                         st.session_state.rpl_cutline = 55
                     
                     st.session_state.analysis_data_v3["search_strategy"] = new_strategy
                     
-                    # [V3.5] Default Cutline: 45 (Lowered from 55)
-                    if "rpl_cutline" not in st.session_state:
-                        st.session_state.rpl_cutline = 45
-
-                    # [Fix 1.1] Save to Session State (Single Source of Truth)
-                    # [V2.9.9] Auto-Fallback Logic
+                    # [Fix 1.1] Auto-Fallback Logic Consistency
                     if st.session_state.get("force_recall", False):
-                        new_strategy = {"mode": "recall", "top_k": 60, "rerank": 15}
+                        new_strategy = {"mode": "recall", "top_k": 600, "rerank": 150}
+                        st.session_state.search_strategy = new_strategy
                         st.toast(f"🔄 Auto-Recall Mode Activated (Previous: {conf_score_val})")
                     
-                    st.session_state.search_strategy = new_strategy
                     st.session_state.analysis_data_v3["search_strategy"] = new_strategy
                     
                     # 2. Embed & Query (Vector Search - The "Broad Net")

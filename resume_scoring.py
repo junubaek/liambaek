@@ -91,6 +91,18 @@ def calculate_rpl(jd_analysis, resume_metadata, vector_score=0.0):
     # 4. Refined Risk Penalty
     risk_penalty = 0 
     
+    # [V5.0] Precision Tuning: Penalty for Missing Keywords
+    # User requested "Tight" analysis. Pure vector search can be too loose.
+    # If explicit "Must Have" coverage is very low (< 30%), we penalize 
+    # even if the vector score is high (preventing "fake matches").
+    if core_signals and keyword_match_rate < 0.3:
+        risk_penalty += 15
+        # print(f"DEBUG: Low Keyword Match ({keyword_match_rate:.2f}) -> Penalty 15")
+    
+    # Check for Deal Breakers (e.g. Job Hopping?) - Placeholder for now
+    # if "job_hopper" in resume_metadata.get("risk", []):
+    #     risk_penalty += 10 
+    
     # [V4.0] FP&A / Finance Specialized Scoring (Bonus Matrix)
     # The user specifically requested this to fix "Zero Results" for Junior FP&A roles.
     # We check if the JD is for a Finance role, and if so, apply heuristic bonuses.
