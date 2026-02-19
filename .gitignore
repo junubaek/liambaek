@@ -1,0 +1,26 @@
+# Secrets
+secrets.json
+lib/secrets.json
+.archive/client_secret.json
+archive/client_secret.json
+
+# Environment
+.env
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Streamlit
+.streamlit/
+! .streamlit/config.toml
+
+# Logs
+*.txt
+*.log
+
+# VS Code
+.vscode/
