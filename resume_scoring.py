@@ -30,86 +30,73 @@ def count_overlap(signal_list, resume_text):
 def calculate_rpl(jd_analysis, resume_metadata, vector_score=0.0):
     """
     Calculates Resume Pass Likelihood (RPL) Score (0-100).
-    Formula: Max(Core Match, Vector Score) * Weight + Supporting + Context
-    
-    [V3.4] Hybrid Scoring Update:
-    - Pure keyword matching is too strict.
-    - We now mix 'Vector Semantic Score' with 'Keyword Match Score'.
-    - If Keyword Match is low but Vector Score is high (semantics), we trust Vector more.
+    [V6.0 Update]
+    1. Keyword Sensitivity: Changed Max(Keyword, Semantic) to Weighted Average to ensure
+       that missing verifiable keywords actually decreases the score.
+    2. Legacy Compatibility: Use 'must', 'nice', 'domain' as fallbacks.
     """
     resume_str = str(resume_metadata).lower()
     
-    # 1. Core Signals (Max 60)
-    core_signals = jd_analysis.get("core_signals", [])
+    # 1. Core Signals (Max 60) - Fallback to 'must'
+    core_signals = jd_analysis.get("core_signals") or jd_analysis.get("must") or []
     
     # Calculate Keyword Match Ratio
     hit_count = 0
     if core_signals:
         for req in core_signals:
-            # [Relaxed] Substring match is okay, but we should handle partials better?
-            # For now, stick to substring but trust vector score for "synonyms"
-            if req.lower() in resume_str:
+            if str(req).lower() in resume_str:
                 hit_count += 1
         keyword_match_rate = hit_count / len(core_signals)
     else:
         keyword_match_rate = 0.0
         
-    # [Hybrid Logic]
-    # Vector Score is typically 0.7 ~ 0.85 for good matches.
-    # Map Vector Score 0.75 -> 60 points (Full Core Score equivalent)
-    # Map Vector Score 0.65 -> 30 points
-    
-    # Normalize Vector Score (0.65 ~ 0.85 range maps to 0.0 ~ 1.0 effectiveness)
-    sem_score = max(0, (vector_score - 0.65) / 0.2) # 0.85 becomes 1.0
+    # Normalize Vector Score (0.65 ~ 0.85 range)
+    sem_score = max(0, (vector_score - 0.65) / 0.2)
     sem_score = min(sem_score, 1.0)
     
-    # Final Core Rate = Max(Keyword, Semantic)
-    # If candidate says "Financial Planning" (Vector high) but misses "FP&A" (Keyword low), we use Vector.
-    final_core_rate = max(keyword_match_rate, sem_score)
+    # [V6.0] Weighted Core Rate: Keywords are 70%, Semantic is 30%
+    # This ensures that even if vector similarity is high, missing keywords PULLS DOWN the score.
+    if core_signals:
+        final_core_rate = (keyword_match_rate * 0.7) + (sem_score * 0.3)
+    else:
+        # If no core signals (unlikely), rely on semantic
+        final_core_rate = sem_score
     
     core_score = final_core_rate * 60
     
-    # 2. Supporting Signals (Max 25)
-    # Keyword overlap is safer here as these are "Nice to haves"
-    supporting_signals = jd_analysis.get("supporting_signals", [])
+    # 2. Supporting Signals (Max 25) - Fallback to 'nice'
+    supporting_signals = jd_analysis.get("supporting_signals") or jd_analysis.get("nice") or []
     support_hits = 0
     if supporting_signals:
         for sig in supporting_signals:
-            if sig.lower() in resume_str:
+            if str(sig).lower() in resume_str:
                 support_hits += 1
-    support_score = min(support_hits * 5, 25)
+        support_score = min(support_hits * 5, 25)
+    else:
+        support_score = 0
     
-    # 3. Context Similarity (Max 10)
-    context_signals = jd_analysis.get("context_signals", [])
+    # 3. Context Similarity (Max 10) - Fallback to 'domain'
+    context_signals = jd_analysis.get("context_signals") or jd_analysis.get("domain") or []
     context_hits = 0
     if context_signals:
         for sig in context_signals:
-            if sig.lower() in resume_str:
+            if str(sig).lower() in resume_str:
                 context_hits += 1
-    context_score = min(context_hits * 3, 10)
+        context_score = min(context_hits * 3, 10)
+    else:
+        context_score = 0
     
     # 4. Refined Risk Penalty
     risk_penalty = 0 
+    if core_signals and keyword_match_rate < 0.2:
+        risk_penalty += 20 # Steeper penalty for very low keyword match
+
+    # ... (Finance specialized bonus remains unchanged) ...
+    jd_role = jd_analysis.get("canonical_role") or jd_analysis.get("role") or ""
+    jd_role = str(jd_role).lower()
     
-    # [V5.0] Precision Tuning: Penalty for Missing Keywords
-    # User requested "Tight" analysis. Pure vector search can be too loose.
-    # If explicit "Must Have" coverage is very low (< 30%), we penalize 
-    # even if the vector score is high (preventing "fake matches").
-    if core_signals and keyword_match_rate < 0.3:
-        risk_penalty += 15
-        # print(f"DEBUG: Low Keyword Match ({keyword_match_rate:.2f}) -> Penalty 15")
-    
-    # Check for Deal Breakers (e.g. Job Hopping?) - Placeholder for now
-    # if "job_hopper" in resume_metadata.get("risk", []):
-    #     risk_penalty += 10 
-    
-    # [V4.0] FP&A / Finance Specialized Scoring (Bonus Matrix)
-    # The user specifically requested this to fix "Zero Results" for Junior FP&A roles.
-    # We check if the JD is for a Finance role, and if so, apply heuristic bonuses.
-    jd_role = jd_analysis.get("canonical_role", "").lower()
     if any(x in jd_role for x in ["finance", "fp&a", "재무", "회계", "accounting", "business analyst", "기획"]):
         finance_bonus = 0
-        # Keywords that imply competence but might be missing from "Must"
         if any(x in resume_str for x in ["budget", "forecast", "p&l", "financial model", "예산", "손익"]):
             finance_bonus += 15
         if any(x in resume_str for x in ["excel", "sql", "data analysis", "bi", "데이터"]):
@@ -119,9 +106,7 @@ def calculate_rpl(jd_analysis, resume_metadata, vector_score=0.0):
         if "보험" in resume_str or "insurance" in resume_str or "fintech" in resume_str or "핀테크" in resume_str:
             finance_bonus += 5
             
-        # Apply bonus (Max 30 boost/cushion)
         final_core_rate = min(1.0, final_core_rate + (finance_bonus / 100.0))
-        # Recalculate core score with boost
         core_score = final_core_rate * 60
 
     final_score = core_score + support_score + context_score - risk_penalty
