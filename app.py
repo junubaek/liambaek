@@ -208,7 +208,7 @@ def clear_analysis_cache():
     st.cache_resource.clear()
 
 # Page config
-st.set_page_config(page_title="AI Headhunter V3.5", page_icon="🕵️", layout="wide")
+st.set_page_config(page_title="AI Headhunter V3.6.1", page_icon="🕵️", layout="wide")
 
 # --- CSS Styling (Clean White/Black + High Contrast Inputs) ---
 st.markdown("""
@@ -691,9 +691,17 @@ if "jd_text" not in st.session_state:
 # --- Two Column Layout ---
 col_sidebar, col_main = st.columns([1, 3])
 
-# --- Left Sidebar (Filters) ---
 with col_sidebar:
+    st.caption(f"🚀 Version: **{APP_VERSION}**")
+    st.markdown("---")
     
+    st.session_state.analysis_engine = st.radio(
+        "분석 엔진 선택 (Engine Selection)",
+        ["V3 (Experience)", "V2 (Expert)"],
+        index=0 if st.session_state.get("analysis_engine", "V3") == "V3 (Experience)" else 1,
+        help="V3는 검증 가능한 경험 중심, V2는 포괄적 역량 중심 분석입니다."
+    )
+    st.markdown("---")
     # 3. Home Button (Reset)
     if st.button("🏠 New Search", key="btn_home", use_container_width=True):
         st.session_state.step = "input"
