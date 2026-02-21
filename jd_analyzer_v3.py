@@ -1,6 +1,34 @@
-
 import json
 from connectors.openai_api import OpenAIClient
+
+ROLE_EXPERIENCE_MAPPING = {
+    "Data Engineer": {
+        "searchable_keywords": [
+            "Data Engineer", "데이터 엔지니어",
+            "Airflow", "Spark", "Kafka", "ETL",
+            "데이터 파이프라인", "Hadoop"
+        ],
+        "typical_experience": [
+            "데이터 파이프라인 구축",
+            "ETL 프로세스 설계",
+            "실시간 데이터 처리"
+        ],
+        "avoid_keywords": ["데이터 분석 능력"]  # 너무 일반적
+    },
+    
+    "Frontend Engineer": {
+        "searchable_keywords": [
+            "Frontend", "React", "Vue", "Angular",
+            "TypeScript", "Webpack", "Next.js"
+        ],
+        "typical_experience": [
+            "SPA 개발 경험",
+            "상태 관리 (Redux, Zustand)",
+            "반응형 웹 구현"
+        ],
+        "avoid_keywords": ["협업 능력", "커뮤니케이션"]
+    }
+}
 
 class JDAnalyzerV3:
     def __init__(self, openai_client):
