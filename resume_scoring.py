@@ -37,8 +37,8 @@ def calculate_rpl(jd_analysis, resume_metadata, vector_score=0.0):
     """
     resume_str = str(resume_metadata).lower()
     
-    # 1. Core Signals (Max 60) - Fallback to 'must'
-    core_signals = jd_analysis.get("core_signals") or jd_analysis.get("must") or []
+    # 1. Core Signals (Max 60) - Prioritize 'must' (user editable)
+    core_signals = jd_analysis.get("must") or jd_analysis.get("core_signals") or []
     
     # Calculate Keyword Match Ratio
     hit_count = 0
@@ -64,8 +64,8 @@ def calculate_rpl(jd_analysis, resume_metadata, vector_score=0.0):
     
     core_score = final_core_rate * 60
     
-    # 2. Supporting Signals (Max 25) - Fallback to 'nice'
-    supporting_signals = jd_analysis.get("supporting_signals") or jd_analysis.get("nice") or []
+    # 2. Supporting Signals (Max 25) - Prioritize 'nice' (user editable)
+    supporting_signals = jd_analysis.get("nice") or jd_analysis.get("supporting_signals") or []
     support_hits = 0
     if supporting_signals:
         for sig in supporting_signals:
@@ -75,8 +75,8 @@ def calculate_rpl(jd_analysis, resume_metadata, vector_score=0.0):
     else:
         support_score = 0
     
-    # 3. Context Similarity (Max 10) - Fallback to 'domain'
-    context_signals = jd_analysis.get("context_signals") or jd_analysis.get("domain") or []
+    # 3. Context Similarity (Max 10) - Prioritize 'domain' (user editable)
+    context_signals = jd_analysis.get("domain") or jd_analysis.get("context_signals") or []
     context_hits = 0
     if context_signals:
         for sig in context_signals:

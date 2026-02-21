@@ -821,7 +821,7 @@ with col_main:
                         d_list = parsed_jd.get("domains", []) or parsed_jd.get("domain_candidates", []) or [raw.get("domain", "General")]
                         if isinstance(d_list, str): d_list = [d_list]
                         
-                        st.session_state.analysis_data_v3 = {
+                        analysis_data_current = {
                             "must": parsed_jd.get("must_have", []) or raw.get("must_skills", []), 
                             "nice": parsed_jd.get("nice_to_have", []) or raw.get("nice_skills", []),
                             "domain": d_list,
@@ -836,6 +836,8 @@ with col_main:
                             "ambiguity": parsed_jd.get("ambiguity", False),
                             "search_contract": parsed_jd.get("search_contract", {})
                         }
+                        st.session_state.analysis_data_v3 = analysis_data_current
+                        st.session_state.analysis_data = analysis_data_current # [PHASE 3] Back-sync for Reranker Compatibility
                         
                         st.session_state.step = "review" # Move to next step
                         st.rerun()
@@ -927,6 +929,7 @@ with col_main:
                 domain_txt = st.text_area("domain", value=", ".join(d_val), height=150, label_visibility="collapsed")
             
             st.write("")
+            st.session_state.use_recall_mode_toggle = st.toggle("🔍 넓게 검색하기 (Recall Mode)", value=False, help="체크하면 더 많은 후보를 가져오지만, 정확도는 떨어질 수 있습니다.", key="recall_toggle_widget")
             submitted_search = st.form_submit_button("인재 검색 시작 🔍", use_container_width=True)
             
             if submitted_search:
@@ -1100,29 +1103,14 @@ with col_main:
                         Nice to have: {nice_str}
                         """
                     
-                    vec = openai.embed_content(weighted_query)
-                    
-                    
-                    # [PHASE 3] Search Pipeline V3 Integration
-                    # ----------------------------------------
-                    
-                    # [V4.0] Logic Safeguard: Force Recall for Junior Roles
-                    # Junior roles often lack specific keywords (like "Financial Modeling"), so Precision Mode kills them.
-                    # We force Recall Mode if seniority is Junior or Entry.
-                    if seniority_str in ["Junior", "Entry", "0-2"]:
-                        new_strategy = {"mode": "recall", "top_k": 500, "rerank": 100}
-                        st.session_state.search_strategy = new_strategy
-                        st.session_state.analysis_data_v3["search_strategy"] = new_strategy
-                        st.toast(f"👶 Junior Role Detected -> Forced Recall Mode")
-
-                    # 3. Vector Embedding (Query)
-                    # Use V3 signals for embedding
-                    role = st.session_state.analysis_data_v3.get("canonical_role", "Unknown")
-                    core_signals = st.session_state.analysis_data_v3.get("core_signals", [])
-                    context_signals = st.session_state.analysis_data_v3.get("context_signals", [])
+                    # 3. Vector Embedding (Query) - Use User-Edited Signals
+                    # [Fix] Use 'must' and 'domain' instead of raw AI 'core_signals' to ensure user edits are applied.
+                    role_vec = st.session_state.analysis_data_v3.get("role", "Unknown")
+                    must_vec = st.session_state.analysis_data_v3.get("must", [])
+                    domain_vec = st.session_state.analysis_data_v3.get("domain", [])
                     
                     # Text for embedding
-                    query_text = f"Role: {role}, Skills: {', '.join(core_signals)}, Context: {', '.join(context_signals)}"
+                    query_text = f"Role: {role_vec}, Skills: {', '.join(must_vec)}, Context: {', '.join(domain_vec)}"
                     
                     query_vector = openai.embed_content(query_text)
                     
@@ -1197,6 +1185,7 @@ with col_main:
                 
                 # Store in Session State
                 st.session_state.analysis_data_v3 = analysis_result
+                st.session_state.analysis_data = analysis_result # [PHASE 3] Back-sync
                 st.success(f"✅ {engine}를 통한 JD 재분석이 완료되었습니다!")
                 
                 # Save Summary for UI
@@ -1207,273 +1196,16 @@ with col_main:
                 # Log
                 st.session_state.pipeline_logs.append(f"JD ANALYSIS V3: Role={role}")
 
-                st.session_state.step = "results" # Skip review to speed up
+                st.session_state.step = "review" # [CRITICAL] Move to review so user can trigger search
                 st.rerun()
                 
             except Exception as e:
                 st.error(f"Analysis Error: {e}")
                 print(f"Analysis Error: {e}")
                 if st.button("Retry"):
-                    st.rerun()    
-                    for m in formatted_matches:
-                        if m['id'] not in seen_ids:
-                            initial_matches.append(m)
-                            seen_ids.add(m['id'])
+                    st.rerun()
 
-                    # [PHASE 3] Feedback Boost (Decayed) & Final Adjustments
-                    for m in initial_matches:
-                         # [Improvement 2] ID-based lookup
-                        fb_boost = 0.0
-                        cand_id = m['id']
-                        name = m['data'].get('name', 'Unknown')
-                        
-                        if cand_id in feedback_adjustments:
-                            fb_boost = feedback_adjustments[cand_id] * 10.0
-                        elif name in feedback_adjustments:
-                            fb_boost = feedback_adjustments[name] * 10.0
-                            
-                        # Update final score
-                        # For pipeline results, 'score' comes from vector but we sort by matrix_score currently.
-                        # We might want to combine them for the UI display.
-                        # Current UI expects 'score' to be the 0-100 match score.
-                        
-                        if 'matrix_score' in m:
-                            # If from pipeline, score is vector score * 100 usually (?)
-                            # Let's trust pipeline returned decent objects
-                            # We add feedback boost to it
-                            m['score'] += fb_boost
-                        else:
-                            # Defines score for liked candidates
-                            m['score'] += fb_boost
 
-                        
-                        # [PHASE 2.4] AUTO-RESCUE: Dynamic Fallback
-                        # If Precision Mode yielded too few results (< 3), auto-switch to Recall Mode
-                        if len(initial_matches) < 3 and strategy['mode'] == 'precision':
-                            print("DEBUG: Precision Search failed (matches < 3). Triggering Auto-Rescue.")
-                            st.toast("⚠️ Precision results too low. Auto-switching to Recall Mode... 🔄", icon="🛟")
-                            
-                            # 1. Force Recall Strategy
-                            strategy = {"mode": "recall", "top_k": 60, "rerank": 15}
-                            
-                            # 2. Re-construct Query with Aliases
-                            aliases = get_role_aliases(st.session_state.analysis_data_v3.get('inferred_role', ''))
-                            alias_str = f"(Also considering: {', '.join(aliases)})" if aliases else ""
-
-                            weighted_query = f"""
-                            Role: {st.session_state.analysis_data_v3.get('inferred_role', '')} {role_str} {alias_str}
-                            Must have skills: {must_str}
-                            Hidden context: {', '.join(st.session_state.analysis_data_v3.get('hidden_signals', []))}
-                            Seniority: {seniority_str} Level
-                            Domain experience: {domain_str}
-                            Nice to have: {nice_str}
-                            """
-                            
-                            # 3. Re-Embed & Query
-                            vec = openai.embed_content(weighted_query)
-                            # Remove strict cluster filters if any
-                            f_meta = {} 
-                            if selected_domains:
-                                f_meta["domain"] = {"$in": selected_domains}
-
-                            res_rescue = pinecone.query(vec, top_k=strategy['top_k'], filter_meta=f_meta)
-                            
-                            # 4. Re-Process Results (Soft Filter)
-                            if res_rescue and 'matches' in res_rescue:
-                                wrong_roles = st.session_state.analysis_data_v3.get("wrong_roles", [])
-                                for m in res_rescue['matches']:
-                                    mid = m['id']
-                                    if mid in seen_ids: continue # Skip if already added
-                                    
-                                    meta = m['metadata']
-                                    name = meta.get('name', 'Unknown')
-                                    cand_title = meta.get('title', '').replace(" ", "").lower()
-                                    
-                                    # Check Discriminator (Soft Penalty now)
-                                    is_rejected_by_ai = False
-                                    for wr in wrong_roles:
-                                        if wr.replace(" ", "").lower() in cand_title:
-                                            is_rejected_by_ai = True
-                                            break
-                                    
-                                    # [Logic] In Rescue Mode, we Apply Soft Penalty
-                                    if is_rejected_by_ai:
-                                        m['score'] -= 0.15 
-                                    
-                                    seen_ids.add(mid)
-                                    
-                                    # Basic Score Calc
-                                    fb_boost = 0.0 # Simplify for rescue
-                                    initial_score = (m['score'] * w_vec * 100) + float(meta.get('skill_score',0)) + fb_boost
-                                    
-                                    initial_matches.append({
-                                        "data": meta,
-                                        "score": initial_score,
-                                        "id": mid,
-                                        "vector_score": m['score']
-                                    })
-                        
-                        # [PHASE 2.6] FORCE SURVIVAL: If 0 matches after all filters, Fallback to Raw Top-10
-                        # This guarantees we never show "No Results" due to over-filtering.
-                        if not initial_matches:
-                            print("🚨 DEBUG: ZERO initial matches - Triggering FORCE SURVIVAL MODE")
-                            st.toast("🛡️ 모든 필터 해제: 원본 검색 결과를 표시합니다.", icon="🛡️")
-                            
-                            # Fallback strategy: Just take top 10 from Pinecone response without filtering
-                            if res and 'matches' in res:
-                                for m in res['matches'][:10]:
-                                    if m['id'] in seen_ids: continue
-                                    
-                                    meta = m['metadata']
-                                    # Basic conversion
-                                    initial_matches.append({
-                                        "data": meta,
-                                        "score": m['score'] * 100, # Raw score
-                                        "id": m['id'],
-                                        "vector_score": m['score'],
-                                        "force_survival": True
-                                    })
-                                    seen_ids.add(m['id'])
-                        
-
-                    
-                    # [Fix NameError] Retrieve strategy from session state
-                    strategy = st.session_state.analysis_data_v3.get("search_strategy", {"mode": "balanced", "rerank": 10})
-                    
-                    rerank_count = strategy['rerank'] # Corrected from 'rerank_top_n'
-                    candidates_to_rerank = initial_matches[:rerank_count] # Dynamic limit
-                    status_text = st.empty()
-                    status_text.text("🧠 AI 엔지니어가 이력서를 정밀 검토 중입니다...")
-                    
-                    for cand in candidates_to_rerank:
-                        # Construct a mini-prompt for each candidate
-                        cand_summary = cand['data'].get('summary', 'No summary available.')
-                        cand_name = cand['data'].get('name', 'Unknown')
-                        
-                        # [OPTIMIZATION] Split Prompts to save tokens
-                        system_prompt = f"""
-                        You are the 'Quant Evaluation AI' defined in the scoring rules.
-                        
-                        [SCORING RULES - STRICTLY FOLLOW THIS]
-                        {SCORING_RULES}
-                        """
-                        
-                        user_prompt = f"""
-                        [Job Description]
-                        {st.session_state.jd_text[:2000]}
-
-                        [Candidate Profile]
-                        Name: {cand_name}
-                        Summary: {cand_summary}
-                        Raw Data: {str(cand['data'])}
-
-                        [TASK]
-                        Evaluate this candidate based on the [SCORING RULES].
-                        
-                        **[CRITICAL CHECKLIST]**
-                        The User has defined these MUST-HAVE skills: {st.session_state.analysis_data['must']}
-                        
-                        STEP 1: [MUST-HAVE VERIFICATION]
-                        - Check if the candidate has the MUST-HAVE skills listed above.
-                        - **MISSING MUST-HAVES?** -> Score MUST be < 40 (FAIL).
-                        - **COMPLETELY WRONG ROLE?** (e.g. Sales applying for Dev) -> Score < 30.
-                        - **Role Match but missing key tech?** -> Score < 40.
-                        
-                        STEP 2: [SCORING]
-                        1. **Recent Experience:** Prioritize RECENT usage of the Must-Have skills. (Last 3 years favored).
-                        2. **Skill Score:** Calculate strictly based on rules.
-                        3. **Fail Condition:** If Must-Haves are missing, DO NOT give a score above 40, no matter how good the resume is.
-                           - 3 years of Recent Relevant Experience > 10 years of Irrelevant Experience.
-                        2. Calculate 'Skill Score' (0-15) strictly based on the JD match.
-                        3. Check 'Seniority' fit (Is the candidate too junior/senior for the JD?).
-                        
-                        STEP 3: [FINAL SCORE] (0-100)
-                        - Quant Score (Sum of Rule Book items) is a reference, BUT...
-                        - YOU MUST PENALIZE mismatch heavily.
-                        - Even if they are 'Ex-Google' (High Tier Score), if they don't know the language (e.g. Go), Score < 40.
-                        
-                        Output JSON:
-                        {{
-                            "score": (integer 0-100),
-                            "reason": "Explain WHY based on the rules in Korean (e.g., '연차는 적합하나 필수 기술인 Golang 경험이 부족함')."
-                        }}
-                        """
-                        
-                        try:
-                            # Quick LLM check
-                            eval_res = openai.get_chat_completion(system_prompt, user_prompt)
-                            clean_eval = eval_res.replace("```json", "").replace("```", "").strip()
-                            eval_data = json.loads(clean_eval)
-                            
-                            # Update Score: Weighted Average of Vector(40%) + AI_Reasoning(60%)
-                            # Update Score: weighted average, BUT Respect AI Veto
-                            ai_score = int(eval_data.get("score", 0))
-                            # [CRITICAL FIX] Hard Veto
-                            # If AI says candidate is a FAIL (< 40), we must not let Vector Score save them.
-                            # [Improvement 1] Even Liked Candidates must pass the Veto
-                            # [Relaxed] Lowered Threshold (40 -> 20)
-                            # [PHASE 2.5] EMERGENCY PATCH: Context-Aware Veto
-                            # Product Roles (PO/PM) often fail tech scoring. Lower threshold to 10.
-                            veto_threshold = 20
-                            if "product" in inferred_role.lower() or "기획" in inferred_role:
-                                veto_threshold = 10
-                                
-                            # If AI says candidate is a FAIL (< Threshold), we Knockout.
-                            # [FIX] Panic Mode / Force Survival Bypass
-                            # If this candidate was rescued via Panic Mode, we DO NOT filter them out based on AI Score.
-                            # We allow them to pass with a lower score, or keep them as is.
-                            is_panic = cand.get("panic_mode", False) or cand.get("force_survival", False)
-                            
-                            if ai_score < veto_threshold and not is_panic:
-                                mixed_score = 0
-                                
-                                # Special message for Liked candidates that fail
-                                if cand.get("is_liked"):
-                                     cand['ai_reason'] = "⛔ VETO: Liked in past, but fails current JD."
-                                else:
-                                     cand['ai_reason'] = "⛔ KNOCKOUT: " + eval_data.get("reason", "Missed Critical Criteria")
-                            else:
-                                mixed_score = (cand['score'] * 0.4) + (ai_score * 0.6)
-                                cand['ai_reason'] = eval_data.get("reason", "Analyzed by AI")
-                            
-                            cand['score'] = mixed_score
-                            cand['ai_eval_score'] = ai_score
-                            
-                        except Exception as e:
-                            continue # Fallback to vector score if AI fails
-
-                    status_text.empty()
-
-                    # Re-Sort based on new 'Mixed Score'
-                    candidates_to_rerank.sort(key=lambda x: x['score'], reverse=True)
-                    
-                    # [Modified] Filter & Limit
-                    # [Modified] Filter & Limit
-                    # 1. Filter out candidates with Score < 20 (Lowered from 30)
-                    status_text.text(f"📊 최종 필터링 중... (AI 검토 완료: {len(candidates_to_rerank)}명)")
-                    
-                    # [V3.3 FIX] Always keep Panic/Force Survival candidates regardless of score
-                    final_results = [
-                        c for c in candidates_to_rerank 
-                        if c['score'] >= 20 or c.get("panic_mode") or c.get("force_survival")
-                    ]
-                    
-                    # 2. Limit to Top 10
-                    st.session_state.search_results = final_results[:10]
-                    st.session_state.feedback_weights = str(default_weights)
-                    
-                    # [V2.9.9] Auto-Fallback: Precision -> Recall
-                    # If Precision Mode yielded 0 results, force switch to Recall Mode
-                    if len(final_results) == 0 and st.session_state.search_strategy.get("mode") == "precision":
-                        st.toast("⚠️ Precision Mode found 0 candidates. Switching to Recall Mode...", icon="🔄")
-                        st.session_state.force_recall = True
-                        st.session_state.search_results = [] # Clear
-                        st.session_state.pipeline_logs.append("AUTO-FALLBACK: Precision -> Recall Mode (Zero Results)")
-                        st.rerun()
-                        
-                    # Reset force_recall if we have results or already in recall
-                    if len(final_results) > 0:
-                         st.session_state.force_recall = False
 
 
     # ==========================
