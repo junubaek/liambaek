@@ -422,6 +422,10 @@ with st.sidebar:
     # [NEW] JD Analysis Engine Selection (Phase 3)
     st.sidebar.markdown("---")
     st.sidebar.subheader("🧠 JD 분석 엔진")
+    
+    # [Fix 3.3] Detect Engine Change to force re-analysis
+    prev_engine = st.session_state.get("analysis_engine")
+    
     analysis_engine = st.sidebar.radio(
         "분석 엔진 선택",
         ["V2 (Expert)", "V3 (Experience)"],
@@ -431,6 +435,13 @@ with st.sidebar:
         **V3 (Experience)**: 이력서에서 검증 가능한 'Product Owner', 'Jira' 같은 실질적 경험을 추론합니다.
         """
     )
+    
+    if prev_engine and prev_engine != analysis_engine:
+        # Engine changed! Reset to forced analysis if we already have JD
+        if st.session_state.get("jd_text"):
+            st.session_state.step = "analyze"
+            st.toast(f"🔄 엔진 변경 ({analysis_engine}): 재분석을 위해 초기화되었습니다.")
+
     st.session_state["analysis_engine"] = analysis_engine
 
     # [NEW] Debug Expander in Sidebar

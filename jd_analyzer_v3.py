@@ -55,6 +55,17 @@ class JDAnalyzerV3:
             data["hidden_signals"] = self._filter_abstract_signals(data.get("hidden_signals", []))
             data["core_signals"] = self._filter_abstract_signals(data.get("core_signals", []))
             
+            # Legacy Key Mapping for app.py backward compatibility
+            data["must"] = data.get("core_signals", [])
+            data["nice"] = data.get("supporting_signals", [])
+            data["domain"] = data.get("context_signals", [])
+            data["role"] = data.get("canonical_role", "Unknown")
+            
+            # Ensure mandatory fields for app.py
+            if "seniority" not in data: data["seniority"] = "Middle"
+            if "years_range" not in data: data["years_range"] = {"min": 0, "max": None}
+            if "confidence_score" not in data: data["confidence_score"] = 100
+            
             return data
         except Exception as e:
             print(f"JD Analyzer V3 Error: {e}")
