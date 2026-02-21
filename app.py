@@ -179,7 +179,7 @@ SCORING_RULES = load_scoring_rules()
 
 # --- [HOTFIX] Version Control & Cache Clearing ---
 # --- [HOTFIX] Version Control & Cache Clearing ---
-APP_VERSION = "3.5.0 (Semantic Scoring)" # Updated for V3.5
+APP_VERSION = "3.6.0 (Explicit Engine Routing)" # Forced Refresh
 if "app_version" not in st.session_state or st.session_state.app_version != APP_VERSION:
     st.cache_resource.clear()
     for key in list(st.session_state.keys()):
@@ -794,41 +794,37 @@ with col_main:
                 
                 with st.spinner("🤖 JD 분석 중입니다 (AI 역할 추론 / 숨겨진 의도 파악)..."):
                     try:
-                        # NEW: Use JD Parser Pipeline
-                        parsed_jd = jd_pipeline.parse(jd_input)
-                        if not parsed_jd: parsed_jd = {} # Safety Net
+                        # [PHASE 3 Refactor] Use explicit engine choice to avoid monkey-patch instability
+                        engine_choice = st.session_state.get("analysis_engine", "V3 (Experience)")
+                        
+                        if "V3" in engine_choice:
+                            analyzer = jd_analyzer_v3.JDAnalyzerV3(openai)
+                            raw = analyzer.analyze(jd_input)
+                            # Standardize for the legacy UI flow
+                            parsed_jd = {
+                                "must_have": raw.get("core_signals", []),
+                                "nice_to_have": raw.get("supporting_signals", []),
+                                "domains": raw.get("context_signals", []),
+                                "primary_role": raw.get("canonical_role", "Engineer"),
+                                "raw_extracted": raw,
+                                "years_range": raw.get("years_range", {"min": 0, "max": None}),
+                                "confidence_score": raw.get("confidence_score", 100),
+                                "ambiguity": raw.get("ambiguity", False),
+                                "search_contract": raw.get("search_contract", {})
+                            }
+                        else:
+                            # Fallback to JDPipeline (V1/V2)
+                            parsed_jd = jd_pipeline.parse(jd_input)
+                            raw = parsed_jd.get("raw_extracted", {})
 
-                        
-                        # Map parsed results to session state
-                        raw = parsed_jd.get("raw_extracted", {})
-                        
-                        # [Robustness] Ensure Domain is List
+                         # Map parsed results to session state
                         d_list = parsed_jd.get("domains", []) or parsed_jd.get("domain_candidates", []) or [raw.get("domain", "General")]
                         if isinstance(d_list, str): d_list = [d_list]
                         
-                        # [Failure Check]
-                        if parsed_jd.get("analysis_status") == "failed":
-                            st.error(f"⚠️ Analysis Failed: {parsed_jd.get('reason', 'Unknown Error')}")
-                            # Fallback to empty data to allow manual entry
-                            parsed_jd = {}
-                            raw = {}
-                            d_list = ["General"]
-
-
-                        # [Refactor v3.2] Safety Filter moved to jd_analyzer_v2.py
-                        # _safety_filter_hotfix removed.
-
-                        # [V2.9.8] Optional Domain Filtering (Negative Signals)
-                        # [User Request] If no domain selected, COMPLETELY IGNORE Negative Signals from Deep Analysis
-                        # This prevents "Industry Knowledge" blockers from filtering out good candidates.
-                        if not selected_domains:
-                            raw["negative_signals"] = []
-                            # print("DEBUG: Negative Signals Cleared (No Domain Selection)")
-
                         st.session_state.analysis_data_v3 = {
                             "must": parsed_jd.get("must_have", []) or raw.get("must_skills", []), 
                             "nice": parsed_jd.get("nice_to_have", []) or raw.get("nice_skills", []),
-                            "domain": parsed_jd.get("domains", []) or parsed_jd.get("domain_candidates", []) or [raw.get("domain", "General")],
+                            "domain": d_list,
                             "role": parsed_jd.get("primary_role", raw.get("primary_role", "Engineer")),
                             "inferred_role": raw.get("inferred_role", ""), 
                             "hidden_signals": raw.get("hidden_signals", []), 
@@ -838,7 +834,6 @@ with col_main:
                             "years_range": parsed_jd.get("years_range", {"min": 0, "max": None}),
                             "confidence_score": parsed_jd.get("confidence_score", 0),
                             "ambiguity": parsed_jd.get("ambiguity", False),
-                            # [V2.7] Search Contract Integration
                             "search_contract": parsed_jd.get("search_contract", {})
                         }
                         

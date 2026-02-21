@@ -19,19 +19,17 @@ class JDAnalyzerV3:
         [CRITICAL RULES]
         1. ❌ STRICTLY FORBIDDEN: "Communication", "Passion", "Mindset", "Collaboration", "Ability", "Thinking", "Proactive", "Problem Solving".
         2. ✅ ONLY EXTRACT tokens that a candidate would put in their "Skills" or "Work Experience" section.
-        3. ✅ AUTOMATICALLY INFER standard tools for the role (e.g., PM -> Jira, SQL, GA; Developer -> Git, Docker).
-        4. ✅ TRANSLATE vague JD text into concrete tokens.
-           - Example: "협업 능력" -> ❌ (SKIP)
-           - Example: "제품 기획" -> ["Product Owner", "Product Manager", "Service Design"]
-           - Example: "보험 도메인 전문성" -> ["Insurance Domain", "Fintech"]
+        3. ✅ USE ENGLISH for `canonical_role` (e.g. Product Owner) and `core_signals` (e.g. Jira, Backlog) if possible, as these are standardized across resumes.
+        4. ✅ AUTOMATICALLY INFER standard tools for the role.
+        5. ✅ TRANSLATE vague JD text into concrete tokens.
 
         Output JSON Schema:
         {
-          "canonical_role": "Standardized Job Title (e.g. Product Owner)",
-          "inferred_role": "Functional name for search (e.g. PO)",
-          "core_signals": ["Concrete verifiable tokens (Max 5)"],
-          "supporting_signals": ["Tools/Tech skills (Max 5)"],
-          "context_signals": ["Industry nouns (Max 3)"],
+          "canonical_role": "Standardized Job Title in English (e.g. Product Owner)",
+          "inferred_role": "Functional name for search (can be Korean/English)",
+          "core_signals": ["Concrete verifiable tokens (Prefer English/Industry terms)"],
+          "supporting_signals": ["Tools/Tech skills"],
+          "context_signals": ["Industry nouns"],
           "explicit_disqualifiers": [],
           "hidden_signals": ["B2B", "SaaS", etc.],
           "interview_checkpoints": []
