@@ -419,6 +419,20 @@ with st.sidebar:
     )
     st.session_state["rpl_cutline"] = rpl_cutline
 
+    # [NEW] JD Analysis Engine Selection (Phase 3)
+    st.sidebar.markdown("---")
+    st.sidebar.subheader("🧠 JD 분석 엔진")
+    analysis_engine = st.sidebar.radio(
+        "분석 엔진 선택",
+        ["V2 (Expert)", "V3 (Experience)"],
+        index=1,  # Default to V3
+        help="""
+        **V2 (Expert)**: JD에서 직접적인 키워드를 추출합니다.
+        **V3 (Experience)**: 이력서에서 검증 가능한 'Product Owner', 'Jira' 같은 실질적 경험을 추론합니다.
+        """
+    )
+    st.session_state["analysis_engine"] = analysis_engine
+
     # [NEW] Debug Expander in Sidebar
     with st.expander("디버그 정보", expanded=False):
         st.write("현재 세션 상태:")
@@ -1158,8 +1172,15 @@ with col_main:
     elif st.session_state.step == "analyze":
         with st.spinner("🤖 AI가 JD를 분석하여 '서류 통과 기준'을 수립 중입니다..."):
             try:
-                # [PHASE 3] Use JDAnalyzerV3
-                analyzer = jd_analyzer_v3.JDAnalyzerV3(openai)
+                # [PHASE 3] Engine Selection (V2 vs V3)
+                engine = st.session_state.get("analysis_engine", "V3 (Experience)")
+                if "V3" in engine:
+                    analyzer = jd_analyzer_v3.JDAnalyzerV3(openai)
+                    print("LOG: Using JD Analysis Engine V3 (Experience)")
+                else:
+                    analyzer = JDAnalyzerV2(openai)
+                    print("LOG: Using JD Analysis Engine V2 (Expert)")
+                
                 analysis_result = analyzer.analyze(jd_text)
                 
                 # Store in Session State
