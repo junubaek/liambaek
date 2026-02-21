@@ -48,6 +48,11 @@ class NotionClient:
         payload = {"properties": properties}
         return self._request("PATCH", f"pages/{page_id}", payload)
 
+    def archive_page(self, page_id):
+        """Archives (deletes) a page in Notion."""
+        payload = {"archived": True}
+        return self._request("PATCH", f"pages/{page_id}", payload)
+
     def update_database(self, db_id, properties):
         """Updates database schema (e.g. adding properties)."""
         payload = {"properties": properties}

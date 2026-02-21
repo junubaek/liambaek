@@ -76,9 +76,9 @@ class PineconeClient:
             print(f"Pinecone Fetch Error {e.code}: {e.read().decode('utf-8')}")
             return None
 
-    def delete(self, ids=None, delete_all=False, namespace="ns1"):
+    def delete(self, ids=None, delete_all=False, filter_meta=None, namespace="ns1"):
         """
-        Deletes vectors by ID or Delete All.
+        Deletes vectors by ID, Delete All, or Filter.
         """
         url = f"{self.host}/vectors/delete"
         
@@ -87,6 +87,8 @@ class PineconeClient:
             payload["deleteAll"] = True
         elif ids:
             payload["ids"] = ids
+        elif filter_meta:
+            payload["filter"] = filter_meta
         else:
             return None
             
