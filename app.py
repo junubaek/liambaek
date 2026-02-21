@@ -80,7 +80,8 @@ print("LOG: FORCE-PATCHED OpenAIClient.get_chat_completion_json")
 
 
 # --- Cache JD Parser ---
-@st.cache_resource
+# [Fix] Temporarily disabled cache to ensure patch updates apply immediately
+# @st.cache_resource
 def get_jd_pipeline():
     # Import here to ensure patch is applied first!
     from jd_parser.pipeline import JDPipeline
@@ -96,68 +97,69 @@ def get_jd_pipeline():
                 return res if res else {}
             except Exception as e:
                 print(f"⚠️ [Pipeline Recovery] Error ignored: {e}")
-                # [DEBUG] Print full traceback to console
                 import traceback
                 traceback.print_exc()
-                st.error(f"Pipeline Error: {e}") # Show in UI used for debugging
-                return {} # Return empty dict on ANY parser crash
+                st.error(f"Pipeline Error: {e}")
+                return {}
         
         JDPipeline.parse = safe_parse
         JDPipeline._is_patched_safe = True
         print("LOG: Applied Safety Patch to JDPipeline")
 
     # --- [DEEP FIX] Patch Extractor directly to prevent NoneType ---
-    # We enforce the CORRECT logic here so we don't depend on the broken file
     from jd_parser.extractor import JDExtractor
     
     pipeline = JDPipeline()
     
-    # --- [CLOUD AUTH FIX] Inject API Key from Streamlit Secrets ---
+    # --- [CLOUD AUTH FIX] Inject API Key ---
     if not pipeline.client.api_key:
         try:
             if "OPENAI_API_KEY" in st.secrets:
                 pipeline.client.api_key = st.secrets["OPENAI_API_KEY"]
                 print("LOG: ✅ Successfully injected API Key from st.secrets")
-            else:
-                 print("⚠️ Warning: OPENAI_API_KEY not found in st.secrets!")
         except Exception as e:
             print(f"⚠️ Warning: Failed to access st.secrets: {e}")
 
     # --- [CRITICAL FIX] Analyzer Closure for Monkey Patching ---
-    # Create an analyzer instance to be captured by the safe_extract_full closure.
-    # We use the client from the pipeline we just created/patched.
     analyzer_instance = JDAnalyzer(pipeline.client)
-    analyzer_instance_v2 = JDAnalyzerV2(pipeline.client) # [Phase 2.1] V2 Instance
+    analyzer_instance_v2 = JDAnalyzerV2(pipeline.client)
+    analyzer_instance_v3 = jd_analyzer_v3.JDAnalyzerV3(pipeline.client) # [PHASE 3]
 
     def safe_extract_full(extractor_self, jd_text: str) -> dict:
         """
-        [Phase 2.1 Refactor]
-        Uses the dedicated JDAnalyzer module via closure.
-        Switches between V1 and V2 based on Session State.
+        [PHASE 3 Refactor]
+        Switches between V1, V2, and V3 based on Session State.
         """
         try:
-             # Check for V2 Toggle (A/B Test)
-             use_v2 = False
-             try:
-                 import streamlit as st
-                 use_v2 = st.session_state.get("use_v2", False)
-             except: pass
+             import streamlit as st
+             # Priority: analysis_engine radio button
+             engine_choice = st.session_state.get("analysis_engine", "V3 (Experience)")
              
-             if use_v2:
-                 print("LOG: Using JDAnalyzerV2 (Deep Domain Mode)")
+             if engine_choice == "V3 (Experience)":
+                 print(f"LOG: [Step 1] Using JDAnalyzerV3 (Experience Mode) for JD: {jd_text[:30]}...")
+                 return analyzer_instance_v3.analyze(jd_text)
+             elif engine_choice == "V2 (Expert)":
+                 print(f"LOG: [Step 1] Using JDAnalyzerV2 (Expert Mode) for JD: {jd_text[:30]}...")
                  return analyzer_instance_v2.analyze(jd_text)
              else:
-                 return analyzer_instance.analyze(jd_text)
+                 # Legacy fallback
+                 if st.session_state.get("use_v2", False):
+                     return analyzer_instance_v2.analyze(jd_text)
+                 else:
+                     return analyzer_instance.analyze(jd_text)
 
         except Exception as e:
              print(f"⚠️ [Analyzer Error] {e}")
+             import traceback
+             traceback.print_exc()
              return {}
 
     # Apply the Full Logic Patch (Once)
-    if not hasattr(JDExtractor, "_is_patched_deep_v2"):
+    # [Update] Bumped to v4 to force overwrite old sessions
+    if not hasattr(JDExtractor, "_is_patched_deep_v4") or True: 
         JDExtractor.extract = safe_extract_full
-        JDExtractor._is_patched_deep_v2 = True
-        print("LOG: Applied Deep Logic Patch v2 to JDExtractor")
+        JDExtractor._is_patched_deep_v4 = True
+        print("LOG: Applied Deep Logic Patch v4 to JDExtractor")
 
     return pipeline
 
@@ -854,11 +856,13 @@ with col_main:
     # STEP 2: Review & Edit Keys
     # ==========================
     elif st.session_state.step == "review":
-        st.markdown("#### 2️⃣ 키워드 검토 및 수정 (AI 분석)")
+        engine_name = st.session_state.get("analysis_engine", "V3 (Experience)")
+        st.markdown(f"#### 2️⃣ 키워드 검토 및 수정 (AI 분석) - `{engine_name}`")
         
         # [DEBUG] Data Inspection
         with st.expander("🛠️ Debug Data (Developer Only)"):
             st.json(st.session_state.analysis_data_v3)
+            st.caption(f"Active Engine: {engine_name}")
 
         # [NEW] Headhunter Insights Display
         inferred = st.session_state.analysis_data_v3.get('inferred_role', '')
@@ -1192,10 +1196,13 @@ with col_main:
                     analyzer = JDAnalyzerV2(openai)
                     print("LOG: Using JD Analysis Engine V2 (Expert)")
                 
-                analysis_result = analyzer.analyze(jd_text)
+                # [Fix 3.4] Use session state JD text
+                jd_to_analyze = st.session_state.get("jd_text", "")
+                analysis_result = analyzer.analyze(jd_to_analyze)
                 
                 # Store in Session State
                 st.session_state.analysis_data_v3 = analysis_result
+                st.success(f"✅ {engine}를 통한 JD 재분석이 완료되었습니다!")
                 
                 # Save Summary for UI
                 role = analysis_result.get("canonical_role", "Unknown")

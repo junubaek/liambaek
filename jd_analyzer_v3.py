@@ -13,34 +13,28 @@ class JDAnalyzerV3:
         2. Map to Verifiable Experiences and Skills that appear on resumes.
         """
         system_prompt = """
-        You are a Expert Recruitment Consultant (V3 - Verifiable Experience Mode-S).
-        Your goal is to translate JD requirements into VERIFIABLE resume tokens.
+        You are a specialized Recruitment Token Extractor (V3).
+        Your ONLY task is to extract industry-standard resume keywords (hard skills, titles, tools).
 
-        [STEP 1: INFER ROLE & TOOLING]
-        - Identify the industry-standard role (e.g., Product Owner, Service Planner, Backend Engineer).
-        - **IMPORTANT**: If the role is Product-related (PM/PO), you MUST include "Product Owner", "PO", and "서비스 기획" as core signals if appropriate.
-        - **IMPORTANT**: Infer common tools even if not explicitly named (e.g., PM/PO likely use "Jira", "Confluence", "Slack").
-
-        [STEP 2: EXTRACT RESUME TOKENS]
-        - ❌ AVOID: Abstract skills like "Communication", "Proactive", "Passion", "Problem Solving", "Customer-centric".
-        - ✅ EXTRACT: Hard skills, Role Titles, Tools, and Specific Experiences.
-        - Think: "What would a candidate write on their resume for this job?"
-        - Example: Instead of "협업하여 제품 기획", use ["Product Owner", "PO Experience", "Backlog Management"].
-        
-        [STEP 3: HIDDEN SIGNALS]
-        - Extract nouns describing the specific BUSINESS or TECH context.
-        - ❌ AVOID: "Mindset", "Culture", "Attitude".
+        [CRITICAL RULES]
+        1. ❌ STRICTLY FORBIDDEN: "Communication", "Passion", "Mindset", "Collaboration", "Ability", "Thinking", "Proactive", "Problem Solving".
+        2. ✅ ONLY EXTRACT tokens that a candidate would put in their "Skills" or "Work Experience" section.
+        3. ✅ AUTOMATICALLY INFER standard tools for the role (e.g., PM -> Jira, SQL, GA; Developer -> Git, Docker).
+        4. ✅ TRANSLATE vague JD text into concrete tokens.
+           - Example: "협업 능력" -> ❌ (SKIP)
+           - Example: "제품 기획" -> ["Product Owner", "Product Manager", "Service Design"]
+           - Example: "보험 도메인 전문성" -> ["Insurance Domain", "Fintech"]
 
         Output JSON Schema:
         {
-          "canonical_role": "Standardized Job Title (e.g. Product Owner, Backend Engineer)",
-          "inferred_role": "Functional Role name used in candidates' resumes",
-          "core_signals": ["List of VERIFIABLE experience/skill tokens (Max 5)"],
-          "supporting_signals": ["List of technical tools or secondary hard skills"],
-          "context_signals": ["Industry/Work context tokens (Nouns only)"],
-          "explicit_disqualifiers": ["Negative signals found in JD"],
-          "hidden_signals": ["Contextual clues (e.g. 'B2B SaaS')"],
-          "interview_checkpoints": ["Soft skills/Logic to check in interview"]
+          "canonical_role": "Standardized Job Title (e.g. Product Owner)",
+          "inferred_role": "Functional name for search (e.g. PO)",
+          "core_signals": ["Concrete verifiable tokens (Max 5)"],
+          "supporting_signals": ["Tools/Tech skills (Max 5)"],
+          "context_signals": ["Industry nouns (Max 3)"],
+          "explicit_disqualifiers": [],
+          "hidden_signals": ["B2B", "SaaS", etc.],
+          "interview_checkpoints": []
         }
         """
         
@@ -60,6 +54,13 @@ class JDAnalyzerV3:
             data["nice"] = data.get("supporting_signals", [])
             data["domain"] = data.get("context_signals", [])
             data["role"] = data.get("canonical_role", "Unknown")
+            
+            # [Fix] JDNormalizer Compatibility (expecting must_skills/nice_skills/explicit_skills)
+            data["must_skills"] = data.get("core_signals", [])
+            data["explicit_skills"] = data.get("core_signals", [])
+            data["nice_skills"] = data.get("supporting_signals", [])
+            data["title_candidates"] = [data.get("canonical_role", ""), data.get("inferred_role", "")]
+            data["domain_clues"] = data.get("context_signals", [])
             
             # Ensure mandatory fields for app.py
             if "seniority" not in data: data["seniority"] = "Middle"
@@ -82,8 +83,8 @@ class JDAnalyzerV3:
     def _filter_abstract_signals(self, signals: list) -> list:
         """Removes abstract concepts like 'Mindset', 'Passion', etc."""
         ABSTRACT_PATTERNS = [
-            "마인드셋", "열정", "사고", "능력", "태도", "역량",
-            "mindset", "passion", "thinking", "ability", "attitude"
+            "마인드", "열정", "사고", "능력", "태도", "역량", "소통", "협업", "해결",
+            "mindset", "passion", "thinking", "ability", "attitude", "communication", "collaboration", "proactive"
         ]
         filtered = []
         for sig in signals:
