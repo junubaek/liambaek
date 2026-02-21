@@ -124,7 +124,7 @@ def calculate_rpl(jd_analysis, resume_metadata, vector_score=0.0):
         # Recalculate core score with boost
         core_score = final_core_rate * 60
 
-    final_score = core_score + support_score + context_score + risk_penalty
+    final_score = core_score + support_score + context_score - risk_penalty
     
     return max(10, min(100, int(final_score)))
 

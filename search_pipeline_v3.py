@@ -42,6 +42,13 @@ class SearchPipelineV3:
                 query_vector = query_vector[:768]
                 print("LOG: Truncated query vector from 1536 to 768 dim.")
 
+            print("=" * 60)
+            print("[DEBUG] Pinecone Query")
+            print(f"Query Vector (first 10): {query_vector[:10]}")
+            print(f"Query Vector Dimension: {len(query_vector)}")
+            print(f"Namespace: ns1")
+            print("=" * 60)
+
             raw = None
             try:
                 # [V4.2] Primary Namespace: "ns1"
@@ -63,6 +70,17 @@ class SearchPipelineV3:
             except Exception as e_inner:
                 print(f"Pipeline V3 Warning (Namespace 'ns1'): {e_inner}")
                 trace["warning"] = f"ns1 failed: {e_inner}"
+
+            print("=" * 60)
+            print("[DEBUG] Pinecone Response")
+            if raw and "matches" in raw:
+                print(f"Matches Found: {len(raw['matches'])}")
+                if raw['matches']:
+                    print(f"Top Score: {raw['matches'][0].get('score')}")
+                    print(f"Top Match ID: {raw['matches'][0].get('id')}")
+            else:
+                print("Matches Found: 0 or Error")
+            print("=" * 60)
 
             # Fallback 1: Try Default Namespace ("") if ns1 failed
             if not raw or not raw.get("matches"):
@@ -130,36 +148,40 @@ class SearchPipelineV3:
         # ---------------------------------------
         final_results = []
         for candidate in filtered:
-            data = candidate.get("metadata", {})
-            cand_id = candidate.get("id")
-            
-            # [V3.4] Hybrid Scoring: Pass vector_score for semantic baseline
-            vec_score = candidate.get('score', 0) # Use 'score' from Pinecone match as vector_score
-            rpl_score = calculate_rpl(jd_analysis, data, vector_score=vec_score)
-            pass_prob = calculate_pass_probability(rpl_score)
-            
-            # Prepare candidate dict for final results
-            processed_candidate = {
-                "id": cand_id,
-                "data": data,
-                "rpl_score": rpl_score,
-                "pass_probability": pass_prob, # [New]
-                "vector_score": vec_score,
-                "explanation": None, # Initialize explanation as None
-                "ai_eval_score": rpl_score # Map to existing UI field for compatibility
-            }
-            
-            # [Step 4] Explanation Generation (Only for high potential or random sample)
-            # Generating explanation for ALL 300 candidates is too slow.
-            # Generate only if RPL > 40 (Screening Candidate) or we need to fill the list.
-            if rpl_score >= 40:
-                explanation = generate_explanation(jd_analysis, data, rpl_score) # Pass rpl_score to explanation
-                processed_candidate['explanation'] = explanation
-                final_results.append(processed_candidate)
-            elif len(final_results) < 50: # Ensure we have at least some results even if low score
-                explanation = generate_explanation(jd_analysis, data, rpl_score) # Pass rpl_score to explanation
-                processed_candidate['explanation'] = explanation
-                final_results.append(processed_candidate)
+            try:
+                data = candidate.get("metadata", {})
+                cand_id = candidate.get("id")
+                
+                # [V3.4] Hybrid Scoring: Pass vector_score for semantic baseline
+                vec_score = candidate.get('score', 0) # Use 'score' from Pinecone match as vector_score
+                rpl_score = calculate_rpl(jd_analysis, data, vector_score=vec_score)
+                pass_prob = calculate_pass_probability(rpl_score)
+                
+                # Prepare candidate dict for final results
+                processed_candidate = {
+                    "id": cand_id,
+                    "data": data,
+                    "rpl_score": rpl_score,
+                    "pass_probability": pass_prob, # [New]
+                    "vector_score": vec_score,
+                    "explanation": None, # Initialize explanation as None
+                    "ai_eval_score": rpl_score # Map to existing UI field for compatibility
+                }
+                
+                # [Step 4] Explanation Generation (Only for high potential or random sample)
+                # Generating explanation for ALL 300 candidates is too slow.
+                # Generate only if RPL > 40 (Screening Candidate) or we need to fill the list.
+                if rpl_score >= 40:
+                    explanation = generate_explanation(jd_analysis, data, rpl_score) # Pass rpl_score to explanation
+                    processed_candidate['explanation'] = explanation
+                    final_results.append(processed_candidate)
+                elif len(final_results) < 50: # Ensure we have at least some results even if low score
+                    explanation = generate_explanation(jd_analysis, data, rpl_score) # Pass rpl_score to explanation
+                    processed_candidate['explanation'] = explanation
+                    final_results.append(processed_candidate)
+            except Exception as e:
+                print(f"[Warning] Candidate processing failed: {e}")
+                continue
 
         trace["stage3_scored"] = len(final_results)
 

@@ -3,8 +3,8 @@ import json
 from connectors.openai_api import OpenAIClient
 
 class JDAnalyzerV3:
-    def __init__(self):
-        self.openai = OpenAIClient()
+    def __init__(self, openai_client):
+        self.openai = openai_client
         
     def analyze(self, jd_text: str) -> dict:
         """

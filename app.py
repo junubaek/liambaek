@@ -1159,7 +1159,7 @@ with col_main:
         with st.spinner("🤖 AI가 JD를 분석하여 '서류 통과 기준'을 수립 중입니다..."):
             try:
                 # [PHASE 3] Use JDAnalyzerV3
-                analyzer = jd_analyzer_v3.JDAnalyzerV3()
+                analyzer = jd_analyzer_v3.JDAnalyzerV3(openai)
                 analysis_result = analyzer.analyze(jd_text)
                 
                 # Store in Session State
