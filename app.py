@@ -179,7 +179,7 @@ SCORING_RULES = load_scoring_rules()
 
 # --- [HOTFIX] Version Control & Cache Clearing ---
 # --- [HOTFIX] Version Control & Cache Clearing ---
-APP_VERSION = "3.6.0 (Explicit Engine Routing)" # Forced Refresh
+APP_VERSION = "3.6.1 (Purged Orphaned Code)" # Final Search Fix
 if "app_version" not in st.session_state or st.session_state.app_version != APP_VERSION:
     st.cache_resource.clear()
     for key in list(st.session_state.keys()):
