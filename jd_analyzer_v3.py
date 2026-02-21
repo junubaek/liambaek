@@ -27,7 +27,24 @@ ROLE_EXPERIENCE_MAPPING = {
             "반응형 웹 구현"
         ],
         "avoid_keywords": ["협업 능력", "커뮤니케이션"]
-    }
+    },
+
+    "Product Owner": {
+        "searchable_keywords": [
+            "Product Owner", "PO", "PM", "Service Planning", "기획", 
+            "Jira", "Confluence", "Backlog", "Roadmap", "User Story"
+        ],
+        "typical_experience": [
+            "Product Lifecycle Management",
+            "데이터 기반 지표 도출",
+            "백로그 우선순위 설정"
+        ],
+        "avoid_keywords": ["문제 해결 능력", "협업 능력", "소통", "커뮤니케이션", "문제 해결"]
+    },
+    # Korean Aliases
+    "프로덕트 오너": "Product Owner",
+    "데이터 엔지니어": "Data Engineer",
+    "프론트엔드 엔지니어": "Frontend Engineer"
 }
 
 class JDAnalyzerV3:
@@ -71,10 +88,57 @@ class JDAnalyzerV3:
             clean_json = response.replace("```json", "").replace("```", "").strip()
             data = json.loads(clean_json)
             
-            # Apply abstract signal filtering
+            # [PHASE 3.1] Role-Based Knowledge Injection
+            canonical_role_raw = data.get("canonical_role", "")
+            
+            # Case-insensitive / Partial matching for mapping
+            mapping = None
+            role_to_use = canonical_role_raw
+            
+            # 1. Direct Alias or Key Check
+            if canonical_role_raw in ROLE_EXPERIENCE_MAPPING:
+                entry = ROLE_EXPERIENCE_MAPPING[canonical_role_raw]
+                if isinstance(entry, str):
+                    role_to_use = entry
+                    mapping = ROLE_EXPERIENCE_MAPPING.get(role_to_use)
+                else:
+                    mapping = entry
+                    role_to_use = canonical_role_raw
+            
+            # 2. Fuzzy/Partial Check
+            if not mapping:
+                for key, val in ROLE_EXPERIENCE_MAPPING.items():
+                    if isinstance(val, str): continue # Skip aliases
+                    if key.lower() in canonical_role_raw.lower() or canonical_role_raw.lower() in key.lower():
+                        mapping = val
+                        role_to_use = key
+                        break
+            
+            if isinstance(mapping, dict):
+                data["canonical_role"] = role_to_use # Standardize
+            
+            # Apply abstract signal filtering to ALL categories
             data["hidden_signals"] = self._filter_abstract_signals(data.get("hidden_signals", []))
             data["core_signals"] = self._filter_abstract_signals(data.get("core_signals", []))
-            
+            data["supporting_signals"] = self._filter_abstract_signals(data.get("supporting_signals", []))
+            data["context_signals"] = self._filter_abstract_signals(data.get("context_signals", []))
+
+            # Inject Mapping Knowledge
+            if mapping:
+                # Add mandatory keywords to core_signals if not present
+                existing_core = [s.lower() for s in data["core_signals"]]
+                for kw in mapping.get("searchable_keywords", []):
+                    if kw.lower() not in existing_core:
+                        data["core_signals"].append(kw)
+                
+                # Add typical experience to sub-signals
+                data["hidden_signals"].extend(mapping.get("typical_experience", []))
+                
+                # Remove avoided keywords
+                avoid = [a.lower() for a in mapping.get("avoid_keywords", [])]
+                data["core_signals"] = [s for s in data["core_signals"] if str(s).lower() not in avoid]
+                data["supporting_signals"] = [s for s in data["supporting_signals"] if str(s).lower() not in avoid]
+
             # Legacy Key Mapping for app.py backward compatibility
             data["must"] = data.get("core_signals", [])
             data["nice"] = data.get("supporting_signals", [])
@@ -93,6 +157,8 @@ class JDAnalyzerV3:
             if "years_range" not in data: data["years_range"] = {"min": 0, "max": None}
             if "confidence_score" not in data: data["confidence_score"] = 100
             
+            data["inferred_role"] = data.get("inferred_role", data.get("canonical_role", "")) + " (V3)"
+            
             return data
         except Exception as e:
             print(f"JD Analyzer V3 Error: {e}")
@@ -109,11 +175,24 @@ class JDAnalyzerV3:
     def _filter_abstract_signals(self, signals: list) -> list:
         """Removes abstract concepts like 'Mindset', 'Passion', etc."""
         ABSTRACT_PATTERNS = [
-            "마인드", "열정", "사고", "능력", "태도", "역량", "소통", "협업", "해결",
-            "mindset", "passion", "thinking", "ability", "attitude", "communication", "collaboration", "proactive"
+            "마인드", "열정", "사고", "능력", "태도", "역량", "소통", "협업", "해결", "경험", "지식", "이해",
+            "관리", "조율", "개선", "커뮤니케이션", "문제", "적극적", "주도적", "원활한", "보유자",
+            "mindset", "passion", "thinking", "ability", "attitude", "communication", "collaboration", "proactive",
+            "experience", "knowledge", "understanding", "management", "coordination", "improvement"
         ]
+        if not isinstance(signals, list): return []
+        
         filtered = []
         for sig in signals:
-            if not any(pattern in str(sig).lower() for pattern in ABSTRACT_PATTERNS):
+            sig_str = str(sig).lower().strip()
+            # If the entire signal is just an abstract word or very short generic phrase, skip it
+            if len(sig_str) < 2: continue
+            
+            # Check against patterns
+            is_abstract = any(pattern in sig_str for pattern in ABSTRACT_PATTERNS)
+            
+            # Exception: If it's a technical keyword combined with an abstract word (e.g. "React 경험"), 
+            # we might want to keep it, but V3's goal is PURE tokens. So we are strict.
+            if not is_abstract:
                 filtered.append(sig)
         return filtered
