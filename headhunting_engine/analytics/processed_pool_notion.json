@@ -1,0 +1,2268 @@
+[
+  {
+    "id": "30a22567-1b6f-8100-8811-f17107cafc83",
+    "name": "이승우(약국솔루션개발)부문_원본",
+    "position": "Data Engineer",
+    "canonical_skill_nodes": [
+      "Language_C_Plus_Plus"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8100-88ee-faf5be48922d",
+    "name": "조민재(시스템엔지니어 리더)부문_원본",
+    "position": "Security Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8101-8a57-ed4454642869",
+    "name": "이정호(FW개발)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8101-9bd2-e1d21ca459b9",
+    "name": "[에스엠코어] 곽철훈(Tech본부 본부장)부문",
+    "position": "Project Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8101-a22d-ed3dac1025fc",
+    "name": "[리벨리온] 정윤오(Kubernetes InfrastructureDevOps Engineer)부문_포트폴리오",
+    "position": "DevOps / SRE",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8101-a823-c1f5561cf6cf",
+    "name": "장해미(인사팀장)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8102-869b-c5b159333051",
+    "name": "[리치텍코리아] 박주령(마케팅 임원)부문",
+    "position": "Marketing Manager",
+    "canonical_skill_nodes": [
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8102-a6a3-ccdc4f4b88c0",
+    "name": "[리벨리온] 주건(DRAM Systems Architect)부문",
+    "position": "Backend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8102-ad72-f4e8d5ab1091",
+    "name": "[무신사] 이호석(백엔드 개발자)부문",
+    "position": "CTO / VPE",
+    "canonical_skill_nodes": [
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8102-bb42-e90bcb6a17d0",
+    "name": "[굿블록] 정민영(Fronted Developer)부문",
+    "position": "Frontend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8102-bb6e-e6d3dbb139e0",
+    "name": "최필현(인사팀)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8103-8453-e5d16a5dd67f",
+    "name": "[인플루엔셜]헤드헌팅용역계약서_초안본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8103-8d12-e2e63ad3f908",
+    "name": "[BEP] 김병운(데이터분석)부문_포트폴리오",
+    "position": "Data Scientist",
+    "canonical_skill_nodes": [
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8103-93a9-c567bd823c5e",
+    "name": "[카카오] 김남규(BE개발자)부문",
+    "position": "Backend Engineer",
+    "canonical_skill_nodes": [
+      "Language_C_Plus_Plus",
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8103-9960-e5a8b00ab640",
+    "name": "[BEP] 김수빈(재무투자금융 임원)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8104-88dc-e6b00248c44b",
+    "name": "[리벨리온] 박재형(Government Project Operations Manager)부문",
+    "position": "Project Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8104-8ded-c5857a33282e",
+    "name": "[쿠팡] 심지영(데이터분석)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8104-8fd6-ce1b7375aa5c",
+    "name": "남규한(Product Owner)부문_원본",
+    "position": "Project Manager",
+    "canonical_skill_nodes": [
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8104-ba9e-d297dadf8acd",
+    "name": "정현정(공시담당자)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8105-8053-c56dd06ee624",
+    "name": "[한샘] 김종민(CFO)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8105-b544-fd3e459bc6d2",
+    "name": "양원희(약국솔루션개발)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8106-944a-cfa2ccbb50b9",
+    "name": "[SK인텔릭스] 전주영(Global 사업개발)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8106-bfa2-f6d00dbad671",
+    "name": "[클레온] 정영훈(CFO)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8107-84b9-d190be3148f2",
+    "name": "구매기획팀_김순근82_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [
+      "Language_C_Plus_Plus"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8107-9561-d9b8de8ddc0e",
+    "name": "[BEP] 임준형(재무투자금융 임원)부문",
+    "position": "Product Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8107-969b-fc36d1184471",
+    "name": "[리벨리온] 김봉규(Office Manager)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8108-8317-c90febbcc4a7",
+    "name": "[이랜텍] 문번진(ESS 품질)부문",
+    "position": "QA Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8108-89a9-c3a950387f00",
+    "name": "[쿠팡] 김형범(정보보호)부문",
+    "position": "Security Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8108-8bd4-f515c7e0355c",
+    "name": "김민정(공간기반 사업기획)부문_원본",
+    "position": "Product Designer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8108-92bd-dcdb8bc69828",
+    "name": "[스타비젼] 이경원(재무회계_리더급)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8108-9dbb-cc292cc2a70d",
+    "name": "정현호(IR 담당자)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8108-a6cd-e1540dc186cf",
+    "name": "이지현(리크루팅 팀장)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8108-b2f0-cd67d9f8105f",
+    "name": "이용안(재무회계)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8108-be03-d4ea7e77e78e",
+    "name": "JY_이슬기(해외라이선스 영업관리)부문_원본",
+    "position": "Project Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8109-9b5f-e85a9c8cc5c1",
+    "name": "[소프트웨어인라이프] 최민석(닥스웨이브 서비스기획자)부문",
+    "position": "Product Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8109-ad5f-eb3f54afcf03",
+    "name": "유동준(환경관리)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810a-9368-cbb7bd510993",
+    "name": "주현(온라인비지니스TFT)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810a-958d-daf6a2b3a466",
+    "name": "[리벨리온] 안영택(AI Accelerator Sales Manager)부문",
+    "position": "Sales Manager",
+    "canonical_skill_nodes": [
+      "MLOps"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810a-ada1-ded51d7e5b19",
+    "name": "[우아한형제들] 조준수(취약점 관리 및 진단 담당자)부문",
+    "position": "Security Engineer",
+    "canonical_skill_nodes": [
+      "Language_C_Plus_Plus",
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810a-b2fa-ee72a900977c",
+    "name": "[BEP] 이재윤(재무투자금융 임원)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810b-8a2d-d5b75930a82e",
+    "name": "정진우(글로벌 구매운영기획팀)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810b-aacd-c7e5d69857f7",
+    "name": "이효성_자금_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [
+      "Language_C_Plus_Plus"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810b-b3c7-d5f3ea7fc472",
+    "name": "[플레이웍스] 임영택(Game Mobile Engineer)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [
+      "Language_C_Plus_Plus"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810b-bcc7-fd206a05525d",
+    "name": "[스타비젼] 이정민(FE개발)부문",
+    "position": "Frontend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810c-84f0-cdb5eaf50290",
+    "name": "[카카오모빌리티] 김준형(M&A담당자)부문",
+    "position": "Project Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810c-8b2a-f726b23d3a78",
+    "name": "[한샘] 홍성열(CFO)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810c-8bee-e582b853f1a3",
+    "name": "임은지(SCM팀 물량담당)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810c-9cce-c4690f4299e3",
+    "name": "[에프앤자산평가] 이호용(대체투자심사)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810c-9d77-c697f3f61477",
+    "name": "JY_최재원(해외라이선스 영업관리)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810e-8b37-d5ba0513d016",
+    "name": "[블랙탠저린]헤드헌팅용역계약서_초안본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810e-8dd5-c3516fae7bbc",
+    "name": "[리벨리온] 이혁(인사팀장)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810e-901b-dc89dc47ac37",
+    "name": "[NXC] 최다연(언론홍보)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810e-a962-f57833a171fe",
+    "name": "[네이버웹툰] 정지은(웹툰 게임사업 담당)부문_93",
+    "position": "Product Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810e-afec-c7c9b1d894f3",
+    "name": "[네이버] 류한별(BE개발)부문",
+    "position": "Backend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810e-b5da-d67d5250e694",
+    "name": "이근필(총무팀 자산관리)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810e-b76b-e22204841856",
+    "name": "[리벨리온] 윤영필(Kubernetes Infrastructure.DevOps Engineer)부문",
+    "position": "DevOps / SRE",
+    "canonical_skill_nodes": [
+      "Language_C_Plus_Plus",
+      "Language_Python",
+      "MLOps"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810e-bb71-f7f7be1ce34d",
+    "name": "오동현(온라인비지니스TFT)부문_원본",
+    "position": "Product Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810f-895d-e4cb38654eab",
+    "name": "[오늘의집] 강성주(COO)부문",
+    "position": "Project Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810f-8c91-ca9df32fa244",
+    "name": "최정수(IR 담당자)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810f-9a45-cc940dbaf680",
+    "name": "김희원_자금_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810f-a970-ccea8e4b04aa",
+    "name": "안초희(PDMT본부 생산기술팀 연구원)부문_원본",
+    "position": "Project Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-810f-bd5d-dcd0cb351cb9",
+    "name": "[에스티유니타스] 주영희(마케팅총괄)부문",
+    "position": "Marketing Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8110-9b4f-c0b210fd43b0",
+    "name": "[스타비젼] 박준영(재무회계)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8110-a763-fa2703ae50dd",
+    "name": "[리벨리온] 전우형(SoC Architect for Scale-Up and Scale-Out)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [
+      "Language_C_Plus_Plus"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8110-bb51-d839286dd290",
+    "name": "[네이버웹툰] 송영(글로벌 웹소설 운영 부문)",
+    "position": "Product Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8112-95b0-ffcb50b5a406",
+    "name": "[스타비젼] 안병선(재무회계)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8112-9ef1-debce76e9860",
+    "name": "[카카오브레인] 노병석(AI Researcher)부문",
+    "position": "Machine Learning Engineer",
+    "canonical_skill_nodes": [
+      "Language_C_Plus_Plus",
+      "Language_Python",
+      "DL_Framework"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8112-b004-e88ae0598a81",
+    "name": "[보이스루] 안수현(토투스 서비스 기획)부문",
+    "position": "Product Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8112-b7d1-fc2c4504558a",
+    "name": "[DL이앤씨] 김태현(장치설계)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8113-af88-e0b02063fefd",
+    "name": "[리벨리온] 이지성(브랜드디자이너)부문",
+    "position": "Product Designer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8113-afaf-ffa1ef43dd20",
+    "name": "[리벨리온] 송다은(브랜드디자이너)부문_포트폴리오",
+    "position": "Graphic Designer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8113-b855-e20ffc501b7a",
+    "name": "권소향(온라인비지니스TFT)부문_원본",
+    "position": "Product Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8113-babf-c96132c0a0c3",
+    "name": "[우아한형제들] 김태환(딜리버리플랫폼실 딜리버리데이터팀 데이터분석가)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8114-8212-ce9476d7d007",
+    "name": "[스타비젼] 김승현(해외영업(B2B)_과장급)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8114-9fc0-e58a3469fccc",
+    "name": "[커니] 김형은(전략컨설턴트)부문",
+    "position": "Project Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8114-ac0d-cdb1fa7a3c40",
+    "name": "[티맵모빌리티] 신장용(그로스마케팅)부문",
+    "position": "Marketing Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8114-bb48-f569c3748056",
+    "name": "김한기(인사팀)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8116-a179-de8e29b6ee3a",
+    "name": "[문피아] 이가영(관리회계)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8117-8885-fb6475770472",
+    "name": "[리벨리온] 고휘수(브랜드 디자이너)부문_포트폴리오",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8117-a372-da3a0788a079",
+    "name": "[우아한형제들] 박슬희(딜리버리플랫폼실 딜리버리데이터팀 데이터분석가)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8117-b0e1-efe318f602e1",
+    "name": "[피네보] 김봉휘(CISO)부문",
+    "position": "Security Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8118-85ab-ff8dafb53b94",
+    "name": "이은샘(자금)원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8118-87ab-ded80039912e",
+    "name": "[리벨리온] 유창완(Office Manager)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8118-8b10-fd03f3a11e05",
+    "name": "박세원(Business Strategy Lead)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8118-8d7d-f8f23f7f86fb",
+    "name": "[LG전자] 백재현(UX Master)부문",
+    "position": "UI/UX Designer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8118-9d4c-d077f3ff0609",
+    "name": "[신한라이프] 박하나(광고영업)부문",
+    "position": "Marketing Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8118-ab55-dd2e45ca244f",
+    "name": "[아프리카티비] 이용우(사내변호사)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8118-b444-cd627c43e2bb",
+    "name": "[코인원] 김은혜(CEO)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8118-bcc4-d411a236c880",
+    "name": "국래헌(시스템.서버엔지니어)부문_원본",
+    "position": "DevOps / SRE",
+    "canonical_skill_nodes": [
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8119-8611-dfea9a514b28",
+    "name": "임상우(기술전략)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811a-af89-daa49de33e18",
+    "name": "HW2팀_91권혁찬(원본)",
+    "position": "Backend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811a-b569-e5b5102307d7",
+    "name": "[리벨리온] 여성수(정부 R&D 과제 Operations Manager)부문",
+    "position": "Project Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811b-ac20-db572f298563",
+    "name": "[SK하이닉스] 이형덕(GPU Driver)부문",
+    "position": "Machine Learning Engineer",
+    "canonical_skill_nodes": [
+      "DL_Framework"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811c-8f80-f229f29cbd8d",
+    "name": "[리벨리온] 여성수(정부 R&D 과제 Operations Manager)부문_포트폴리오",
+    "position": "Full Stack Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811c-9b09-ed65e50c5b92",
+    "name": "구성회(헝가리법인장)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811c-b3c6-c516a9e9527e",
+    "name": "[리벨리온] 심현선(인사팀장)부문_v2",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811d-862c-db22b1642b9b",
+    "name": "조소정(해외영업관리(불어))부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811d-90db-f38fc89accc8",
+    "name": "[NXC] 최미진(연결회계 담당자)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811d-b62c-e04f83ed15ce",
+    "name": "[우아한형제들] 이일규(Data Scientist.ML Engineer)부문_seminar_dnc",
+    "position": "Machine Learning Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811e-85c3-cafb790d587e",
+    "name": "[우아한형제들] 배호연(데이터분석가)부문",
+    "position": "Data Engineer",
+    "canonical_skill_nodes": [
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811e-9397-cc72d06498bd",
+    "name": "Main controller HW_송호경76_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811e-9a08-f0e355127d55",
+    "name": "[마이리얼트립] 김일수(사내변호사)부문_경력기술서",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811e-b270-f401b300060d",
+    "name": "[리벨리온] 이종민(DevOps Engineer)부문",
+    "position": "Backend Engineer",
+    "canonical_skill_nodes": [
+      "Language_Python",
+      "DL_Framework"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811f-872f-e1f61c39199d",
+    "name": "강택중(마케팅팀)부문_원본",
+    "position": "Marketing Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811f-8ac5-f92dcb12a353",
+    "name": "홍성웅(SW설계)원본",
+    "position": "Backend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811f-8d99-e12dc9c241ac",
+    "name": "김성민(마케팅총괄)부문_원본",
+    "position": "Marketing Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-811f-9f7d-d04d88de998b",
+    "name": "[아프리카티비] 이승환(사내변호사)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8120-9270-f7c6a57602b3",
+    "name": "구매기획팀_김성현88_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8120-a5ca-fe2bc5343fd7",
+    "name": "경영정보팀(WEB)_83강병갑(원본)",
+    "position": "Backend Engineer",
+    "canonical_skill_nodes": [
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8120-a849-d8efd8a1a5b0",
+    "name": "[보이스루] 김준호(백엔드 개발자)부문",
+    "position": "Backend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8120-ad60-f9c311b7b617",
+    "name": "[NC] 이소연(투자담당자)부문_90",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8120-bbde-cded5a28ee79",
+    "name": "[우아한형제들] 조준수(취약점 관리 및 진단 담당자)부문_포트폴리오",
+    "position": "Security Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8121-9147-e2c2fe0cf86a",
+    "name": "[드라마앤컴퍼니] 김혜림(안드로이드개발)부문",
+    "position": "Android Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8121-aa20-c9d5a55fa380",
+    "name": "[리벨리온] 최소이(브랜드디자이너)부문_포트폴리오",
+    "position": "UI/UX Designer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8122-9242-e473a05f290f",
+    "name": "[스타비젼] 김재용(BE개발자)부문",
+    "position": "Backend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8122-9f51-d8a400d14160",
+    "name": "[코인원] 심상우(CSO)부문",
+    "position": "Product Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8122-a215-f7af33816111",
+    "name": "민유경(SCM팀 물량담당)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8123-8bb0-d9623fb0ac9e",
+    "name": "양병욱(개인정보보호)부문_원본",
+    "position": "Security Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8123-9b86-c097356b3ffa",
+    "name": "[스타비젼] 배종규(재무회계)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8123-a69a-d9571fb9edf9",
+    "name": "노혜진(리크루팅Senior)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8123-aa97-df82e3e40210",
+    "name": "보안 솔루션 총판영업_민원규(원본)",
+    "position": "Sales Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8124-863f-e5f8f230972d",
+    "name": "[페퍼저축은행] 김승민(여신 RISK)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8124-89fe-dc36802daa6b",
+    "name": "[NXC] 김은선(경영전략 스텝)부문",
+    "position": "Marketing Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8124-972a-fd77c2f61723",
+    "name": "[우아한형제들] 정혜연(프로덕트부문 공통 카프카 엔지니어)부문",
+    "position": "DevOps / SRE",
+    "canonical_skill_nodes": [
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8124-9d3f-db3eff438a00",
+    "name": "[KB] 김승열(DT)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8124-a76b-e262e082da62",
+    "name": "원본_구두환(마케팅커뮤니케이션)",
+    "position": "Marketing Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8124-b8f4-e88ff21d5fe1",
+    "name": "[에스비티엘첨단소재] 곽훈(영업 본부장)부문",
+    "position": "Sales Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8125-8ea2-df4a18a869e7",
+    "name": "김우민(SCM팀 물량담당)부문_원본",
+    "position": "Data Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8125-9fa6-d268fa56fd3a",
+    "name": "이상화(SCM팀 물량담당)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8126-82bb-edca95ef16cd",
+    "name": "김경중(의료기기 마케팅전략기획)부문_원본",
+    "position": "Sales Manager",
+    "canonical_skill_nodes": [
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8126-8b54-d13b5999295d",
+    "name": "[딥엑스] 김지후(채용담당자)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8126-b997-f840dd154f80",
+    "name": "[모비스] 최경국(전략기획)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8127-8954-edea4455f699",
+    "name": "유희선_자금_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8127-9b39-c58d06d33bec",
+    "name": "JY_안계명(해외매니지먼트)부문_원본",
+    "position": "Sales Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8128-a9ae-ccfe70b0af27",
+    "name": "[NXC] 신혜은(인하우스 영어 통번역사)부문_eng1",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8128-b275-d71080eac511",
+    "name": "전성목(디자인팀(UX.UI))부문_원본",
+    "position": "UI/UX Designer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8128-b2bc-e369b847bbaf",
+    "name": "이명준(투자.금융사업 디렉터)부문_원본",
+    "position": "Founder / CEO",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8129-b4d6-cfc94c2a3834",
+    "name": "[코인원] 나영일(CSO)부문",
+    "position": "Product Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812a-8975-cd2de4774462",
+    "name": "정준수(SI영업)부문-원본",
+    "position": "Sales Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812a-9380-d3185ed67187",
+    "name": "남철희(SRE 엔지니어)부문",
+    "position": "DevOps / SRE",
+    "canonical_skill_nodes": [
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812a-9d0c-c59768fb242b",
+    "name": "[BEP] 배문성(전력계통_담당)부문",
+    "position": "Data Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812a-a14c-ed29f1891991",
+    "name": "[GME] 김정기(서버개발자)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812b-a0c7-e28469e300b7",
+    "name": "[리벨리온] 박찬준(DRAM Systems Architect)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812b-b64f-e5fd78cc5087",
+    "name": "[카카오모빌리티] 최경국(M&A담당자)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812b-b72b-e4994f396d0d",
+    "name": "[리벨리온] 최형광(CCL Lead Engineer)부문",
+    "position": "DevOps / SRE",
+    "canonical_skill_nodes": [
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812c-85a7-f59bc8431b53",
+    "name": "[블루밍그레이스] 정유균(Front-End 개발자)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812c-9ec5-cacf1ff43bbb",
+    "name": "[NXC] 신혜은(인하우스 영어 통번역사)부문_eng2",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812c-a5ad-e934975f563e",
+    "name": "경영정보팀(WEB)_88명정석(원본)",
+    "position": "Backend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812c-b88d-d61f78852f72",
+    "name": "권대욱(전략기획)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812c-b8ed-f3571ecf83cd",
+    "name": "김현민(중국영업)부문_원본",
+    "position": "Sales Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812d-8661-f3ce901ba42a",
+    "name": "[리디] 유승우(콘텐츠마케팅)부문",
+    "position": "Marketing Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812d-9434-ef30f2a7e08a",
+    "name": "한아름(웹_임베디드SW)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812d-94d0-d4b788047c65",
+    "name": "[네이버클라우드] 김태경(ai)부문",
+    "position": "Data Engineer",
+    "canonical_skill_nodes": [
+      "Language_C_Plus_Plus",
+      "Language_Python"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812d-962a-deb13370417f",
+    "name": "[마이리얼트립] 김일수(사내변호사)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812d-9872-fff93cbfebd2",
+    "name": "[밀도] 김준호(브랜드총괄)부문_포트폴리오",
+    "position": "Product Designer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812d-9be1-c9681c336b0d",
+    "name": "[NC] 류제천(투자담당자)부문_88",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812d-9cce-c669b0af6e87",
+    "name": "[우아한형제들] 이일규(Data Scientist.ML Engineer)부문",
+    "position": "Machine Learning Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812d-a4c8-cdaf012c5448",
+    "name": "강연승(재무회계)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812d-a991-c21e2d2ea935",
+    "name": "[TUNiB] 김수환(AI Lead)부문",
+    "position": "Machine Learning Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812d-b12f-f8eb465282e1",
+    "name": "[쏘카] 박준호(정보보호)부문",
+    "position": "Security Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812d-b3f7-e515828d2584",
+    "name": "[이렌텍] 김승탁(연구개발팀 EMS(BP,HW)부문",
+    "position": "Backend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812d-be42-e0eda79d8ad8",
+    "name": "[리벨리온] 박현덕(AI Accelerator Sales Manager)부문",
+    "position": "Sales Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812e-96db-d605240b11fd",
+    "name": "고아라(모바일서비스기획)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812e-a1d9-dc5f56d218fa",
+    "name": "강지선(문화재단 사업팀장)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812f-82a9-e069b676dbde",
+    "name": "이의종81(HR기획)_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812f-901b-c14e035efac5",
+    "name": "[하나머티리얼즈] 곽훈(마케팅 총괄 임원)부문",
+    "position": "Sales Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812f-9949-f8a10f7ce73c",
+    "name": "[CJ ENM] 이진희(CMO)부문",
+    "position": "Marketing Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812f-9b46-caf754d578ae",
+    "name": "안원길(전략기획팀)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812f-a56b-e5264c52b536",
+    "name": "[하이퍼커넥트] 진상현(FE개발)부문",
+    "position": "Full Stack Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-812f-bb26-d2872df187b9",
+    "name": "보안 솔루션 총판영업_89유예솔(원본)",
+    "position": "Sales Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8130-851a-c7cdafc162b4",
+    "name": "공간기반 사업기획_박종국82_연세대석사",
+    "position": "Product Designer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8130-8f13-f26dbfc502c6",
+    "name": "이우관(웹개발(FE))부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8130-a826-eb980a6dd480",
+    "name": "양승석(유튜브 콘텐츠 제작 PD)부문_원본",
+    "position": "Product Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8130-bdc5-ed9490a1a811",
+    "name": "[스타비젼] 서동빈(FE개발)부문",
+    "position": "Frontend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8132-8779-e7f5e4284a7e",
+    "name": "[현대백화점] 최태욱(개인정보보호)부문",
+    "position": "Security Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8132-9b74-c74ec86e9367",
+    "name": "김현진(UX.UI디자인)부문_원본",
+    "position": "UI/UX Designer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8132-9c4a-d5c51d92dabd",
+    "name": "송지선(약국솔루션개발)부문_원본",
+    "position": "Backend Engineer",
+    "canonical_skill_nodes": [
+      "Language_C_Plus_Plus"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8132-a6ee-c103cd9bec2c",
+    "name": "[스타비젼] 헤드헌팅용역계약서_초안본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8132-aeb3-c17e132fe79f",
+    "name": "노동수(전략기획 그룹장)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8133-8262-db6aedda17bd",
+    "name": "[SK인텔릭스] 김민규(스마트홈 Tech 팀장)부문",
+    "position": "Product Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8133-a718-d50e03304b60",
+    "name": "[한샘] 정주현(리빙MD)부문",
+    "position": "Sales Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8133-b384-f31057407c5e",
+    "name": "[우아한형제들] 이영훈(개인정보보호 리더)부문",
+    "position": "Security Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8134-b6db-f13ab3b4e187",
+    "name": "고승훈(웹프론트엔드 개발자)부문_원본",
+    "position": "Frontend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8135-93e4-f8bd9dd9e653",
+    "name": "SW1팀_김승경(원본) ",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8135-a3a9-fb10401d0945",
+    "name": "이경수(구매)부문_원본",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8135-a64d-c6100fb8804e",
+    "name": "[리벨리온] 고영석(CCL Lead)부문",
+    "position": "Machine Learning Engineer",
+    "canonical_skill_nodes": [
+      "Distributed_Training",
+      "DL_Framework"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8135-abe1-ddd2a632ca06",
+    "name": "[문피아] 김명훈(CISO,CPO)부문",
+    "position": "Security Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8135-b53b-ede866adb707",
+    "name": "[현대리바트] 김수영(리빙MD)부문",
+    "position": "Sales Manager",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8136-9d6d-d014e6418ae9",
+    "name": "[삼성전자] 이광욱(ai)부문",
+    "position": "Machine Learning Engineer",
+    "canonical_skill_nodes": [
+      "Distributed_Training",
+      "DL_Framework"
+    ],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8136-a64a-d0a2c8a220de",
+    "name": "[와디즈] 박지수(리빙MD)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8137-88ca-d499abdf7b55",
+    "name": "[클레온] 오세규(CFO)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8137-8b21-c7b29cf07e36",
+    "name": "[토스인슈어런스] 박우람(Financial System Manager)부문",
+    "position": "Backend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8137-97f2-da70e7827c5a",
+    "name": "[kt] 이상범(안드로이드개발)부문",
+    "position": "Android Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8137-b321-e666ee131b42",
+    "name": "[29CM] 김영권(프론트엔드)부문",
+    "position": "Frontend Engineer",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8138-82d8-c019b9437750",
+    "name": "[동화약품] 김현우(성장전략 개발기획)부문",
+    "position": "Business Analyst",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8138-9384-f41a21daf08c",
+    "name": "HW2팀_89최현수(원본)",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8138-ab88-fadb892b0a09",
+    "name": "[에스엠코어] 강은태(Tech본부_본부장)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8138-b61b-e021e1718c8a",
+    "name": "우승기(건축구조)부문_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8139-881a-fcb640344049",
+    "name": "[한샘] 김용석(CRM마케터)부문",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "30a22567-1b6f-8139-9631-dc5388b7a485",
+    "name": "개인정보보호_장소연93_원본",
+    "position": "Unclassified",
+    "canonical_skill_nodes": [],
+    "base_talent_score": 65,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "domain_match": true,
+    "company_size_match": true
+  }
+]

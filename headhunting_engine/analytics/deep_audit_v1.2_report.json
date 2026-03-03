@@ -1,0 +1,58 @@
+{
+  "summary": {
+    "total_candidates": 283,
+    "avg_base_score": 79.59,
+    "median_base_score": 80.0,
+    "avg_skills_per_candidate": 1.19
+  },
+  "grade_distribution": {
+    "counts": {
+      "A": 117,
+      "B": 20,
+      "S": 119
+    },
+    "ratios": {
+      "A": "41.3%",
+      "B": "7.1%",
+      "S": "42.0%"
+    }
+  },
+  "career_path_distribution": {
+    "null": "8.1%",
+    "Ascending": "89.8%",
+    "Stable": "2.1%"
+  },
+  "top_20_skills": {
+    "Language_Python": 59,
+    "Language_Java": 48,
+    "Infra_Linux": 39,
+    "Cloud_AWS": 38,
+    "Language_JavaScript": 34,
+    "DB_SQL": 32,
+    "Language_C_Plus_Plus": 32,
+    "Embedded_C": 24,
+    "DL_Framework": 14,
+    "MLOps": 7,
+    "Distributed_Training": 6,
+    "Language_CSharp": 4
+  },
+  "domain_bias_check": {
+    "unique_positions": 237,
+    "top_10_positions": {
+      "null": 30,
+      "Software Engineer": 4,
+      "대리": 2,
+      "연구원": 2,
+      "프론트엔드 개발자": 2,
+      "데이터 분석가": 2,
+      "Senior Researcher": 2,
+      "Infra Engineer": 2,
+      "HR Specialist": 2,
+      "Interpreter": 2
+    }
+  },
+  "gate_status": {
+    "avg_skills_ge_3": false,
+    "current_status": "COLD (Still in Blackout)"
+  }
+}

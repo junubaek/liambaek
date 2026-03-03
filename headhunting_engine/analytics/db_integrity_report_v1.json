@@ -1,0 +1,36 @@
+{
+  "summary": {
+    "total_physical_files": 2371,
+    "total_structured": 200,
+    "schema_compliance_rate": "100.0%",
+    "avg_base_score": 65,
+    "median_base_score": 65.0
+  },
+  "distributions": {
+    "grades": {
+      "B": 200
+    },
+    "career_path": {
+      "Stable": 200
+    },
+    "positions_count": 21,
+    "top_10_positions": {
+      "Unclassified": 59,
+      "Business Analyst": 36,
+      "Backend Engineer": 13,
+      "Sales Manager": 12,
+      "Product Manager": 11,
+      "Security Engineer": 10,
+      "Marketing Manager": 10,
+      "Project Manager": 9,
+      "Machine Learning Engineer": 7,
+      "DevOps / SRE": 6
+    }
+  },
+  "skill_gap": {
+    "unmapped_skill_instances": 0,
+    "total_skill_instances": 38,
+    "gap_rate": "0.0%",
+    "top_50_unmapped": []
+  }
+}

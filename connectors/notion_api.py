@@ -281,6 +281,24 @@ class HeadhunterDB:
         """Fetches full text content for a specific candidate."""
         return self.client.get_page_full_text(page_id)
 
+    def fetch_searches(self, limit=100):
+        db_id = self.client.search_db_by_name("SEARCH")
+        if not db_id:
+            print("Database 'SEARCH' not found.")
+            return []
+        print(f"Fetching searches from SEARCH ({db_id})...")
+        res = self.client.query_database(db_id, limit)
+        return [self.client.extract_properties(p) for p in res['results']] if res else []
+
+    def fetch_projects(self, limit=500):
+        db_id = self.client.search_db_by_name("PROJECT")
+        if not db_id:
+            print("Database 'PROJECT' not found.")
+            return []
+        print(f"Fetching project-candidate links from PROJECT ({db_id})...")
+        res = self.client.query_database(db_id, limit)
+        return [self.client.extract_properties(p) for p in res['results']] if res else []
+
     def update_candidate(self, page_id, properties):
         """Updates candidate metadata in Notion."""
         return self.client.update_page_properties(page_id, properties)

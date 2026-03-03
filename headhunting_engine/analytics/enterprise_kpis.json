@@ -1,0 +1,33 @@
+{
+  "enterprise_kpis": {
+    "skill_capital": {
+      "applied_nodes": 3887,
+      "architected_nodes": 37,
+      "total_technical_equity": 3961,
+      "equity_by_role": {
+        "SW_Backend": 134,
+        "AI_Engineering": 16,
+        "DATA_Science": 0,
+        "DATA_Engineering": 47,
+        "SW_Platform": 34,
+        "HW_ChipDesign": 0,
+        "Embedded_Systems": 22
+      },
+      "equity_by_domain": {
+        "Model_Development": 22,
+        "Data_Infrastructure": 58,
+        "Backend_Systems": 187,
+        "System_Optimization": 23,
+        "Infra_Cloud": 34
+      }
+    },
+    "market_competitiveness": {
+      "rare_talent_utility_ratio": 1.0,
+      "avg_sa_talent_quality": 0
+    },
+    "pool_depth": {
+      "s_a_supply_count": 0,
+      "total_processed": 1276
+    }
+  }
+}

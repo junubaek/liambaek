@@ -1,0 +1,4003 @@
+[
+  {
+    "id": "HW2팀_85김동영(원본).docx",
+    "name": "김동영",
+    "position": "HW팀 대리",
+    "skills_depth": [
+      {
+        "name": "__TEMP__와이어링_하네스_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__회로_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__EMC_평가",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__기판_품질_평가",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__MS_Office",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__ORCAD_및_PSPICE",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__와이어링_하네스_설계",
+      "__TEMP__회로_설계",
+      "__TEMP__EMC_평가",
+      "__TEMP__기판_품질_평가",
+      "__TEMP__MS_Office",
+      "__TEMP__ORCAD_및_PSPICE"
+    ],
+    "raw_base_talent_score": 45.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "unexplained_gap": -5
+      },
+      "bonuses": {},
+      "final_raw_score": 45.0
+    },
+    "base_talent_score": 45.0,
+    "career_path_grade": "Neutral",
+    "career_trajectory": "Neutral",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 2,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": true,
+      "tier_improvement": false,
+      "responsibility_increase": false,
+      "scope_expansion": false,
+      "total_years_experience": 5,
+      "mention_ratio": 0.3333333333333333
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "HW2팀_87박재은(원본).docx",
+    "name": "박재은",
+    "position": "HW 개발자",
+    "skills_depth": [
+      {
+        "name": "__TEMP__ORCAD",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__P-SPICE",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__PADS_Layout",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__C언어",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__VHDL",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__회로_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__펌웨어_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__전원회로_설계",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__ORCAD",
+      "__TEMP__P-SPICE",
+      "__TEMP__PADS_Layout",
+      "__TEMP__C언어",
+      "__TEMP__VHDL",
+      "__TEMP__회로_설계",
+      "__TEMP__펌웨어_개발",
+      "__TEMP__전원회로_설계"
+    ],
+    "raw_base_talent_score": 72.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "short_tenures": -5
+      },
+      "bonuses": {
+        "architecture": 10,
+        "high_impact": 7,
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 72.0
+    },
+    "base_talent_score": 72.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 1,
+      "quantified_impact_count": 6,
+      "big_tech_experience": false,
+      "architecture_ownership": true,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 3,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "HW2팀_87조건(원본).docx",
+    "name": "Candidate Name",
+    "position": "Current or target role",
+    "skills_depth": [],
+    "canonical_skill_nodes": [],
+    "raw_base_talent_score": 50.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {},
+      "final_raw_score": 50.0
+    },
+    "base_talent_score": 50.0,
+    "career_path_grade": "Neutral",
+    "career_trajectory": "Neutral",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": false,
+      "scope_expansion": false,
+      "total_years_experience": 0,
+      "mention_ratio": 0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "HW2팀_88이건용(원본).docx",
+    "name": "이건용",
+    "position": "HW 연구원",
+    "skills_depth": [
+      {
+        "name": "__TEMP__OR-CAD",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__PADS",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__회로_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__PCB_ARTWORK_검토",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__BOM_작성",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__SMT_진행",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__회로_디버깅",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__JIG_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__전자파_디버깅_(EMI,_ESD)",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__양산_ERP_등록_및_대응",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__양산_업무_및_문서_대응",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__LED_제어",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Motor_제어",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__MS_Office",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__OR-CAD",
+      "__TEMP__PADS",
+      "__TEMP__회로_설계",
+      "__TEMP__PCB_ARTWORK_검토",
+      "__TEMP__BOM_작성",
+      "__TEMP__SMT_진행",
+      "__TEMP__회로_디버깅",
+      "__TEMP__JIG_설계",
+      "__TEMP__전자파_디버깅_(EMI,_ESD)",
+      "__TEMP__양산_ERP_등록_및_대응",
+      "__TEMP__양산_업무_및_문서_대응",
+      "__TEMP__LED_제어",
+      "__TEMP__Motor_제어",
+      "__TEMP__MS_Office"
+    ],
+    "raw_base_talent_score": 72.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "high_impact": 7,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 72.0
+    },
+    "base_talent_score": 72.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 3,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 3,
+      "mention_ratio": 0.07142857142857142
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "HW2팀_89김동성(원본).docx",
+    "name": "김 동 성",
+    "position": "주임 연구원",
+    "skills_depth": [
+      {
+        "name": "__TEMP__전력전자_회로_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__OR-CAD",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__PSpice",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Psim",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__DSP_프로그래밍",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__EMI_시험_경험",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__전기적_성능시험",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__환경시험",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__문제의_논리적_추론",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__전력전자_회로_설계",
+      "__TEMP__OR-CAD",
+      "__TEMP__PSpice",
+      "__TEMP__Psim",
+      "__TEMP__DSP_프로그래밍",
+      "__TEMP__EMI_시험_경험",
+      "__TEMP__전기적_성능시험",
+      "__TEMP__환경시험",
+      "__TEMP__문제의_논리적_추론"
+    ],
+    "raw_base_talent_score": 60.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 60.0
+    },
+    "base_talent_score": 60.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 1,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 5,
+      "mention_ratio": 0.1111111111111111
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "HW2팀_89최현수(원본).docx",
+    "name": "최현수",
+    "position": "하드웨어 엔지니어",
+    "skills_depth": [
+      {
+        "name": "__TEMP__전력변환장치_회로_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__계측회로_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__통신회로_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__센서회로_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__PSIM",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__ORCAD",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__P-SPICE",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__하드웨어_설계_및_검증",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__펌웨어_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__신뢰성_시험",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__전력변환장치_회로_설계",
+      "__TEMP__계측회로_설계",
+      "__TEMP__통신회로_설계",
+      "__TEMP__센서회로_설계",
+      "__TEMP__PSIM",
+      "__TEMP__ORCAD",
+      "__TEMP__P-SPICE",
+      "__TEMP__하드웨어_설계_및_검증",
+      "__TEMP__펌웨어_개발",
+      "__TEMP__신뢰성_시험"
+    ],
+    "raw_base_talent_score": 77.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "architecture": 10,
+        "high_impact": 7,
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 77.0
+    },
+    "base_talent_score": 77.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 4,
+      "big_tech_experience": false,
+      "architecture_ownership": true,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 4,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "HW2팀_91권혁찬(원본).docx",
+    "name": "권혁찬",
+    "position": "연구원",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Orcad_Capture_CIS",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Orcad_Pespice",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Orcad_Layout",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Pads",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Atmel_Studio",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Arduino_Sketch",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__F/W_코딩",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__H/W_설계",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Orcad_Capture_CIS",
+      "__TEMP__Orcad_Pespice",
+      "__TEMP__Orcad_Layout",
+      "__TEMP__Pads",
+      "__TEMP__Atmel_Studio",
+      "__TEMP__Arduino_Sketch",
+      "__TEMP__F/W_코딩",
+      "__TEMP__H/W_설계"
+    ],
+    "raw_base_talent_score": 55.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 55.0
+    },
+    "base_talent_score": 55.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 5,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "HW2팀_93권혁진(원본).docx",
+    "name": "권 혁 진",
+    "position": "HW Engineer",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Orcad",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__P-Spice",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__PCB_Artwork",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__ADS_Tool",
+        "depth": "Applied"
+      },
+      {
+        "name": "Infra_Linux",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__HW_Test",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__신뢰성_시험",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__MS_Office",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Orcad",
+      "__TEMP__P-Spice",
+      "__TEMP__PCB_Artwork",
+      "__TEMP__ADS_Tool",
+      "Infra_Linux",
+      "__TEMP__HW_Test",
+      "__TEMP__신뢰성_시험",
+      "__TEMP__MS_Office"
+    ],
+    "raw_base_talent_score": 50.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {},
+      "final_raw_score": 50.0
+    },
+    "base_talent_score": 50.0,
+    "career_path_grade": "Neutral",
+    "career_trajectory": "Neutral",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": false,
+      "scope_expansion": false,
+      "total_years_experience": 2,
+      "mention_ratio": 0.125
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "HW2팀_이욱(원본).docx",
+    "name": "이욱",
+    "position": "연구원",
+    "skills_depth": [
+      {
+        "name": "__TEMP__OrCAD_Tool",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__HW_Test",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__회로_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__HW_디버깅_및_Test",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__규격_문서_작성",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__BOM_작성",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__OrCAD_Tool",
+      "__TEMP__HW_Test",
+      "__TEMP__회로_설계",
+      "__TEMP__HW_디버깅_및_Test",
+      "__TEMP__규격_문서_작성",
+      "__TEMP__BOM_작성"
+    ],
+    "raw_base_talent_score": 40.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "short_tenures": -5,
+        "unexplained_gap": -5
+      },
+      "bonuses": {},
+      "final_raw_score": 40.0
+    },
+    "base_talent_score": 40.0,
+    "career_path_grade": "Neutral",
+    "career_trajectory": "Neutral",
+    "quant_signals": {
+      "short_tenures_count": 1,
+      "quantified_impact_count": 2,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": true,
+      "tier_improvement": false,
+      "responsibility_increase": false,
+      "scope_expansion": false,
+      "total_years_experience": 2,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "IT DT_87조경찬(원본).docx",
+    "name": "조경찬",
+    "position": "IT 기획팀 대리",
+    "skills_depth": [
+      {
+        "name": "__TEMP__IT_시스템_도입기획_및_검토",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__ERP/MES/GW_시스템_운영관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Azure_클라우드_시스템_구축",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__프로젝트_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__인프라관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__문서작성",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__네트워크/서버관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__SQL_쿼리_조회",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__MS_Office",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__IT_시스템_도입기획_및_검토",
+      "__TEMP__ERP/MES/GW_시스템_운영관리",
+      "__TEMP__Azure_클라우드_시스템_구축",
+      "__TEMP__프로젝트_관리",
+      "__TEMP__인프라관리",
+      "__TEMP__문서작성",
+      "__TEMP__네트워크/서버관리",
+      "__TEMP__SQL_쿼리_조회",
+      "__TEMP__MS_Office"
+    ],
+    "raw_base_talent_score": 90.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "big_tech": 8,
+        "architecture": 10,
+        "high_impact": 7,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 90.0
+    },
+    "base_talent_score": 90.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 5,
+      "big_tech_experience": true,
+      "architecture_ownership": true,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 6,
+      "mention_ratio": 0.1111111111111111
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "IT유통채널마케팅_김현정80_원본.docx",
+    "name": "김현정",
+    "position": "채널 마케팅 전문가",
+    "skills_depth": [
+      {
+        "name": "__TEMP__채널_마케팅",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__제품_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__고객_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__마케팅_커뮤니케이션",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__시장_분석",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__전략적_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__프레젠테이션",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__프로젝트_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__가격_정책_수립",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__채널_마케팅",
+      "__TEMP__제품_관리",
+      "__TEMP__고객_관리",
+      "__TEMP__마케팅_커뮤니케이션",
+      "__TEMP__시장_분석",
+      "__TEMP__전략적_기획",
+      "__TEMP__프레젠테이션",
+      "__TEMP__프로젝트_관리",
+      "__TEMP__가격_정책_수립"
+    ],
+    "raw_base_talent_score": 72.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "high_impact": 7,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 72.0
+    },
+    "base_talent_score": 72.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 5,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 11,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "JY_김경임(온라인몰 서비스 기획)부문_원본.docx",
+    "name": "Candidate Name",
+    "position": "Service Planning Manager",
+    "skills_depth": [
+      {
+        "name": "__TEMP__모바일_커머스_플랫폼",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__운영_프로세스_이해_및_서비스",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__백엔드_시스템_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__O2O_업주_시스템_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__물류_시스템_이해_및_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__검색엔진_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__신규_서비스_사업_전략_수립",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__대규모_사용자_기반_서비스_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__시맨틱_검색_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__로컬_기반_앱_서비스_전략",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__모바일_커머스_플랫폼",
+      "__TEMP__운영_프로세스_이해_및_서비스",
+      "__TEMP__백엔드_시스템_기획",
+      "__TEMP__O2O_업주_시스템_기획",
+      "__TEMP__물류_시스템_이해_및_기획",
+      "__TEMP__검색엔진_기획",
+      "__TEMP__신규_서비스_사업_전략_수립",
+      "__TEMP__대규모_사용자_기반_서비스_기획",
+      "__TEMP__시맨틱_검색_기획",
+      "__TEMP__로컬_기반_앱_서비스_전략"
+    ],
+    "raw_base_talent_score": 78.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "big_tech": 8,
+        "architecture": 10,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 78.0
+    },
+    "base_talent_score": 78.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 2,
+      "big_tech_experience": true,
+      "architecture_ownership": true,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 16,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "JY_김예경(글로벌캐스팅담당_인도네시아)부문_원본.pdf",
+    "name": "Yekyeong Kim",
+    "position": "Global Casting Manager",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Project_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Communication",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Logistics_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Accounting",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Human_Resources_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Regulatory_Compliance",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__English_Proficiency",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__MS_Office",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__HWP",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Project_Management",
+      "__TEMP__Communication",
+      "__TEMP__Logistics_Management",
+      "__TEMP__Accounting",
+      "__TEMP__Human_Resources_Management",
+      "__TEMP__Regulatory_Compliance",
+      "__TEMP__English_Proficiency",
+      "__TEMP__MS_Office",
+      "__TEMP__HWP"
+    ],
+    "raw_base_talent_score": 45.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "short_tenures": -5,
+        "low_impact": -5
+      },
+      "bonuses": {
+        "resp_increase": 5
+      },
+      "final_raw_score": 45.0
+    },
+    "base_talent_score": 45.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 1,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": false,
+      "total_years_experience": 4,
+      "mention_ratio": 0.2222222222222222
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "JY_김주형(서버개발)부문_원본.docx",
+    "name": "Candidate Name",
+    "position": "Current or target role",
+    "skills_depth": [],
+    "canonical_skill_nodes": [],
+    "raw_base_talent_score": 50.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {},
+      "final_raw_score": 50.0
+    },
+    "base_talent_score": 50.0,
+    "career_path_grade": "Neutral",
+    "career_trajectory": "Neutral",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": false,
+      "scope_expansion": false,
+      "total_years_experience": 0,
+      "mention_ratio": 0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "JY_박진희(서버개발)부문_원본.docx",
+    "name": "Unnamed Candidate",
+    "position": "Platform Developer",
+    "skills_depth": [
+      {
+        "name": "Language_Java",
+        "depth": "Applied"
+      },
+      {
+        "name": "Language_Java",
+        "depth": "Applied"
+      },
+      {
+        "name": "DB_SQL",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__PHP",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__ASP",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__JSP",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__REST-API",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Database_Design",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Payment_Gateway_Development",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Encryption_Techniques",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "Language_Java",
+      "Language_Java",
+      "DB_SQL",
+      "__TEMP__PHP",
+      "__TEMP__ASP",
+      "__TEMP__JSP",
+      "__TEMP__REST-API",
+      "__TEMP__Database_Design",
+      "__TEMP__Payment_Gateway_Development",
+      "__TEMP__Encryption_Techniques"
+    ],
+    "raw_base_talent_score": 60.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 60.0
+    },
+    "base_talent_score": 60.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 1,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 2,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "JY_안계명(해외매니지먼트)부문_원본.pdf",
+    "name": "안계명",
+    "position": "해외사업팀 주임",
+    "skills_depth": [
+      {
+        "name": "__TEMP__온라인_마케팅",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__해외_거래처_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__소통_능력",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__서류_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__시장_조사",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__영업",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__프로모션_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__팀워크",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__긍정적_사고",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__온라인_마케팅",
+      "__TEMP__해외_거래처_관리",
+      "__TEMP__소통_능력",
+      "__TEMP__서류_관리",
+      "__TEMP__시장_조사",
+      "__TEMP__영업",
+      "__TEMP__프로모션_기획",
+      "__TEMP__팀워크",
+      "__TEMP__긍정적_사고"
+    ],
+    "raw_base_talent_score": 45.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "short_tenures": -5
+      },
+      "bonuses": {},
+      "final_raw_score": 45.0
+    },
+    "base_talent_score": 45.0,
+    "career_path_grade": "Neutral",
+    "career_trajectory": "Neutral",
+    "quant_signals": {
+      "short_tenures_count": 1,
+      "quantified_impact_count": 1,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": false,
+      "scope_expansion": false,
+      "total_years_experience": 2,
+      "mention_ratio": 0.1111111111111111
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "JY_이슬기(해외라이선스 영업관리)부문_원본.docx",
+    "name": "이슬기",
+    "position": "컨텐츠웍스팀 대리",
+    "skills_depth": [
+      {
+        "name": "__TEMP__콘텐츠_사업_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__영상_제작",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__프로젝트_매니지먼트",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__커뮤니케이션_스킬",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__비즈니스_영어",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Microsoft_Office",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Power_Point",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Keynote",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__콘텐츠_사업_기획",
+      "__TEMP__영상_제작",
+      "__TEMP__프로젝트_매니지먼트",
+      "__TEMP__커뮤니케이션_스킬",
+      "__TEMP__비즈니스_영어",
+      "__TEMP__Microsoft_Office",
+      "__TEMP__Power_Point",
+      "__TEMP__Keynote"
+    ],
+    "raw_base_talent_score": 55.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 55.0
+    },
+    "base_talent_score": 55.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 11,
+      "mention_ratio": 0.5
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "JY_임하얀(온라인몰기획)부문_원본.docx",
+    "name": "임 하 얀",
+    "position": "UI/UX 기획자",
+    "skills_depth": [
+      {
+        "name": "__TEMP__UI/UX_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__온라인_프로모션_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__웹_로그_데이터_분석_(Adobe,_GA)",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__커뮤니케이션",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__디지털_대시보드_작성",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__모바일_앱_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__CMS_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__웹_접근성_프로젝트_관리",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__UI/UX_기획",
+      "__TEMP__온라인_프로모션_기획",
+      "__TEMP__웹_로그_데이터_분석_(Adobe,_GA)",
+      "__TEMP__커뮤니케이션",
+      "__TEMP__디지털_대시보드_작성",
+      "__TEMP__모바일_앱_기획",
+      "__TEMP__CMS_관리",
+      "__TEMP__웹_접근성_프로젝트_관리"
+    ],
+    "raw_base_talent_score": 72.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "high_impact": 7,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 72.0
+    },
+    "base_talent_score": 72.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 4,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 13,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "JY_최재원(해외라이선스 영업관리)부문_원본.docx",
+    "name": "Candidate Name",
+    "position": "Current or target role",
+    "skills_depth": [],
+    "canonical_skill_nodes": [],
+    "raw_base_talent_score": 50.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {},
+      "final_raw_score": 50.0
+    },
+    "base_talent_score": 50.0,
+    "career_path_grade": "Neutral",
+    "career_trajectory": "Neutral",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": false,
+      "scope_expansion": false,
+      "total_years_experience": 0,
+      "mention_ratio": 0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "JY_최재원(해외라이선스 영업관리)부문_원본.pdf",
+    "name": "Jewon, Choi",
+    "position": "Overseas Licensing Sales/Management",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Licensing_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Royalty_Settlement",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Contract_Negotiation",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Communication_Skills",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Market_Research",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Project_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Data_Analysis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Content_Distribution",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Business_Development",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__English_Proficiency",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Licensing_Management",
+      "__TEMP__Royalty_Settlement",
+      "__TEMP__Contract_Negotiation",
+      "__TEMP__Communication_Skills",
+      "__TEMP__Market_Research",
+      "__TEMP__Project_Management",
+      "__TEMP__Data_Analysis",
+      "__TEMP__Content_Distribution",
+      "__TEMP__Business_Development",
+      "__TEMP__English_Proficiency"
+    ],
+    "raw_base_talent_score": 67.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "high_impact": 7,
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 67.0
+    },
+    "base_talent_score": 67.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 3,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 4,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "Main controller HW_김희상75_원본.docx",
+    "name": "김 희 상",
+    "position": "수석연구원",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Hardware_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Firmware_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__문제_해결",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__제품_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__회로_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__기술_지원",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Hardware_설계",
+      "__TEMP__Firmware_개발",
+      "__TEMP__문제_해결",
+      "__TEMP__제품_개발",
+      "__TEMP__회로_개발",
+      "__TEMP__기술_지원"
+    ],
+    "raw_base_talent_score": 55.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 55.0
+    },
+    "base_talent_score": 55.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 2,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 17,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "Main controller HW_노승수72_원본.docx",
+    "name": "노승수",
+    "position": "차장",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Embedded_System_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Hardware_회로_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__PCB_Artwork",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__양산_기술지원",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__제품_성능평가",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__시뮬레이션",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__과제_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__H/W_기술지원",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__연구과제_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__센서_설계",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Embedded_System_개발",
+      "__TEMP__Hardware_회로_설계",
+      "__TEMP__PCB_Artwork",
+      "__TEMP__양산_기술지원",
+      "__TEMP__제품_성능평가",
+      "__TEMP__시뮬레이션",
+      "__TEMP__과제_관리",
+      "__TEMP__H/W_기술지원",
+      "__TEMP__연구과제_관리",
+      "__TEMP__센서_설계"
+    ],
+    "raw_base_talent_score": 70.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "architecture": 10,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 70.0
+    },
+    "base_talent_score": 70.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": true,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 21,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "Main controller HW_송호경76_원본.docx",
+    "name": "송호경",
+    "position": "Main Controller HW Engineer",
+    "skills_depth": [
+      {
+        "name": "__TEMP__디지털_회로_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__아날로그_회로_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__RF_무선통신_하드웨어_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__IoT_하드웨어_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__임베디드_시스템_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__MCU_하드웨어_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__무선통신_RF_모듈_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__개발_PM_업무관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__KC_인증",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__기구_디자인",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__양산_관리",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__디지털_회로_설계",
+      "__TEMP__아날로그_회로_설계",
+      "__TEMP__RF_무선통신_하드웨어_개발",
+      "__TEMP__IoT_하드웨어_개발",
+      "__TEMP__임베디드_시스템_개발",
+      "__TEMP__MCU_하드웨어_설계",
+      "__TEMP__무선통신_RF_모듈_개발",
+      "__TEMP__개발_PM_업무관리",
+      "__TEMP__KC_인증",
+      "__TEMP__기구_디자인",
+      "__TEMP__양산_관리"
+    ],
+    "raw_base_talent_score": 55.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 55.0
+    },
+    "base_talent_score": 55.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 12,
+      "mention_ratio": 0.2727272727272727
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "Main controller HW_윤동우78_원본.docx",
+    "name": "윤동우",
+    "position": "수석연구원",
+    "skills_depth": [
+      {
+        "name": "__TEMP__디지털_및_아날로그회로_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__PCB_Artwork",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__펌웨어",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__지그개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__EMC_디버깅",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__안전인증",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__제품개발_PM",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__회로설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__외주개발_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__기구설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__알고리즘_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__신규업체_셋업",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__공정_지원",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__기구설계_및_제조",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__디지털_및_아날로그회로_설계",
+      "__TEMP__PCB_Artwork",
+      "__TEMP__펌웨어",
+      "__TEMP__지그개발",
+      "__TEMP__EMC_디버깅",
+      "__TEMP__안전인증",
+      "__TEMP__제품개발_PM",
+      "__TEMP__회로설계",
+      "__TEMP__외주개발_관리",
+      "__TEMP__기구설계",
+      "__TEMP__알고리즘_개발",
+      "__TEMP__신규업체_셋업",
+      "__TEMP__공정_지원",
+      "__TEMP__기구설계_및_제조"
+    ],
+    "raw_base_talent_score": 82.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "architecture": 10,
+        "high_impact": 7,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 82.0
+    },
+    "base_talent_score": 82.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 6,
+      "big_tech_experience": false,
+      "architecture_ownership": true,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 10,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "Product UI Designer_김가영_지원서.pdf",
+    "name": "김가영",
+    "position": "UI/UX 디자이너",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Figma",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Adobe_Photoshop",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Adobe_Illustrator",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Notion",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Slack",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__HTML5",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__CSS_3",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Figma",
+      "__TEMP__Adobe_Photoshop",
+      "__TEMP__Adobe_Illustrator",
+      "__TEMP__Notion",
+      "__TEMP__Slack",
+      "__TEMP__HTML5",
+      "__TEMP__CSS_3"
+    ],
+    "raw_base_talent_score": 40.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "short_tenures": -5,
+        "depth_inflation": -5
+      },
+      "bonuses": {},
+      "final_raw_score": 40.0
+    },
+    "base_talent_score": 40.0,
+    "career_path_grade": "Neutral",
+    "career_trajectory": "Neutral",
+    "quant_signals": {
+      "short_tenures_count": 1,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": false,
+      "scope_expansion": false,
+      "total_years_experience": 2,
+      "mention_ratio": 0.7142857142857143
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "recruiter_정주현.docx",
+    "name": "정 주 현 (Jung, Ju-hyun)",
+    "position": "Recruiting Manager",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Recruitment",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__HR_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Communication",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Data_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Training_and_Development",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__MS-Office",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__English_Communication",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Japanese_Communication",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Recruitment",
+      "__TEMP__HR_Management",
+      "__TEMP__Communication",
+      "__TEMP__Data_Management",
+      "__TEMP__Training_and_Development",
+      "__TEMP__MS-Office",
+      "__TEMP__English_Communication",
+      "__TEMP__Japanese_Communication"
+    ],
+    "raw_base_talent_score": 60.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 60.0
+    },
+    "base_talent_score": 60.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 2,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 5,
+      "mention_ratio": 0.375
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "SW1팀_김승경(원본) .docx",
+    "name": "김 승 경",
+    "position": "Not specified",
+    "skills_depth": [],
+    "canonical_skill_nodes": [],
+    "raw_base_talent_score": 50.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {},
+      "final_raw_score": 50.0
+    },
+    "base_talent_score": 50.0,
+    "career_path_grade": "Neutral",
+    "career_trajectory": "Neutral",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": false,
+      "scope_expansion": false,
+      "total_years_experience": 0,
+      "mention_ratio": 0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "UIUX Designer_문성학86_원본.docx",
+    "name": "문 성 학",
+    "position": "UX/UI/GUI 디자이너",
+    "skills_depth": [
+      {
+        "name": "__TEMP__UI_Design",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__UX_Design",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Web_Design",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Mobile_App_Design",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Branding",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__HTML/CSS",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Photoshop",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Illustrator",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__After_Effects",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Proto.io",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__UI_Design",
+      "__TEMP__UX_Design",
+      "__TEMP__Web_Design",
+      "__TEMP__Mobile_App_Design",
+      "__TEMP__Branding",
+      "__TEMP__HTML/CSS",
+      "__TEMP__Photoshop",
+      "__TEMP__Illustrator",
+      "__TEMP__After_Effects",
+      "__TEMP__Proto.io"
+    ],
+    "raw_base_talent_score": 30.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "short_tenures": -25,
+        "low_impact": -5
+      },
+      "bonuses": {
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 30.0
+    },
+    "base_talent_score": 30.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 5,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 9,
+      "mention_ratio": 0.3
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "UIUX Designer_이화연82_원본.pdf",
+    "name": "이화연",
+    "position": "웹 UI 디자이너",
+    "skills_depth": [
+      {
+        "name": "__TEMP__UI/UX_디자인",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__웹디자인",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__모바일_UI",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Sketch",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__포토샵",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__UI/UX_디자인",
+      "__TEMP__웹디자인",
+      "__TEMP__모바일_UI",
+      "__TEMP__Sketch",
+      "__TEMP__포토샵"
+    ],
+    "raw_base_talent_score": 70.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "architecture": 10,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 70.0
+    },
+    "base_talent_score": 70.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 2,
+      "big_tech_experience": false,
+      "architecture_ownership": true,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 11,
+      "mention_ratio": 0.4
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "UX컨설팅_83고남수(원본).docx",
+    "name": "고남수 (Ko Nam-Su)",
+    "position": "기술표준화팀 대리",
+    "skills_depth": [
+      {
+        "name": "__TEMP__IT_사업제안서_작성",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__웹/모바일_기획_및_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__UX/UI_설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__증강현실_위치_서비스_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__모바일_서비스_기획_(QR코드,_NFC)",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__디자인_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__프로젝트_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__의료정보사업_제안서_작성",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__모바일_EMR_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__개인건강정보관리App_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__와이어프레임_툴_사용_(Axure,_Balsamiq,_Adobe_Comp_CC)",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__포토샵,_일러스트_사용",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__MS_Office_Tool_사용",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__IT_사업제안서_작성",
+      "__TEMP__웹/모바일_기획_및_설계",
+      "__TEMP__UX/UI_설계",
+      "__TEMP__증강현실_위치_서비스_기획",
+      "__TEMP__모바일_서비스_기획_(QR코드,_NFC)",
+      "__TEMP__디자인_기획",
+      "__TEMP__프로젝트_관리",
+      "__TEMP__의료정보사업_제안서_작성",
+      "__TEMP__모바일_EMR_기획",
+      "__TEMP__개인건강정보관리App_기획",
+      "__TEMP__와이어프레임_툴_사용_(Axure,_Balsamiq,_Adobe_Comp_CC)",
+      "__TEMP__포토샵,_일러스트_사용",
+      "__TEMP__MS_Office_Tool_사용"
+    ],
+    "raw_base_talent_score": 55.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 55.0
+    },
+    "base_talent_score": 55.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 12,
+      "mention_ratio": 0.23076923076923078
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "UX컨설팅_84한종수(원본).docx",
+    "name": "Candidate Name",
+    "position": "UX Consultant",
+    "skills_depth": [
+      {
+        "name": "__TEMP__UI/UX_Design",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Project_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Data_Analysis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Performance_Tuning",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__AI_Systems",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__SEO",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Web_Development",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Prototyping_(Axure_RP)",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__E-commerce_Strategy",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__UI/UX_Design",
+      "__TEMP__Project_Management",
+      "__TEMP__Data_Analysis",
+      "__TEMP__Performance_Tuning",
+      "__TEMP__AI_Systems",
+      "__TEMP__SEO",
+      "__TEMP__Web_Development",
+      "__TEMP__Prototyping_(Axure_RP)",
+      "__TEMP__E-commerce_Strategy"
+    ],
+    "raw_base_talent_score": 82.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "architecture": 10,
+        "high_impact": 7,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 82.0
+    },
+    "base_talent_score": 82.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 6,
+      "big_tech_experience": false,
+      "architecture_ownership": true,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 5,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "WMS 개발_89김선희(원본).docx",
+    "name": "Candidate Name",
+    "position": "ERP and Accounting Systems Developer",
+    "skills_depth": [
+      {
+        "name": "Language_Java",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__JSP",
+        "depth": "Applied"
+      },
+      {
+        "name": "DB_SQL",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__iBatis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Struts",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__HTML",
+        "depth": "Applied"
+      },
+      {
+        "name": "Language_JavaScript",
+        "depth": "Applied"
+      },
+      {
+        "name": "Language_Java",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__AngularJS",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__ERP_Systems",
+        "depth": "Architected"
+      },
+      {
+        "name": "__TEMP__Asset_Management_Systems",
+        "depth": "Architected"
+      },
+      {
+        "name": "__TEMP__Management_Accounting_Systems",
+        "depth": "Architected"
+      },
+      {
+        "name": "__TEMP__Electronic_Evidence_Systems",
+        "depth": "Architected"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "Language_Java",
+      "__TEMP__JSP",
+      "DB_SQL",
+      "__TEMP__iBatis",
+      "__TEMP__Struts",
+      "__TEMP__HTML",
+      "Language_JavaScript",
+      "Language_Java",
+      "__TEMP__AngularJS",
+      "__TEMP__ERP_Systems",
+      "__TEMP__Asset_Management_Systems",
+      "__TEMP__Management_Accounting_Systems",
+      "__TEMP__Electronic_Evidence_Systems"
+    ],
+    "raw_base_talent_score": 65.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "architecture": 10,
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 65.0
+    },
+    "base_talent_score": 65.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": true,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 5,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "WMS개발_89정효원(원본).docx",
+    "name": "정 효 원",
+    "position": "Software Developer",
+    "skills_depth": [
+      {
+        "name": "Language_CSharp",
+        "depth": "Applied"
+      },
+      {
+        "name": "Language_JavaScript",
+        "depth": "Applied"
+      },
+      {
+        "name": "Language_Java",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__SQL",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__ASP",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__MES_Development",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__ERP_Development",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "Language_CSharp",
+      "Language_JavaScript",
+      "Language_Java",
+      "__TEMP__SQL",
+      "__TEMP__ASP",
+      "__TEMP__MES_Development",
+      "__TEMP__ERP_Development"
+    ],
+    "raw_base_talent_score": 55.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 55.0
+    },
+    "base_talent_score": 55.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 4,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[(주)명유]홍정민_이력서.pdf",
+    "name": "홍정민",
+    "position": "선행기술조사원",
+    "skills_depth": [
+      {
+        "name": "__TEMP__MOF_촉매_연구",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Polymer_Synthesis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__NMR",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__GPC",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__FT-IR",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__DSC",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__HPLC",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__GC",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Data_Analysis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Problem_Solving",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Team_Collaboration",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Project_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Quality_Control",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__English_Proficiency",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__MOF_촉매_연구",
+      "__TEMP__Polymer_Synthesis",
+      "__TEMP__NMR",
+      "__TEMP__GPC",
+      "__TEMP__FT-IR",
+      "__TEMP__DSC",
+      "__TEMP__HPLC",
+      "__TEMP__GC",
+      "__TEMP__Data_Analysis",
+      "__TEMP__Problem_Solving",
+      "__TEMP__Team_Collaboration",
+      "__TEMP__Project_Management",
+      "__TEMP__Quality_Control",
+      "__TEMP__English_Proficiency"
+    ],
+    "raw_base_talent_score": 45.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "short_tenures": -5
+      },
+      "bonuses": {},
+      "final_raw_score": 45.0
+    },
+    "base_talent_score": 45.0,
+    "career_path_grade": "Neutral",
+    "career_trajectory": "Neutral",
+    "quant_signals": {
+      "short_tenures_count": 1,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": false,
+      "scope_expansion": false,
+      "total_years_experience": 0,
+      "mention_ratio": 0.07142857142857142
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[29CM] 김영권(프론트엔드)부문.pdf",
+    "name": "김영권",
+    "position": "프론트엔드 개발자",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Vue.js",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Vuex",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__RESTFul_API",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__HTML5",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__CSS",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__SCSS",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__React.js",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Ant_Design",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Chart.js",
+        "depth": "Applied"
+      },
+      {
+        "name": "Language_JavaScript",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Firebase",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Github",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Zeplin",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "Cloud_AWS",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Git",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__JIRA",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Figma",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Vue.js",
+      "__TEMP__Vuex",
+      "__TEMP__RESTFul_API",
+      "__TEMP__HTML5",
+      "__TEMP__CSS",
+      "__TEMP__SCSS",
+      "__TEMP__React.js",
+      "__TEMP__Ant_Design",
+      "__TEMP__Chart.js",
+      "Language_JavaScript",
+      "__TEMP__Firebase",
+      "__TEMP__Github",
+      "__TEMP__Zeplin",
+      "Cloud_AWS",
+      "__TEMP__Git",
+      "__TEMP__JIRA",
+      "__TEMP__Figma"
+    ],
+    "raw_base_talent_score": 60.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 60.0
+    },
+    "base_talent_score": 60.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 1,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 5,
+      "mention_ratio": 0.5882352941176471
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[29CM] 이용화(백엔드 리드)부문.pdf",
+    "name": "Yong Hwa Lee",
+    "position": "Technical Leader / Software Developer",
+    "skills_depth": [
+      {
+        "name": "Language_Java",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Kotlin",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "Language_Java",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Scala",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Akka",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Play_Framework",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Ruby_on_Rails",
+        "depth": "Applied"
+      },
+      {
+        "name": "Language_Python",
+        "depth": "Applied"
+      },
+      {
+        "name": "DB_SQL",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Redis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__RabbitMQ",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Kafka",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Zookeeper",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "Cloud_AWS",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Kubernetes_(EKS)",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Hadoop_Echo_System",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__HDFS",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__MR",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Hive",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Spark",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Storm",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Elasticsearch",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Logstash",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Kibana",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Sentry",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Jenkins",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Capistrano",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Ansible",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Github_Actions",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Helm_Chart",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "Language_Java",
+      "__TEMP__Kotlin",
+      "Language_Java",
+      "__TEMP__Scala",
+      "__TEMP__Akka",
+      "__TEMP__Play_Framework",
+      "__TEMP__Ruby_on_Rails",
+      "Language_Python",
+      "DB_SQL",
+      "__TEMP__Redis",
+      "__TEMP__RabbitMQ",
+      "__TEMP__Kafka",
+      "__TEMP__Zookeeper",
+      "Cloud_AWS",
+      "__TEMP__Kubernetes_(EKS)",
+      "__TEMP__Hadoop_Echo_System",
+      "__TEMP__HDFS",
+      "__TEMP__MR",
+      "__TEMP__Hive",
+      "__TEMP__Spark",
+      "__TEMP__Storm",
+      "__TEMP__Elasticsearch",
+      "__TEMP__Logstash",
+      "__TEMP__Kibana",
+      "__TEMP__Sentry",
+      "__TEMP__Jenkins",
+      "__TEMP__Capistrano",
+      "__TEMP__Ansible",
+      "__TEMP__Github_Actions",
+      "__TEMP__Helm_Chart"
+    ],
+    "raw_base_talent_score": 67.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "high_impact": 7,
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 67.0
+    },
+    "base_talent_score": 67.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 3,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 19,
+      "mention_ratio": 0.5
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[AP자산운용] 김대교(부동산 투자운용팀 팀장)부문.docx",
+    "name": "김대교",
+    "position": "부동산 투자운용팀 팀장",
+    "skills_depth": [
+      {
+        "name": "__TEMP__부동산_개발_사업_Deal_Sourcing",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__상품_개발_(PFV,_REITs,_Fund,_SPC_등)",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Cash-Flow_작성",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__도시_및_건축_기획_+_인허가",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__금융_구조_수립(PF,_브릿지론_등)",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__PM_(운영사업)",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__토지입찰_공모",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Business_Model_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__신사업_발굴",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__프로젝트_관리",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__부동산_개발_사업_Deal_Sourcing",
+      "__TEMP__상품_개발_(PFV,_REITs,_Fund,_SPC_등)",
+      "__TEMP__Cash-Flow_작성",
+      "__TEMP__도시_및_건축_기획_+_인허가",
+      "__TEMP__금융_구조_수립(PF,_브릿지론_등)",
+      "__TEMP__PM_(운영사업)",
+      "__TEMP__토지입찰_공모",
+      "__TEMP__Business_Model_개발",
+      "__TEMP__신사업_발굴",
+      "__TEMP__프로젝트_관리"
+    ],
+    "raw_base_talent_score": 57.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "short_tenures": -15
+      },
+      "bonuses": {
+        "high_impact": 7,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 57.0
+    },
+    "base_talent_score": 57.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 3,
+      "quantified_impact_count": 5,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 8,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[AP자산운용] 김대교(부동산 투자팀장)부문_원본.docx",
+    "name": "김 대 교",
+    "position": "부동산 개발 및 투자 팀장",
+    "skills_depth": [
+      {
+        "name": "__TEMP__부동산_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__PM_(Project_Management)",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__금융_구조_수립",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Cash-Flow_작성",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__도시_및_건축_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__인허가",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Deal_Sourcing",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__MS_Office",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Auto_Cad",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Illustrator",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Sketch_Up",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__한글",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__부동산_개발",
+      "__TEMP__PM_(Project_Management)",
+      "__TEMP__금융_구조_수립",
+      "__TEMP__Cash-Flow_작성",
+      "__TEMP__도시_및_건축_기획",
+      "__TEMP__인허가",
+      "__TEMP__Deal_Sourcing",
+      "__TEMP__MS_Office",
+      "__TEMP__Auto_Cad",
+      "__TEMP__Illustrator",
+      "__TEMP__Sketch_Up",
+      "__TEMP__한글"
+    ],
+    "raw_base_talent_score": 82.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "architecture": 10,
+        "high_impact": 7,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 82.0
+    },
+    "base_talent_score": 82.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 5,
+      "big_tech_experience": false,
+      "architecture_ownership": true,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 9,
+      "mention_ratio": 0.4166666666666667
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[AWS] 김요은(마케팅)부문.pdf",
+    "name": "김요은",
+    "position": "Account Manager",
+    "skills_depth": [
+      {
+        "name": "__TEMP__신규사업개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__해외사업",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__사업기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__전략기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__프로젝트관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__경영기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__컨설팅",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__신규사업개발",
+      "__TEMP__해외사업",
+      "__TEMP__사업기획",
+      "__TEMP__전략기획",
+      "__TEMP__프로젝트관리",
+      "__TEMP__경영기획",
+      "__TEMP__컨설팅"
+    ],
+    "raw_base_talent_score": 68.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "big_tech": 8,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 68.0
+    },
+    "base_talent_score": 68.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": true,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 10,
+      "mention_ratio": 0.14285714285714285
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[BEP] 곽동현(사업관리 총괄)부문.docx",
+    "name": "곽동현 (Kwak, Dong Hyun)",
+    "position": "책임매니저, 수소사업팀",
+    "skills_depth": [
+      {
+        "name": "__TEMP__사업관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__청정수소_사업개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__CO2_Value_Chain_분석",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__시장분석",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__인허가",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__M&A_Deal_Sourcing",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__리스크_분석",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__기본설계",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__EPC_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__전력사업_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__사업타당성_검토",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__전기_사업_허가_신청",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__청정연료_개발",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__기계_및_배관_시공_관리",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__입찰_설계_검토",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__사업관리",
+      "__TEMP__청정수소_사업개발",
+      "__TEMP__CO2_Value_Chain_분석",
+      "__TEMP__시장분석",
+      "__TEMP__인허가",
+      "__TEMP__M&A_Deal_Sourcing",
+      "__TEMP__리스크_분석",
+      "__TEMP__기본설계",
+      "__TEMP__EPC_관리",
+      "__TEMP__전력사업_관리",
+      "__TEMP__사업타당성_검토",
+      "__TEMP__전기_사업_허가_신청",
+      "__TEMP__청정연료_개발",
+      "__TEMP__기계_및_배관_시공_관리",
+      "__TEMP__입찰_설계_검토"
+    ],
+    "raw_base_talent_score": 60.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "low_impact": -5
+      },
+      "bonuses": {
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 60.0
+    },
+    "base_talent_score": 60.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 0,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 14,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[BEP] 김병운(데이터분석)부문.docx",
+    "name": "김 병 운",
+    "position": "고객 데이터 분석 리더",
+    "skills_depth": [
+      {
+        "name": "Language_Python",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__SQL",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__SAS",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__R",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "DL_Framework",
+        "depth": "Applied"
+      },
+      {
+        "name": "DL_Framework",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Scikit-learn",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__데이터_분석",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__AI_서비스_기획",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__데이터_시각화",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__클러스터링",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__프로세스_마이닝",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "Language_Python",
+      "__TEMP__SQL",
+      "__TEMP__SAS",
+      "__TEMP__R",
+      "DL_Framework",
+      "DL_Framework",
+      "__TEMP__Scikit-learn",
+      "__TEMP__데이터_분석",
+      "__TEMP__AI_서비스_기획",
+      "__TEMP__데이터_시각화",
+      "__TEMP__클러스터링",
+      "__TEMP__프로세스_마이닝"
+    ],
+    "raw_base_talent_score": 67.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "high_impact": 7,
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 67.0
+    },
+    "base_talent_score": 67.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 3,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 8,
+      "mention_ratio": 0.08333333333333333
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[BEP] 김병운(데이터분석)부문_포트폴리오.pdf",
+    "name": "김병운",
+    "position": "Data Analyst",
+    "skills_depth": [
+      {
+        "name": "Language_Python",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__SAS",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__SQL",
+        "depth": "Applied"
+      },
+      {
+        "name": "Cloud_AWS",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Data_Analysis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Clustering",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Segmentation",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Data_Visualization",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Machine_Learning",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__R",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Oracle_DB",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Statistical_Analysis",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "Language_Python",
+      "__TEMP__SAS",
+      "__TEMP__SQL",
+      "Cloud_AWS",
+      "__TEMP__Data_Analysis",
+      "__TEMP__Clustering",
+      "__TEMP__Segmentation",
+      "__TEMP__Data_Visualization",
+      "__TEMP__Machine_Learning",
+      "__TEMP__R",
+      "__TEMP__Oracle_DB",
+      "__TEMP__Statistical_Analysis"
+    ],
+    "raw_base_talent_score": 57.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {
+        "short_tenures": -10
+      },
+      "bonuses": {
+        "high_impact": 7,
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 57.0
+    },
+    "base_talent_score": 57.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 2,
+      "quantified_impact_count": 3,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 8,
+      "mention_ratio": 0.16666666666666666
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[BEP] 김수빈(재무투자금융 임원)부문.pdf",
+    "name": "Subin Kim",
+    "position": "Manager, General Strategy Group",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Cost_Optimization",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Business_Transformation_Strategy",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Market_Sizing",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Financial_Modeling",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Value_Creation_Planning",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Regulatory_Assessment",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Competitive_Benchmarking",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Project_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Strategic_Planning",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Product_Development",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Sales_Strategy",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Consumer_Survey",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Team_Leadership",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Stakeholder_Engagement",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Microsoft_Office",
+        "depth": "Mentioned"
+      },
+      {
+        "name": "__TEMP__Adobe_Illustrator",
+        "depth": "Mentioned"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Cost_Optimization",
+      "__TEMP__Business_Transformation_Strategy",
+      "__TEMP__Market_Sizing",
+      "__TEMP__Financial_Modeling",
+      "__TEMP__Value_Creation_Planning",
+      "__TEMP__Regulatory_Assessment",
+      "__TEMP__Competitive_Benchmarking",
+      "__TEMP__Project_Management",
+      "__TEMP__Strategic_Planning",
+      "__TEMP__Product_Development",
+      "__TEMP__Sales_Strategy",
+      "__TEMP__Consumer_Survey",
+      "__TEMP__Team_Leadership",
+      "__TEMP__Stakeholder_Engagement",
+      "__TEMP__Microsoft_Office",
+      "__TEMP__Adobe_Illustrator"
+    ],
+    "raw_base_talent_score": 80.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "big_tech": 8,
+        "high_impact": 7,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 80.0
+    },
+    "base_talent_score": 80.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 5,
+      "big_tech_experience": true,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 4,
+      "mention_ratio": 0.125
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[BEP] 배문성(전력계통 담당)부문_자기소개서 수정본.docx",
+    "name": "Candidate Name",
+    "position": "Senior Researcher in Power Systems",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Reactive_Power_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Energy_Management_Systems_(BEMS)",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Microgrid_Development",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Power_Flow_Analysis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Smart_Grid_Technologies",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Energy_Storage_Systems_(ESS)",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Voltage_Stability_Analysis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Distributed_Energy_Resource_Integration",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Reactive_Power_Management",
+      "__TEMP__Energy_Management_Systems_(BEMS)",
+      "__TEMP__Microgrid_Development",
+      "__TEMP__Power_Flow_Analysis",
+      "__TEMP__Smart_Grid_Technologies",
+      "__TEMP__Energy_Storage_Systems_(ESS)",
+      "__TEMP__Voltage_Stability_Analysis",
+      "__TEMP__Distributed_Energy_Resource_Integration"
+    ],
+    "raw_base_talent_score": 67.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "high_impact": 7,
+        "resp_increase": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 67.0
+    },
+    "base_talent_score": 67.0,
+    "career_path_grade": "Stable",
+    "career_trajectory": "Stable",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 8,
+      "big_tech_experience": false,
+      "architecture_ownership": false,
+      "unexplained_gap": false,
+      "tier_improvement": false,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 7,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[BEP] 배문성(전력계통_담당)부문.docx",
+    "name": "Candidate Name",
+    "position": "Senior Researcher in Energy Systems",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Reactive_Power_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Energy_Management_Systems_(BEMS)",
+        "depth": "Architected"
+      },
+      {
+        "name": "__TEMP__Microgrid_Development",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Smart_Grid_Technologies",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Power_System_Analysis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Renewable_Energy_Integration",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Energy_Storage_Systems_(ESS)",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Voltage_Stability_Analysis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Distributed_Energy_Resource_Management",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Reactive_Power_Management",
+      "__TEMP__Energy_Management_Systems_(BEMS)",
+      "__TEMP__Microgrid_Development",
+      "__TEMP__Smart_Grid_Technologies",
+      "__TEMP__Power_System_Analysis",
+      "__TEMP__Renewable_Energy_Integration",
+      "__TEMP__Energy_Storage_Systems_(ESS)",
+      "__TEMP__Voltage_Stability_Analysis",
+      "__TEMP__Distributed_Energy_Resource_Management"
+    ],
+    "raw_base_talent_score": 82.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "architecture": 10,
+        "high_impact": 7,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 82.0
+    },
+    "base_talent_score": 82.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 5,
+      "big_tech_experience": false,
+      "architecture_ownership": true,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 7,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[BEP] 이재윤(재무투자금융 임원)부문.docx",
+    "name": "LEE, JAE YOON",
+    "position": "CFO",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Management_Accounting_Systems",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Financial_Modeling",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Cost_Analysis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Strategy_Development",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Data_Analysis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Investor_Relations",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__ERP_Implementation",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__M&A_Execution",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Management_Accounting_Systems",
+      "__TEMP__Financial_Modeling",
+      "__TEMP__Cost_Analysis",
+      "__TEMP__Strategy_Development",
+      "__TEMP__Data_Analysis",
+      "__TEMP__Investor_Relations",
+      "__TEMP__ERP_Implementation",
+      "__TEMP__M&A_Execution"
+    ],
+    "raw_base_talent_score": 90.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "big_tech": 8,
+        "architecture": 10,
+        "high_impact": 7,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 90.0
+    },
+    "base_talent_score": 90.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 5,
+      "big_tech_experience": true,
+      "architecture_ownership": true,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 18,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  },
+  {
+    "id": "[BEP] 임준형(재무투자금융 임원)부문.pdf",
+    "name": "RYAN JOONHYEONG IM",
+    "position": "Director",
+    "skills_depth": [
+      {
+        "name": "__TEMP__Investment_Evaluation",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Due_Diligence",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Deal_Structuring",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Negotiations",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Portfolio_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Fundraising",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Strategic_Partnerships",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Mergers_and_Acquisitions",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Financial_Modeling",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Operational_Optimization",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Product_Management",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Sales_Strategy",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Market_Analysis",
+        "depth": "Applied"
+      },
+      {
+        "name": "__TEMP__Business_Development",
+        "depth": "Applied"
+      }
+    ],
+    "canonical_skill_nodes": [
+      "__TEMP__Investment_Evaluation",
+      "__TEMP__Due_Diligence",
+      "__TEMP__Deal_Structuring",
+      "__TEMP__Negotiations",
+      "__TEMP__Portfolio_Management",
+      "__TEMP__Fundraising",
+      "__TEMP__Strategic_Partnerships",
+      "__TEMP__Mergers_and_Acquisitions",
+      "__TEMP__Financial_Modeling",
+      "__TEMP__Operational_Optimization",
+      "__TEMP__Product_Management",
+      "__TEMP__Sales_Strategy",
+      "__TEMP__Market_Analysis",
+      "__TEMP__Business_Development"
+    ],
+    "raw_base_talent_score": 82.0,
+    "talent_score_details": {
+      "base_score": 50.0,
+      "penalties": {},
+      "bonuses": {
+        "architecture": 10,
+        "high_impact": 7,
+        "resp_increase": 5,
+        "tier_up": 5,
+        "scope_expansion": 5
+      },
+      "final_raw_score": 82.0
+    },
+    "base_talent_score": 82.0,
+    "career_path_grade": "Ascending",
+    "career_trajectory": "Ascending",
+    "quant_signals": {
+      "short_tenures_count": 0,
+      "quantified_impact_count": 12,
+      "big_tech_experience": false,
+      "architecture_ownership": true,
+      "unexplained_gap": false,
+      "tier_improvement": true,
+      "responsibility_increase": true,
+      "scope_expansion": true,
+      "total_years_experience": 10,
+      "mention_ratio": 0.0
+    },
+    "domain_match": true,
+    "company_size_match": true
+  }
+]

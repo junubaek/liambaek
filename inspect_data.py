@@ -3,11 +3,12 @@ import json
 
 def inspect():
     try:
-        db = HeadhunterDB()
-        print("Fetching 1 candidate to inspect structure...")
-        candidates = db.fetch_candidates(limit=1)
-        if candidates:
-            print(json.dumps(candidates[0], indent=2, ensure_ascii=False))
+        db_instance = HeadhunterDB()
+        db_id = db_instance.client.search_db_by_name("Vector DB") or db_instance.client.search_db_by_name("DB")
+        print(f"Inspecting DB {db_id}...")
+        res = db_instance.client.query_database(db_id, limit=1)
+        if res['results']:
+            print(json.dumps(res['results'][0]['properties'], indent=2, ensure_ascii=False))
         else:
             print("No candidates found.")
     except Exception as e:

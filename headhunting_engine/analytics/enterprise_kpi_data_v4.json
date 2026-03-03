@@ -1,0 +1,52 @@
+{
+  "tier_1_health": {
+    "raw_mean": 49.3,
+    "applied_ratio_pct": 49.7,
+    "ascending_ratio_pct": 10.2
+  },
+  "tier_2_capital": {
+    "total_equity": 3941,
+    "elite_counts": {
+      "S": 63,
+      "A": 191
+    },
+    "elite_ratio_pct": 19.9,
+    "rare_utility": 0.0,
+    "equity_by_role": {
+      "SW_Backend": 130,
+      "AI_Engineering": 17,
+      "DATA_Science": 0,
+      "DATA_Engineering": 42,
+      "SW_Platform": 37,
+      "HW_ChipDesign": 0,
+      "Embedded_Systems": 18,
+      "MGMT_Finance": 0,
+      "MGMT_Strategy": 0,
+      "BIZ_ProductManager": 0,
+      "BIZ_Analytics": 0
+    },
+    "equity_by_domain": {
+      "Model_Development": 23,
+      "Data_Infrastructure": 53,
+      "Backend_Systems": 180,
+      "System_Optimization": 19,
+      "Infra_Cloud": 37,
+      "Financial_Intelligence": 0,
+      "Strategic_Planning": 0,
+      "Data_Driven_Strategy": 0
+    }
+  },
+  "tier_3_intelligence": {
+    "scarcity_heatmap": {
+      "Model_Development": 0.8,
+      "Backend_Systems": 0.8,
+      "Data_Infrastructure": 0.8,
+      "Infra_Cloud": 0.8,
+      "System_Optimization": 0.8,
+      "Financial_Intelligence": 0.8,
+      "Strategic_Planning": 0.8,
+      "Data_Driven_Strategy": 0.8
+    },
+    "strategic_gaps": []
+  }
+}

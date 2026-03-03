@@ -1,0 +1,26 @@
+{
+  "pool_size": 200,
+  "prefilter_passed": 18,
+  "hard_filter_passed": 18,
+  "pass_rate_pct": 9.0,
+  "avg_matching_score": 64.08,
+  "top_score": 76.8940919361476,
+  "must_coverage_histogram": {
+    "0-0.2": 0,
+    "0.2-0.4": 0,
+    "0.4-0.6": 0,
+    "0.6-0.8": 0,
+    "0.8-1.0": 0
+  },
+  "rpl_stats": {
+    "avg_rpl": 0.44,
+    "median_rpl": 0.36,
+    "above_0.7": 3,
+    "above_0.8": 3
+  },
+  "jd_scarcity": 0.91,
+  "market_reality": {
+    "unrealistic_jd": false,
+    "reason": "Normal"
+  }
+}

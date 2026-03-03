@@ -1,0 +1,11 @@
+{
+  "snapshot_date": "ISO_DATE",
+  "total_candidates": 200,
+  "skill_frequency": {
+    "Language_C_Plus_Plus": 0.055,
+    "Language_Python": 0.09,
+    "MLOps": 0.01,
+    "DL_Framework": 0.025,
+    "Distributed_Training": 0.01
+  }
+}

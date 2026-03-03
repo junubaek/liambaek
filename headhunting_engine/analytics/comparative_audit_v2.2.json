@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-03-03T00:26:31Z",
+  "legacy_pool": {
+    "count": 200,
+    "avg_score": 65,
+    "avg_skills": 0.19,
+    "unique_positions": 21,
+    "total_skill_instances": 38,
+    "top_skills": [
+      [
+        "Language_Python",
+        18
+      ],
+      [
+        "Language_C_Plus_Plus",
+        11
+      ],
+      [
+        "DL_Framework",
+        5
+      ],
+      [
+        "MLOps",
+        2
+      ],
+      [
+        "Distributed_Training",
+        2
+      ]
+    ]
+  },
+  "reparsed_v1.2_pool": {
+    "count": 283,
+    "avg_score": 75,
+    "avg_skills": 1.1908127208480566,
+    "unique_positions": 1,
+    "total_skill_instances": 337,
+    "top_skills": [
+      [
+        "Language_Python",
+        59
+      ],
+      [
+        "Language_Java",
+        48
+      ],
+      [
+        "Infra_Linux",
+        39
+      ],
+      [
+        "Cloud_AWS",
+        38
+      ],
+      [
+        "Language_JavaScript",
+        34
+      ]
+    ]
+  },
+  "improvement_metrics": {
+    "pool_growth": "41.5%",
+    "skill_visibility_multiplier": "6.3x"
+  }
+}

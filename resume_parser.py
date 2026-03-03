@@ -9,57 +9,60 @@ class ResumeParser:
     def parse(self, resume_text: str) -> dict:
         """
         Parses raw resume text into a structured JSON using LLM.
+        [v1.3.1.1] Extreme Hardened Prompt (Cold Judgment)
         """
         if not resume_text:
              return {}
 
         prompt = f"""
-You are an expert Resume Parser. 
-Extract structured data from the resume text below.
-Be precise and factual. Do not hallucinate.
+You are a COLD, SKEPTICAL Resume Auditor. LLM optimism is your enemy. 
+Extract deterministic signals with extreme conservatism.
 
 [RESUME TEXT]
-{resume_text[:10000]}
+{resume_text[:12000]}
 
 [SCHEMA INSTRUCTIONS]
-Output JSON with the following structure:
+Output JSON:
 {{
   "basics": {{
-    "name": "Candidate Name (or Unknown)",
-    "email": "Email (or null)",
-    "phone": "Phone (or null)",
-    "total_years_experience": (Integer estimate based on career start year)
+    "name": "Candidate Name",
+    "position": "Current precise role",
+    "total_years_experience": (int)
   }},
-  "skills": ["List", "of", "technical", "skills"],
-  "work_experience": [
-    {{
-      "company": "Company Name",
-      "role": "Job Title",
-      "start_year": "YYYY",
-      "end_year": "YYYY (or Present)",
-      "description": "Brief summary of responsibilities"
-    }}
+  "quant_signals": {{
+    "short_tenures_count": (int, < 2 years),
+    "quantified_impact_count": (int, NUMERICAL results only like %, $, hours),
+    "big_tech_experience": (bool),
+    "architecture_ownership": (bool),
+    "unexplained_gap": (bool, > 1 year),
+    "tier_improvement": (bool),
+    "responsibility_increase": (bool, only if title upgraded or team doubled),
+    "scope_expansion": (bool, fundamentally new tech/domain)
+  }},
+  "skills_depth": [
+    {{"name": "Skill", "depth": "Mentioned | Applied | Architected"}}
   ],
-  "education": [
-    {{
-      "school": "School Name",
-      "degree": "Degree (BS, MS, PhD)",
-      "major": "Major"
-    }}
-  ],
-  "summary": "A professional summary (3-4 sentences) effectively describing the candidate's core value proposition."
+  "summary": "One sentence value."
 }}
 
-If a field is missing, use null or empty list.
+[CRITICAL JUDGMENT RULES]
+1. SKILL DEPTH:
+- Mentioned: DEFAULT. Use if the candidate just lists the skill or describes routine usage without a specific achievement.
+- Applied: Requires [Context] AND [Specific Problem Solved] AND [Proven Outcome/ROI]. If it's just "developed feature X", it's MENTIONED.
+- Architected: Only if they designed the core structure/blueprint. Must show Tradeoff reasoning (why this tech?).
+
+2. ASCENDING TRAJECTORY SIGNALS:
+- responsibility_increase: FALSE unless they became a lead, manager, or moved to a significantly larger organization/project.
+- tier_improvement: FALSE unless the new company is objectively higher tier (e.g., Startup -> Big Tech).
+
+Be merciless. Better to underestimate than overpromise.
 """
         try:
-            # Use the existing JSON mode method in OpenAIClient
             parsed_data = self.client.get_chat_completion_json(prompt)
-            # Validation: Ensure key fields exist
             if not parsed_data.get("basics"):
                 parsed_data["basics"] = {}
-            if not parsed_data.get("skills"):
-                parsed_data["skills"] = []
+            if not parsed_data.get("skills_depth"):
+                parsed_data["skills_depth"] = []
                 
             return parsed_data
             

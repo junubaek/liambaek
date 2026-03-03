@@ -1,0 +1,406 @@
+{
+  "timestamp": "2026-03-02T23:42:41Z",
+  "sample_size": 20,
+  "discovered_skills": [
+    [
+      "Java",
+      6
+    ],
+    [
+      "C",
+      6
+    ],
+    [
+      "Linux",
+      5
+    ],
+    [
+      "Python",
+      5
+    ],
+    [
+      "JavaScript",
+      3
+    ],
+    [
+      "jQuery",
+      3
+    ],
+    [
+      "MySQL",
+      3
+    ],
+    [
+      "Deep Learning",
+      3
+    ],
+    [
+      "Bluetooth",
+      2
+    ],
+    [
+      "HTML5",
+      2
+    ],
+    [
+      "CSS",
+      2
+    ],
+    [
+      "Oracle 10g",
+      2
+    ],
+    [
+      "MS Office",
+      2
+    ],
+    [
+      "C#",
+      2
+    ],
+    [
+      "AWS",
+      2
+    ],
+    [
+      "Exchange",
+      2
+    ],
+    [
+      "DLP",
+      2
+    ],
+    [
+      "Hyper-V",
+      2
+    ],
+    [
+      "Oracle",
+      2
+    ],
+    [
+      "Jira",
+      2
+    ],
+    [
+      "MS-SQL",
+      2
+    ],
+    [
+      "Windows Server",
+      2
+    ],
+    [
+      "Django",
+      2
+    ],
+    [
+      "TensorFlow",
+      2
+    ],
+    [
+      "PyTorch",
+      2
+    ],
+    [
+      "Embedded Systems",
+      2
+    ],
+    [
+      "Git",
+      2
+    ],
+    [
+      "C++",
+      2
+    ],
+    [
+      "Machine Learning",
+      2
+    ],
+    [
+      "LTE",
+      1
+    ],
+    [
+      "WiFi",
+      1
+    ],
+    [
+      "RF Block Design",
+      1
+    ],
+    [
+      "HW Design",
+      1
+    ],
+    [
+      "AP (MCU)",
+      1
+    ],
+    [
+      "LNA",
+      1
+    ],
+    [
+      "PAM",
+      1
+    ],
+    [
+      "Duplexer",
+      1
+    ],
+    [
+      "Filter",
+      1
+    ],
+    [
+      "RF Link Budget",
+      1
+    ],
+    [
+      "Impedance Matching",
+      1
+    ],
+    [
+      "Logic Design",
+      1
+    ],
+    [
+      "Debugging",
+      1
+    ],
+    [
+      "PCB Pattern Antenna Design",
+      1
+    ],
+    [
+      "Radiation Performance Improvement",
+      1
+    ],
+    [
+      "FCC Certification",
+      1
+    ],
+    [
+      "CE Certification",
+      1
+    ],
+    [
+      "RF Energy Harvest Design",
+      1
+    ],
+    [
+      "Sigfox Technology",
+      1
+    ],
+    [
+      "AI Speaker Circuit Design",
+      1
+    ],
+    [
+      "5G mmWave CPE Implementation",
+      1
+    ],
+    [
+      "Conduction & Radiation Performance Improvement",
+      1
+    ],
+    [
+      "Artwork Design",
+      1
+    ],
+    [
+      "PADS",
+      1
+    ],
+    [
+      "Orcad",
+      1
+    ],
+    [
+      "Zuken",
+      1
+    ],
+    [
+      "Expedition",
+      1
+    ],
+    [
+      "WCDMA",
+      1
+    ],
+    [
+      "BTS Transceiver Design",
+      1
+    ],
+    [
+      "Transmitter Output Monitoring",
+      1
+    ],
+    [
+      "CS",
+      1
+    ],
+    [
+      "PM",
+      1
+    ],
+    [
+      "KPI 분석",
+      1
+    ],
+    [
+      "게임 운영 Tool 기획",
+      1
+    ],
+    [
+      "인게임 패키지 상점 UI 기획",
+      1
+    ],
+    [
+      "게임 내 채팅 시스템 UI 기획",
+      1
+    ],
+    [
+      "버그 리포팅 관리",
+      1
+    ],
+    [
+      "문서작성 (한글/MS-Word)",
+      1
+    ],
+    [
+      "스프레드시트 (Excel)",
+      1
+    ],
+    [
+      "프리젠테이션 (PowerPoint)",
+      1
+    ],
+    [
+      "인터넷 정보검색",
+      1
+    ],
+    [
+      "SVN",
+      1
+    ],
+    [
+      "Mantis",
+      1
+    ],
+    [
+      "게임 로그 조사",
+      1
+    ],
+    [
+      "운영 정책 수립",
+      1
+    ],
+    [
+      "개인정보보호",
+      1
+    ],
+    [
+      "게임 가이드 및 운영 콘텐츠 기획",
+      1
+    ],
+    [
+      "Spring Framework",
+      1
+    ],
+    [
+      "Nexacro",
+      1
+    ],
+    [
+      "ProFrame C",
+      1
+    ],
+    [
+      "Oracle 12c",
+      1
+    ],
+    [
+      "VBA",
+      1
+    ],
+    [
+      "WebSquare",
+      1
+    ],
+    [
+      "Oracle 11g",
+      1
+    ],
+    [
+      "OpenCV",
+      1
+    ],
+    [
+      "Windows",
+      1
+    ],
+    [
+      "VB",
+      1
+    ],
+    [
+      "UiPath",
+      1
+    ],
+    [
+      "SesC",
+      1
+    ],
+    [
+      "Altibase",
+      1
+    ],
+    [
+      "MariaDB",
+      1
+    ],
+    [
+      "Socket Communication",
+      1
+    ],
+    [
+      "IPC Communication",
+      1
+    ],
+    [
+      "DBA",
+      1
+    ],
+    [
+      "C/C++",
+      1
+    ],
+    [
+      "Pro*C",
+      1
+    ],
+    [
+      "IsamFile",
+      1
+    ],
+    [
+      "OracleDB",
+      1
+    ],
+    [
+      "Redis",
+      1
+    ],
+    [
+      "DRM",
+      1
+    ],
+    [
+      "VPC",
+      1
+    ]
+  ]
+}

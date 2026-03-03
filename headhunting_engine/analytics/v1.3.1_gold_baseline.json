@@ -1,0 +1,14 @@
+{
+  "n_candidates": 93,
+  "skill_depth_pct": {
+    "Mentioned": 53.94,
+    "Applied": 45.87,
+    "Architected": 0.18
+  },
+  "trajectory_pct": {
+    "Ascending": 5.38,
+    "Stable": 30.11,
+    "Neutral": 64.52,
+    "Volatile": 0.0
+  }
+}

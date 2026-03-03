@@ -1,0 +1,265 @@
+{
+    "version": "1.1",
+    "governance_policy": {
+        "temp_prefix": "__TEMP__",
+        "promotion_threshold_count": 30,
+        "promotion_threshold_months": 3,
+        "review_cycle": "monthly",
+        "management": "pull_request"
+    },
+    "role_families": {
+        "SW_Backend": "Software Backend Engineering",
+        "AI_Engineering": "AI & Machine Learning Engineering",
+        "DATA_Science": "Data Science & Analytics",
+        "DATA_Engineering": "Data Infrastructure & Engineering",
+        "SW_Platform": "Platform & DevOps Engineering",
+        "HW_ChipDesign": "Hardware & Chip Design",
+        "Embedded_Systems": "Embedded Software & Hardware Engineering",
+        "MGMT_Finance": "Financial Planning, Analysis & Corporate Finance",
+        "MGMT_Strategy": "Corporate Strategy & Business Planning",
+        "BIZ_ProductManager": "Product Management & Business Operations",
+        "BIZ_Analytics": "Business Intelligence & Data Analytics"
+    },
+    "capability_clusters": {
+        "Model_Development": "Core AI model creation and refinement",
+        "Data_Infrastructure": "Systems for data storage and processing",
+        "Backend_Systems": "Server-side logic and API development",
+        "System_Optimization": "Performance tuning and hardware efficiency",
+        "Infra_Cloud": "Cloud services and server infrastructure",
+        "Financial_Intelligence": "Financial modeling, projection and risk analysis",
+        "Strategic_Planning": "Corporate strategy and KPI design",
+        "Data_Driven_Strategy": "Strategic decision making based on data"
+    },
+    "canonical_skill_nodes": {
+        "DL_Framework": {
+            "cluster": "Model_Development",
+            "type": "skill_group",
+            "aliases": [
+                "PyTorch",
+                "TensorFlow",
+                "JAX",
+                "MXNet",
+                "Keras",
+                "Deep Learning Framework"
+            ]
+        },
+        "Language_Python": {
+            "cluster": "Backend_Systems",
+            "type": "language",
+            "aliases": [
+                "Python",
+                "Py",
+                "Python3"
+            ]
+        },
+        "Language_C_Plus_Plus": {
+            "cluster": "Backend_Systems",
+            "type": "language",
+            "aliases": [
+                "C++",
+                "Cpp",
+                "C Plus Plus"
+            ]
+        },
+        "Language_Java": {
+            "cluster": "Backend_Systems",
+            "type": "language",
+            "aliases": [
+                "Java",
+                "Spring",
+                "Spring Framework",
+                "J2EE"
+            ]
+        },
+        "Language_JavaScript": {
+            "cluster": "Backend_Systems",
+            "type": "language",
+            "aliases": [
+                "JavaScript",
+                "JS",
+                "jQuery",
+                "Node.js",
+                "React"
+            ]
+        },
+        "Language_CSharp": {
+            "cluster": "Backend_Systems",
+            "type": "language",
+            "aliases": [
+                "C#",
+                "CSharp",
+                ".NET",
+                "ASP.NET"
+            ]
+        },
+        "DB_SQL": {
+            "cluster": "Data_Infrastructure",
+            "type": "skill_group",
+            "aliases": [
+                "MySQL",
+                "Oracle",
+                "MariaDB",
+                "PostgreSQL",
+                "SQL Server",
+                "MS-SQL",
+                "PL/SQL"
+            ]
+        },
+        "Cloud_AWS": {
+            "cluster": "Infra_Cloud",
+            "type": "skill_group",
+            "aliases": [
+                "AWS",
+                "Amazon Web Services",
+                "VPC",
+                "S3",
+                "EC2"
+            ]
+        },
+        "Infra_Linux": {
+            "cluster": "System_Optimization",
+            "type": "skill",
+            "aliases": [
+                "Linux",
+                "Ubuntu",
+                "CentOS",
+                "Unix",
+                "Shell Script"
+            ]
+        },
+        "Embedded_C": {
+            "cluster": "System_Optimization",
+            "type": "skill",
+            "aliases": [
+                "Embedded C",
+                "Firmware",
+                "CORTEX-M3",
+                "MCU",
+                "MATLAB"
+            ]
+        },
+        "MLOps": {
+            "cluster": "Model_Development",
+            "type": "skill",
+            "aliases": [
+                "MLOps",
+                "Model Serving",
+                "Kubeflow",
+                "MLflow"
+            ]
+        },
+        "Distributed_Training": {
+            "cluster": "Model_Development",
+            "type": "skill",
+            "aliases": [
+                "Distributed Training",
+                "Horovod",
+                "DeepSpeed",
+                "Parallelism"
+            ]
+        },
+        "FP_Modeling": {
+            "cluster": "Financial_Intelligence",
+            "type": "skill_group",
+            "aliases": [
+                "Financial Modeling",
+                "FP&A",
+                "Financial Projection",
+                "Revenue Modeling",
+                "Budget Planning",
+                "PnL Management"
+            ]
+        },
+        "KPI_Design": {
+            "cluster": "Strategic_Planning",
+            "type": "skill",
+            "aliases": [
+                "KPI Design",
+                "Performance Tracking",
+                "Metric Definition",
+                "OKR",
+                "North Star Metric"
+            ]
+        },
+        "Business_Strategy": {
+            "cluster": "Strategic_Planning",
+            "type": "skill_group",
+            "aliases": [
+                "Corporate Strategy",
+                "Business Planning",
+                "Scenario Modeling",
+                "Market Analysis"
+            ]
+        },
+        "SQL_Analytics": {
+            "cluster": "Data_Driven_Strategy",
+            "type": "skill",
+            "aliases": [
+                "SQL Analytics",
+                "Data Driven Decision",
+                "BI Dashboard",
+                "Tableau",
+                "Looker"
+            ]
+        }
+    },
+    "adjacent_role_map": {
+        "SW_Backend": [
+            "SW_Platform",
+            "DATA_Engineering"
+        ],
+        "AI_Engineering": [
+            "SW_Platform",
+            "DATA_Science"
+        ],
+        "HW_ChipDesign": [
+            "AI_Engineering",
+            "SW_Platform",
+            "Embedded_Systems"
+        ],
+        "DATA_Science": [
+            "AI_Engineering",
+            "DATA_Engineering"
+        ],
+        "Embedded_Systems": [
+            "HW_ChipDesign",
+            "SW_Backend"
+        ]
+    },
+    "domain_hierarchy": {
+        "AI": [
+            "Computer Vision",
+            "NLP",
+            "Recommendation System",
+            "Generative AI"
+        ],
+        "Semiconductor": [
+            "Architecture",
+            "Verification",
+            "Physical Design",
+            "DFT"
+        ]
+    },
+    "synonym_groups": {
+        "CV": [
+            "Computer Vision",
+            "Vision AI",
+            "Image Processing"
+        ],
+        "NLP": [
+            "Natural Language Processing",
+            "Text Mining",
+            "Language Modeling"
+        ],
+        "FINANCE_MODELING": [
+            "FP&A",
+            "Financial Modeling",
+            "Budgeting"
+        ],
+        "STRATEGY": [
+            "Corporate Strategy",
+            "Strategic Planning",
+            "Business Strategy"
+        ]
+    }
+}
