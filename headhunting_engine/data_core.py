@@ -4,6 +4,7 @@ import json
 import os
 import sys
 from datetime import datetime
+from typing import List, Dict
 
 # SSoT (Single Source of Truth) Definition:
 # - Notion: Workflow & State (The "Live" data)
@@ -18,38 +19,67 @@ class AnalyticsDB:
     def _init_db(self):
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-            # 1. Candidate Snapshots (To track profile attribute drifts)
+            # 0. Tenants (Phase 5 SaaS Foundation)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS tenants (
+                    id TEXT PRIMARY KEY,
+                    name TEXT,
+                    tier TEXT, -- 'Free', 'Pro', 'Enterprise'
+                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            # 1. Candidate Snapshots (Multi-tenant isolated)
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS candidate_snapshots (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    tenant_id TEXT,
                     notion_id TEXT,
                     name TEXT,
                     role TEXT,
                     experience_years REAL,
                     data_json TEXT,
-                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(tenant_id) REFERENCES tenants(id)
                 )
             """)
-            # 2. JD Snapshots (To track market difficulty/scarcity drifts)
+            # 2. JD Snapshots (Multi-tenant isolated)
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS jd_snapshots (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    tenant_id TEXT,
                     jd_id TEXT,
                     role TEXT,
                     scarcity REAL,
                     difficulty REAL,
                     success_rate REAL,
-                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(tenant_id) REFERENCES tenants(id)
                 )
             """)
-            # 3. Lifecycle Events (To calculate conversion rates)
+            # 3. Lifecycle Events (Multi-tenant isolated)
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS lifecycle_events (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    tenant_id TEXT,
                     candidate_id TEXT,
                     jd_id TEXT,
                     stage TEXT,
-                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(tenant_id) REFERENCES tenants(id)
+                )
+            """)
+            # 4. Candidate Pattern Index (Phase 5.1 Strategic Index)
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS candidate_patterns (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    tenant_id TEXT,
+                    candidate_id TEXT,
+                    pattern TEXT,
+                    depth REAL,
+                    impact REAL,
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(tenant_id) REFERENCES tenants(id),
+                    FOREIGN KEY(candidate_id) REFERENCES candidate_snapshots(notion_id)
                 )
             """)
             conn.commit()
@@ -63,21 +93,52 @@ class AnalyticsDB:
             )
             conn.commit()
 
-    def save_jd_snapshot(self, jd_id, role, scarcity, difficulty, success_rate):
+    def save_jd_snapshot(self, jd_id, role, scarcity, difficulty, success_rate, tenant_id="default"):
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute(
-                "INSERT INTO jd_snapshots (jd_id, role, scarcity, difficulty, success_rate) VALUES (?, ?, ?, ?, ?)",
-                (jd_id, role, scarcity, difficulty, success_rate)
+                "INSERT INTO jd_snapshots (tenant_id, jd_id, role, scarcity, difficulty, success_rate) VALUES (?, ?, ?, ?, ?, ?)",
+                (tenant_id, jd_id, role, scarcity, difficulty, success_rate)
             )
             conn.commit()
 
-    def log_lifecycle_event(self, candidate_id, jd_id, stage):
+    def log_lifecycle_event(self, candidate_id, jd_id, stage, tenant_id="default"):
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute(
-                "INSERT INTO lifecycle_events (candidate_id, jd_id, stage) VALUES (?, ?, ?)",
-                (candidate_id, jd_id, stage)
+                "INSERT INTO lifecycle_events (tenant_id, candidate_id, jd_id, stage) VALUES (?, ?, ?, ?)",
+                (tenant_id, candidate_id, jd_id, stage)
+            )
+            conn.commit()
+
+    def save_candidate_patterns(self, candidate_id, patterns: List[Dict], tenant_id="default"):
+        """
+        [v5.1] Normalized Pattern Indexing
+        Expects patterns as list of {'pattern': str, 'depth': float, 'impact': float}
+        """
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            # Clear existing patterns for this candidate
+            cursor.execute("DELETE FROM candidate_patterns WHERE candidate_id = ? AND tenant_id = ?", (candidate_id, tenant_id))
+            
+            for p in patterns:
+                cursor.execute(
+                    "INSERT INTO candidate_patterns (tenant_id, candidate_id, pattern, depth, impact) VALUES (?, ?, ?, ?, ?)",
+                    (tenant_id, candidate_id, p['pattern'], p.get('depth', 0.5), p.get('impact', 0.5))
+                )
+            conn.commit()
+
+    def update_candidate_role(self, candidate_id, role, tenant_id="default"):
+        """
+        [v5.2] Updates candidate role in snapshots for live dashboard intelligence.
+        """
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            # Note: Notion ID is stored in notion_id column in candidate_snapshots
+            # [v5.2] Removed tenant_id from where clause as column missing in candidate_snapshots
+            cursor.execute(
+                "UPDATE candidate_snapshots SET role = ? WHERE notion_id = ?",
+                (role, candidate_id)
             )
             conn.commit()
 

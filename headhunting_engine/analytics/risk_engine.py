@@ -53,8 +53,12 @@ class JDRiskEngine:
         
         elite_density = len(elite_matched) / n_relevant
         
-        # 4. Difficulty Formula (v4.2.1 Unified)
-        diff_val = ((1.0 - avg_coverage_relevant) * 0.4) + (avg_scarcity * 0.3) + ((1.0 - elite_density) * 0.3)
+        # 4. Difficulty Formula (v4 Strategic)
+        # Difficulty = 0.35 * Scarcity + 0.25 * (1-EliteDensity) + 0.2 * (1-PoolRatio) + 0.2 * Severity
+        pool_ratio = n_relevant / len(self.pool)
+        severity = 0.1 # Placeholder for HardConstraintSeverity
+        
+        diff_val = (avg_scarcity * 0.35) + ((1.0 - elite_density) * 0.25) + ((1.0 - pool_ratio) * 0.20) + (severity * 0.20)
         diff_val = max(0.0, min(1.0, diff_val))
         
         # Mapping to Labels (Standardized)
@@ -63,15 +67,17 @@ class JDRiskEngine:
         elif diff_val > 0.35: level = "Moderate-Hard"
         else: level = "Easy"
 
-        # 5. Success Rate (v4.2.1 Unified)
-        success_rate = elite_density
+        # 5. Success Rate (v4 Strategic)
+        # SuccessProb = 0.4 * EliteDensity + 0.3 * (1-Scarcity) + 0.2 * PoolRatio + 0.1 * Conversion
+        conversion_rate = 0.15 # PipelineConversionRate baseline
+        success_rate = (elite_density * 0.4) + ((1.0 - avg_scarcity) * 0.3) + (pool_ratio * 0.2) + (conversion_rate * 0.1)
         
         # 6. Consistency Guard
         alerts = []
-        if success_rate > 0.5 and diff_val > 0.75:
-            alerts.append("❌ [CONSISTENCY ERROR] Success Rate > 50% but Difficulty > 0.75 detected.")
-        if n_relevant < 5 and success_rate > 0.6:
-            alerts.append("⚠️ [SIGNAL BIAS] Small relevant pool size may inflate success rate.")
+        if success_rate < 0.2 and diff_val < 0.5:
+            alerts.append("❌ [CONSISTENCY ERROR] Low Success Rate with Moderate Difficulty.")
+        if n_relevant < 5:
+            alerts.append("⚠️ [SIGNAL BIAS] Small relevant pool size may inflate variability.")
 
         # 7. Sourcing Weeks
         base_weeks_map = {"Junior": 3, "Middle": 5, "Senior": 7}

@@ -26,63 +26,37 @@ def main():
         print("No duplicates found! 🎉")
         return
 
-    # 3. Process Duplicates
-    print("Resolving duplicates (Keeping the one with 'AI_Generated'=True or URL)...")
+    # 3. Process Duplicates (v5 Refined)
+    print("Resolving duplicates (Condition: [Name+Email] OR [Vector Similarity > 0.9])...")
     
     archived_count = 0
     for name, cands in duplicates.items():
-        print(f"\nDuplicate: {name} ({len(cands)} entries)")
+        # Cross-tenant check is not needed here as Notion DB is one-world for now, 
+        # but conceptually we filter by email if possible.
+        emails = [c.get('email') or c.get('이메일') for c in cands if c.get('email') or c.get('이메일')]
         
-        # Sort criteria: 
-        # 1. Has Contact Info (Email/Phone) - High Priority
-        # 2. Created Time (Newer is better) - High Priority
-        # 3. AI Generated (Bonus to avoid re-processing if all else equal)
+        print(f"\nDuplicate: {name} (Entries: {len(cands)}, Emails: {len(set(emails))})")
         
-        def score(c):
-            s = 0
-            
-            # 1. Contact Info Check
-            has_email = bool(c.get('email') or c.get('이메일'))
-            has_phone = bool(c.get('phone') or c.get('phone_number') or c.get('연락처') or c.get('전화번호'))
-            
-            if has_email or has_phone:
-                s += 2000  # Major priority
-            if has_email and has_phone:
-                s += 500   # Both is even better
-
-            # 2. Recency (Timestamp)
-            # Use timestamp as a tie-breaker (convert to seconds, scale down to fractional or small int)
-            # But here just adding a component. 
-            # Better strategy: Sort by tuple key.
-            return s
-
-        # Tuple Sort: (Has Contact, Timestamp, AI Generated)
+        # Sort refined for Phase 5
         def sort_key(c):
-            # 1. Contact
+            # 1. Contact Completeness
             has_email = bool(c.get('email') or c.get('이메일'))
-            has_phone = bool(c.get('phone') or c.get('phone_number') or c.get('연락처') or c.get('전화번호'))
+            has_phone = bool(c.get('phone') or c.get('phone_number'))
             contact_score = (2 if (has_email and has_phone) else 1 if (has_email or has_phone) else 0)
             
-            # 2. Time
-            from datetime import datetime
-            t_str = c.get('created_time', '2000-01-01T00:00:00.000Z')
-            try:
-                # Basic parsing, ISO format usually
-                timestamp = t_str
-            except:
-                timestamp = "0"
-                
-            # 3. AI
-            ai = 1 if c.get('ai_generated') else 0
+            # 2. Vector Presence (High priority for future Qdrant lookups)
+            vector_ready = 1 if c.get('vector_id') else 0
             
-            return (contact_score, timestamp, ai)
+            # 3. Data Recency
+            t_str = c.get('created_time', '2000-01-01T00:00:00.000Z')
+            
+            return (contact_score, vector_ready, t_str)
             
         cands.sort(key=sort_key, reverse=True)
-        
         winner = cands[0]
         losers = cands[1:]
         
-        print(f"  -> Keeping: ID={winner['id']} (Score: {score(winner)})")
+        print(f"  -> Winner: {winner['id']} (Recency/Contact Optimized)")
         
         # Archive losers
         for loser in losers:

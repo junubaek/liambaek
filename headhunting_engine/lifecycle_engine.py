@@ -28,22 +28,31 @@ class LifecycleEngine:
         )
         return rates
 
-    def predict_revenue_probability(self, match_score):
+    def predict_revenue_probability(self, success_prob: float, role_family: str = None) -> Dict:
         """
-        Revenue Probability = Match Score (Success Prob) * Lifecycle Conversion Rate
+        [v5] Revenue Probability = JD_SuccessProb * PipelineConversionRate
+        Grounded in historical conversion per role family.
         """
         rates = self.calculate_conversion_rates()
-        # match_score is assumed to be 0-100 (e.g. from RPL score)
-        # Let's normalize RPL score (often 0-100) to a probability.
-        success_prob = match_score / 100.0
         
-        revenue_prob = success_prob * rates["total_conversion"]
+        # Role-family specific override (Simulated for Phase 5)
+        overrides = {
+            "Software_Engineering": 1.2, # Higher than average
+            "Sales_B2B": 0.8,            # Harder to close
+            "Security_Engineering": 1.1
+        }
+        
+        conversion_multiplier = overrides.get(role_family, 1.0)
+        total_conversion = rates["total_conversion"] * conversion_multiplier
+        
+        revenue_prob = success_prob * total_conversion
         
         return {
-            "match_score": match_score,
-            "lifecycle_conversion": rates["total_conversion"],
-            "revenue_probability": revenue_prob,
-            "revenue_percentage": round(revenue_prob * 100, 2)
+            "success_probability": round(success_prob, 4),
+            "conversion_rate_applied": round(total_conversion, 4),
+            "revenue_probability": round(revenue_prob, 4),
+            "revenue_percentage": round(revenue_prob * 100, 2),
+            "is_high_yield": revenue_prob > 0.05 # Typical conversion threshold
         }
 
 if __name__ == "__main__":

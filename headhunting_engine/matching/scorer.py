@@ -3,191 +3,107 @@ from typing import Dict, List, Set, Tuple
 class Scorer:
     """
     Calculates deterministic matching scores with full audit logging.
-    Items:
-    - Must Coverage (40%)
-    - Nice Coverage (20%)
-    - Base Talent Score (scaled to 20)
-    - Context Fit (scaled to 10)
+    - Career Trajectory (20%)
+    - Context Fit (15%)
     """
-    def calculate_base_talent_score(self, signals: Dict) -> Tuple[float, Dict]:
-        """
-        [v1.3.1] Precision Hardened Baseline + Deterministic Adjustment Model
-        """
-        if not signals: signals = {}
-        score = 50.0 # Baseline
-        details = {"base_score": 50.0, "penalties": {}, "bonuses": {}}
-        
-        def g(key, default=0):
-            val = signals.get(key)
-            return val if val is not None else default
+    
+    DEPTH_WEIGHTS = {
+        "Owned": 1.00,
+        "Led": 0.85,
+        "Applied": 0.65,
+        "Assisted": 0.40,
+        "Mentioned": 0.20
+    }
 
-        # 1. Penalties (v1.3.1)
-        short_tenure_p = g("short_tenures_count", 0) * 5
-        if short_tenure_p > 0:
-            score -= short_tenure_p
-            details["penalties"]["short_tenures"] = -short_tenure_p
-            
-        # Low Impact Penalty
-        exp = g("total_years_experience", 0)
-        impact = g("quantified_impact_count", 0)
-        if (exp >= 3 and exp < 10 and impact <= 1) or (exp >= 10 and impact <= 2):
-            score -= 5
-            details["penalties"]["low_impact"] = -5
-            
-        if signals.get("unexplained_gap"):
-            score -= 5
-            details["penalties"]["unexplained_gap"] = -5
-            
-        # Depth Inflation Penalty (Mentioned ratio > 70%)
-        if g("mention_ratio", 0) > 0.7:
-            score -= 5
-            details["penalties"]["depth_inflation"] = -5
-            
-        # Career Drift Penalty
-        if signals.get("domain_change") and short_tenure_p > 0:
-            score -= 5
-            details["penalties"]["career_drift"] = -5
-        
-        # 2. Bonuses
-        if signals.get("big_tech_experience"):
-            score += 8
-            details["bonuses"]["big_tech"] = 8
-        if signals.get("architecture_ownership"):
-            score += 10
-            details["bonuses"]["architecture"] = 10
-        if impact >= 3:
-            score += 7
-            details["bonuses"]["high_impact"] = 7
-        if signals.get("responsibility_increase"):
-            score += 5
-            details["bonuses"]["resp_increase"] = 5
-        if signals.get("tier_improvement"):
-            score += 5
-            details["bonuses"]["tier_up"] = 5
-        if signals.get("scope_expansion"): # v1.3.1 New
-            score += 5
-            details["bonuses"]["scope_expansion"] = 5
+    # v6.2 Domain Affinity Matrix (2-Hop Weights)
+    DOMAIN_AFFINITY = {
+        ("AI_ML_RESEARCH", "AI_ENGINEERING"): 0.60,
+        ("DATA_ENGINEERING", "AI_ENGINEERING"): 0.55,
+        ("CHIP_DESIGN", "AI_ML_RESEARCH"): 0.50,
+        ("SW_BACKEND", "INFRA_DEVOPS"): 0.55,
+        ("SECURITY_ENGINEERING", "SW_BACKEND"): 0.45,
+        ("STRATEGY_MA", "FINANCE_ACCOUNTING"): 0.55,
+        ("SW_BACKEND", "SW_FRONTEND"): 0.35,
+        ("HRM_HRD", "STRATEGY_MA"): 0.30,
+        ("CHIP_DESIGN", "SW_BACKEND"): 0.20
+    }
 
-        final_score = max(30.0, min(90.0, score)) # Deterministic Clamp
-        details["final_raw_score"] = final_score
-        return final_score, details
-
-    def calculate_trajectory(self, signals: Dict) -> str:
-        """
-        [v1.3.1] Tightened Trajectory Logic
-        - Ascending: ALL required (Resp++, Scope++, 2yr tenure, Tier stable/up)
-        - Volatile: ANY 2 (Short tenures, lateral move, domain drift)
-        """
-        resp_up = signals.get("responsibility_increase", False)
-        scope_up = signals.get("scope_expansion", False)
-        tier_up = signals.get("tier_improvement", False)
-        short_tenures = signals.get("short_tenures_count", 0)
-        long_tenure = short_tenures == 0 # Proxy for 2yr tenure
-        
-        # Ascending (v1.3.1.2 Adjusted: Majority signal + Long Tenure)
-        pos_signal_count = sum([resp_up, scope_up, tier_up])
-        if long_tenure and pos_signal_count >= 2:
-            return "Ascending"
-        
-        # Volatile (Wait, user said "Next 2 or more: short tenure, lateral, drift")
-        vol_score = 0
-        if short_tenures >= 2: vol_score += 1
-        if signals.get("lateral_move"): vol_score += 1 # If we extract it later
-        if signals.get("domain_change"): vol_score += 1
-        
-        if vol_score >= 2:
-            return "Volatile"
-            
-        if resp_up or scope_up or tier_up:
-            return "Stable"
-            
-        return "Neutral"
-
-    def dynamic_threshold(self, total_must: int) -> float:
-        """
-        [v1.1] Implementation of dynamic hard filter thresholds.
-        """
-        if total_must <= 1:
-            return 0.0
-        elif total_must == 2:
-            return 0.5
-        elif total_must == 3:
-            return 0.6
-        else:
-            return 0.7
-
-    def __init__(self, version_manager):
+    def __init__(self, version_manager=None):
         self.version_manager = version_manager
 
-    def calculate_score(self, candidate_skills: List[Dict], must_nodes: Set[str], nice_nodes: Set[str], context_data: Dict, canonical_ids: Set[str] = None) -> Tuple[float, Dict]:
-        """
-        Returns (final_score, calculation_log)
-        [v1.3] Depth-Weighted Scoring: Mentioned (0.3), Applied (0.7), Architected (1.0).
-        """
-        depth_weights = {"Mentioned": 0.3, "Applied": 0.7, "Architected": 1.0}
+    def get_hop_weight(self, domain_a: str, domain_b: str, hop: int) -> float:
+        if hop == 0: return 1.0
+        if hop == 1: return 0.75 # Default hop1
         
-        # 1. Map Candidate Skills with Depth
-        norm_skill_map = {}
-        for item in candidate_skills:
-            name = item.get("name")
-            depth = item.get("depth", "Mentioned")
-            weight = depth_weights.get(depth, 0.3)
-            
-            # If item is already normalized or name is in canonical_ids, use it
-            if canonical_ids and name in canonical_ids:
-                norm_skill_map[name] = weight
-            else:
-                norm_skill_map[name] = weight
+        # hop 2 dynamic lookup
+        pair = tuple(sorted([domain_a, domain_b]))
+        return self.DOMAIN_AFFINITY.get(pair, 0.40) # Fallback to 0.4 if not in matrix
 
-        # 2. Must Coverage (Weighted)
-        must_total = len(must_nodes)
-        if must_total == 0:
-            must_coverage_score = 1.0
+    def calculate_score(self, candidate_data: Dict, jd_context: Dict) -> Tuple[float, Dict]:
+        """
+        [v6.2] Precision Matching Engine
+        """
+        # 1. Pattern Coverage (40%)
+        jd_patterns = set(jd_context.get("experience_patterns", []))
+        cand_patterns = {p["pattern"]: p.get("depth", "Mentioned") for p in candidate_data.get("patterns", [])}
+        
+        coverage_score = 0
+        if jd_patterns:
+            matched = [p for p in jd_patterns if p in cand_patterns]
+            coverage_score = (len(matched) / len(jd_patterns)) * 100
+        
+        # 2. Depth & Impact (25%)
+        # Weighted sum of depths for matched patterns
+        depth_sum = 0
+        if jd_patterns:
+            for p in jd_patterns:
+                depth = cand_patterns.get(p, "None")
+                depth_sum += self.DEPTH_WEIGHTS.get(depth, 0.0)
+            avg_depth = depth_sum / len(jd_patterns)
         else:
-            weighted_match_sum = 0.0
-            for node in must_nodes:
-                if node in norm_skill_map:
-                    weighted_match_sum += norm_skill_map[node]
-            must_coverage_score = weighted_match_sum / must_total
+            avg_depth = 0
             
-        # Hard Filter (Simple ratio for threshold check)
-        matched_keys = set(norm_skill_map.keys()) & must_nodes
-        simple_match_ratio = len(matched_keys) / must_total if must_total > 0 else 1.0
-        threshold = self.dynamic_threshold(must_total)
-        
-        if simple_match_ratio < threshold:
-            return 0.0, {"status": "FAILED_HARD_FILTER", "ratio": simple_match_ratio, "threshold": threshold}
+        # Impact Factor (v6.2)
+        impact_multiplier = 1.0
+        # If any matched pattern has a quantified impact, bonus
+        if any(p.get("impact_type") == "Quantitative" for p in candidate_data.get("patterns", []) if p["pattern"] in jd_patterns):
+            impact_multiplier = 1.1
 
-        # 3. Nice Coverage (Weighted)
-        nice_total = len(nice_nodes)
-        nice_coverage_score = 1.0
-        if nice_total > 0:
-            weighted_nice_sum = 0.0
-            for node in nice_nodes:
-                if node in norm_skill_map:
-                    weighted_nice_sum += norm_skill_map[node]
-            nice_coverage_score = weighted_nice_sum / nice_total
+        depth_impact_score = min(100, avg_depth * 100 * impact_multiplier)
 
-        # 4. Final Aggregation (v1.3)
-        core_match_score = (must_coverage_score * 40.0 + nice_coverage_score * 20.0) / 60.0
+        # 3. Career Trajectory (20%)
+        # Calculation based on trajectory_grade and career_path_score
+        trajectory_quality = candidate_data.get("career_path_quality", {})
+        grade = trajectory_quality.get("trajectory_grade", "Neutral")
+        path_score = trajectory_quality.get("career_path_score", 50)
         
-        talent_score_raw = context_data.get("base_talent_score", 50)
+        grade_weights = {"Ascending": 1.2, "Stable": 1.0, "Neutral": 0.8, "Volatile": 0.5, "Declining": 0.2}
+        trajectory_score = min(100, path_score * grade_weights.get(grade, 1.0))
+
+        # 4. Context Fit (15%)
+        # Context Fit (15%)
+        # Domain alignment + Cross-sector pattern coverage (Pattern-based boost)
+        primary_sector_match = candidate_data.get("candidate_profile", {}).get("primary_sector") == jd_context.get("sector")
         
-        domain_match = 5.0 if context_data.get("domain_match") else 0.0
-        size_match = 5.0 if context_data.get("company_size_match") else 0.0
+        context_score = 100 if primary_sector_match else 50
         
-        trajectory = context_data.get("career_trajectory", "Neutral")
-        trajectory_score = 1.0
-        if trajectory == "Ascending": trajectory_score = 5.0
-        elif trajectory == "Stable": trajectory_score = 3.0
-        
-        quality_factor = ((talent_score_raw / 100.0) * 20.0 + domain_match + size_match + trajectory_score) / 30.0
-        final_score = core_match_score * (60.0 + (quality_factor ** 1.5) * 40.0)
-        
+        # Cross-Sector (Secondary sector coverage reflection)
+        if jd_context.get("cross_sector_requested") and candidate_data.get("candidate_profile", {}).get("cross_sector_flag"):
+            context_score = min(100, context_score + 20)
+
+        # Final Aggregation (Capped at 100.0)
+        final_score = (
+            coverage_score * 0.40 +
+            depth_impact_score * 0.25 +
+            trajectory_score * 0.20 +
+            context_score * 0.15
+        )
+        final_score = min(100.0, final_score)
+
         return final_score, {
             "final_score": round(final_score, 2),
-            "must_coverage_weighted": round(must_coverage_score, 2),
-            "quality_factor": round(quality_factor, 4),
-            "talent_score_raw": talent_score_raw,
-            "dynamic_threshold_used": threshold
+            "pattern_coverage": round(coverage_score, 2),
+            "depth_impact": round(depth_impact_score, 2),
+            "trajectory": round(trajectory_score, 2),
+            "context_fit": round(context_score, 2)
         }

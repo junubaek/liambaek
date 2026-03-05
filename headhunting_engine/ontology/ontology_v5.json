@@ -1,0 +1,150 @@
+{
+    "version": "5.0",
+    "role_families": [
+        "Software_Engineering",
+        "AI_Data",
+        "Finance_Strategy",
+        "GA_Operations",
+        "HR_Talent",
+        "SCM_Logistics",
+        "Sales_B2B",
+        "Marketing_Growth",
+        "Security_Engineering"
+    ],
+    "ontology": {
+        "GA_Operations": {
+            "domains": [
+                "RealEstate_Management",
+                "Workplace_Experience",
+                "Asset_Procurement"
+            ],
+            "patterns": [
+                "Lease_Negotiation",
+                "Office_Relocation_PM",
+                "Vendor_Contract_Management",
+                "Asset_Lifecycle_Control",
+                "Physical_Security_Setup",
+                "Workplace_EHS_Compliance"
+            ],
+            "impact_signals": [
+                "Floor_Area_SQM",
+                "Branch_Count",
+                "Budget_Scale_KRW",
+                "Headcount_Managed"
+            ]
+        },
+        "HR": {
+            "domains": [
+                "Talent_Acquisition",
+                "Compensation_Benefits",
+                "Organizational_Development",
+                "Labor_Relations"
+            ],
+            "patterns": [
+                "Recruiting_Pipeline_Optimization",
+                "ATS_LMS_Implementation",
+                "Performance_Evaluation_System_Design",
+                "Org_Restructuring_Execution",
+                "Labor_Union_Negotiation",
+                "Employer_Branding_Campaign",
+                "Comp_Structure_Redesign"
+            ],
+            "impact_signals": [
+                "Hiring_Volume_Annual",
+                "Total_Headcount",
+                "Payroll_Budget_Scale",
+                "Retention_Rate_Delta"
+            ]
+        },
+        "Finance_Strategy": {
+            "domains": [
+                "Corporate_Strategy",
+                "Financial_Planning_Analysis",
+                "Investment_IR",
+                "M&A"
+            ],
+            "patterns": [
+                "KPI_Framework_Design",
+                "Budget_Forecasting_Modeling",
+                "Due_Diligence_Execution",
+                "Equity_Financing_PM",
+                "Market_Entry_Strategy",
+                "Post_Merge_Integration"
+            ],
+            "impact_signals": [
+                "AUM_Scale",
+                "Revenue_Target",
+                "Deal_Size",
+                "Cost_Reduction_Amount"
+            ]
+        },
+        "Marketing_Growth": {
+            "domains": [
+                "Performance_Marketing",
+                "Brand_Strategy",
+                "CRM_Lifecycle"
+            ],
+            "patterns": [
+                "Paid_Campaign_Scaling",
+                "CAC_Optimization_Modeling",
+                "Retention_Funnel_Design",
+                "Multi_Channel_Attribution",
+                "Influencer_Growth_Loop"
+            ],
+            "impact_signals": [
+                "Ad_Spend_Monthly",
+                "ROAS_Delta",
+                "MAU_Growth",
+                "LTV_Expansion"
+            ]
+        },
+        "Security_Engineering": {
+            "domains": [
+                "AppSec",
+                "Cloud_Security",
+                "GRC_Compliance",
+                "Infra_Security"
+            ],
+            "patterns": [
+                "Threat_Modeling_Design",
+                "Vulnerability_Management_Ops",
+                "Incident_Response_Lead",
+                "ISMS_ISO_Implementation",
+                "Security_Architecture_Review",
+                "Zero_Trust_Deployment"
+            ],
+            "impact_signals": [
+                "Endpoint_Count",
+                "Traffic_Volume",
+                "Compliance_Score",
+                "MTTR_Reduction"
+            ]
+        },
+        "Software_Engineering": {
+            "domains": [
+                "Backend_Infra",
+                "Frontend_UX",
+                "System_Architecture"
+            ],
+            "patterns": [
+                "Microservices_Migration",
+                "High_Concurrency_Optimization",
+                "Cloud_Native_Architecture",
+                "CI_CD_Automation",
+                "Legacy_Refactoring_PM"
+            ],
+            "impact_signals": [
+                "TPS_Scale",
+                "Service_Uptime",
+                "Latency_Reduction",
+                "Engineer_Count"
+            ]
+        }
+    },
+    "depth_weights": {
+        "Mentioned": 0.3,
+        "Executed": 0.7,
+        "Led": 1.0,
+        "Architected": 1.3
+    }
+}

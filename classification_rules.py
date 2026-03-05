@@ -45,56 +45,42 @@ ALLOWED_DOMAINS = [
 
 
 ROLE_CLUSTERS = {
-    "DESIGN": [
-        "Product Designer", "UI/UX Designer", "Graphic Designer", "Brand Designer",
-        "Interaction Designer", "Industrial Designer", "3D Designer", "Contents Designer", "Web Designer"
+    "TECH_SW": [
+        "Backend Engineer", "Frontend Engineer", "Platform Engineer", "Infrastructure Engineer", 
+        "Cloud Engineer", "DevOps Engineer", "Site Reliability Engineer", "Full Stack Engineer",
+        "Mobile Engineer", "Android Engineer", "iOS Engineer", "Software Architect"
     ],
-    "TECH_LOW_LEVEL": [
-        "Firmware Engineer", "Embedded Software Engineer", "Device Driver Engineer",
-        "System Software Engineer", "Kernel Engineer", "BSP Engineer", "Bootloader Engineer"
+    "TECH_HW": [
+        "Hardware Engineer", "PCB Designer", "System Integration Engineer", 
+        "Embedded Software Engineer", "Firmware Engineer", "BSP Engineer", "Bootloader Engineer"
     ],
-    "TECH_PLATFORM": [
-        "Backend Engineer", "Platform Engineer", "Infrastructure Engineer", 
-        "Cloud Engineer", "DevOps Engineer", "Site Reliability Engineer", "Full Stack Engineer"
-    ],
-    "TECH_AI_DATA": [
-        "AI Engineer", "Machine Learning Engineer", "Deep Learning Engineer", 
-        "ML Engineer", "Data Engineer", "Data Scientist", "Analytics Engineer",
-        "ML Compiler Engineer", "NPU Runtime Engineer", "AI Accelerator Software Engineer"
-    ],
-    "TECH_HARDWARE": [
+    "SEMICONDUCTOR": [
         "SoC Design Engineer", "RTL Design Engineer", "Verification Engineer", 
-        "ASIC Design Engineer", "FPGA Engineer", "Physical Design Engineer", "DFT Engineer", "Product Engineer"
+        "ASIC Design Engineer", "Physical Design Engineer", "Analog Design Engineer", 
+        "DFT Engineer", "NPU Engineer", "ML Compiler Engineer"
     ],
-    "PRODUCT_PLANNING": [
-        "Product Manager", "Product Owner", "Service Planner", 
-        "Business Planner", "Strategy Planner", "Corporate Strategy Manager"
+    "DATA_AI": [
+        "Data Engineer", "Data Scientist", "Machine Learning Engineer", "AI Engineer", 
+        "Deep Learning Engineer", "MLOps Engineer", "Analytics Engineer", "Data Analyst"
     ],
-    "SALES_MARKETING": [
-        "Sales Manager", "Account Manager", "Key Account Manager", "Business Development Manager", 
-        "Sales Engineer", "Marketing Manager", "Product Marketing Manager", "Growth Marketer",
-        "Performance Marketer", "Content Marketer", "Brand Manager", "Channel Sales Manager", "Overseas Sales Manager", "Digital Marketer"
+    "PRODUCT": [
+        "Product Manager", "Product Owner", "Service Planner", "Technical PM", "Product Analyst"
+    ],
+    "BUSINESS": [
+        "Sales Manager", "Business Development Manager", "Account Manager", 
+        "Growth Marketer", "Performance Marketer", "Brand Marketer", "SCM Planner", "Logistics Manager"
+    ],
+    "SECURITY": [
+        "Security Engineer", "Security Operations Manager", "Compliance Manager", "Information Security Officer"
     ],
     "CORPORATE": [
-        "HR Manager", "HR Business Partner", "Recruiter", "Talent Acquisition Specialist",
-        "People Operations Manager", "HR Development Manager",
-        "Finance Manager", "Accounting Manager", "FP&A Manager", "Treasury Manager", "Tax Manager", "Financial Planning Analyst",
-        "Legal Counsel", "Compliance Manager", "Corporate Counsel", 
-        "General Affairs Manager", "Office Manager", "Administration Manager", "Facilities Manager"
+        "HR Manager", "HRBP", "Recruiter", "Talent Acquisition Specialist",
+        "Finance Manager", "Accounting Manager", "FP&A Analyst", 
+        "Legal Counsel", "General Affairs Manager", "Strategy Planner"
     ],
-    "OPERATION_SCM": [
-        "Operations Manager", "Supply Chain Manager", "SCM Planner", "Logistics Manager", 
-        "Procurement Manager", "Purchasing Manager", "Inventory Manager"
-    ],
-    "TECH_CLIENT": [
-        "Frontend Engineer", "Mobile Engineer", "Application Software Engineer"
-    ],
-    "TECH_NET_SEC": [
-        "Network Engineer", "Security Engineer"
-    ],
-    "LEADERSHIP": [
-        "Technical Lead", "Software Architect", "Engineering Manager",
-        "Team Lead", "Department Head", "Director"
+    "CREATIVE": [
+        "Product Designer", "UI/UX Designer", "UX Researcher", "Graphic Designer", 
+        "Brand Designer", "Content Creator", "Motion Designer"
     ]
 }
 

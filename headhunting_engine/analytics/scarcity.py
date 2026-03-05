@@ -145,24 +145,26 @@ class ScarcityEngine:
                 else:
                     self.skill_frequency[node_id] = data
         
-    def calculate_depth_weighted_scarcity(self, skill_name: str) -> float:
+    def calculate_depth_weighted_scarcity(self, skill_name: str, impact_weight: float = 1.0) -> float:
         """
-        [v3] Effective Supply = (Applied * 1.0) + (Architected * 1.5)
-        Scarcity = 1 - (Effective Supply / Role Pool)
+        [v4] Effective Supply = Σ (DepthWeight × ImpactWeight)
+        Scarcity = 1 - (Effective Supply / Weighted Capacity)
         """
         node = self.snapshot.get(skill_name, {})
+        depth_weights = {"Mentioned": 0.3, "Executed": 0.7, "Led": 1.0, "Architected": 1.3}
+        
         if not node: 
-            # Check skill_frequency for backward compatibility
             return self.skill_frequency.get(skill_name, 0.8)
         
         dist = node.get("depth_distribution", {})
-        applied = dist.get("Applied", 0)
-        architected = dist.get("Architected", 0)
+        total_weighted_supply = 0
+        for depth, count in dist.items():
+            total_weighted_supply += count * depth_weights.get(depth, 0.3) * impact_weight
         
         role_pool_size = node.get("role_pool_size", self.total_candidates or 100)
-        effective_supply = (applied * 1.0) + (architected * 1.5)
+        weighted_capacity = role_pool_size * 1.3 # Max capacity assuming all are Architected
         
-        scarcity = 1.0 - (effective_supply / role_pool_size)
+        scarcity = 1.0 - (total_weighted_supply / weighted_capacity)
         return round(max(0.0, min(1.0, scarcity)), 4)
 
     def calculate_jd_scarcity(self, must_skills: List[str]) -> float:

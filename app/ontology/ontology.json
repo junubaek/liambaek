@@ -1,0 +1,102 @@
+{
+    "domains": {
+        "DATA_ANALYTICS": {
+            "patterns": [
+                "KPI_Framework_Design",
+                "SQL_Data_Extraction",
+                "Data_Modeling",
+                "Data_Visualization",
+                "Experiment_Design",
+                "Customer_Segmentation",
+                "Cohort_Analysis",
+                "Business_Intelligence",
+                "Data_Driven_Forecasting"
+            ],
+            "impact_signals": [
+                "analysis_accuracy",
+                "insight_count",
+                "decision_impact"
+            ]
+        },
+        "FINANCE_STRATEGY": {
+            "patterns": [
+                "Business_Plan_Optimization",
+                "FP&A_Modeling",
+                "Revenue_Forecasting",
+                "Unit_Economics_Modeling",
+                "Strategic_Prioritization",
+                "Market_Sizing",
+                "Profit_Projection_Analysis"
+            ],
+            "impact_signals": [
+                "budget_precision",
+                "capital_efficiency",
+                "roi_improvement"
+            ]
+        },
+        "CORPORATE_OPERATIONS": {
+            "patterns": [
+                "Vendor_Management",
+                "Lease_Negotiation",
+                "Office_Relocation_PM",
+                "Facility_Operations",
+                "Asset_Management",
+                "Space_Experience_Design"
+            ],
+            "impact_signals": [
+                "cost_saved",
+                "op_efficiency",
+                "workplace_sat"
+            ]
+        },
+        "MARKETING_GROWTH": {
+            "patterns": [
+                "Performance_Marketing",
+                "Growth_Experimentation",
+                "Campaign_Optimization",
+                "Influencer_Partnership",
+                "Marketing_Attribution",
+                "CAC_Optimization"
+            ],
+            "impact_signals": [
+                "roas",
+                "conversion_rate",
+                "mau_growth"
+            ]
+        },
+        "HR_TALENT": {
+            "patterns": [
+                "Recruitment_Process_Design",
+                "Compensation_Structure_Design",
+                "Performance_Management_System",
+                "Talent_Development_Program",
+                "Employer_Branding"
+            ],
+            "impact_signals": [
+                "hiring_velocity",
+                "retention_rate",
+                "talent_quality"
+            ]
+        },
+        "SECURITY_ENGINEERING": {
+            "patterns": [
+                "Threat_Modeling",
+                "Security_Architecture",
+                "Incident_Response",
+                "Vulnerability_Management",
+                "ISMS_Implementation"
+            ],
+            "impact_signals": [
+                "risk_score",
+                "incident_count",
+                "compliance_rate"
+            ]
+        }
+    },
+    "complexity_levels": {
+        "MENTIONED": 0.3,
+        "EXECUTED": 0.7,
+        "LED": 1.0,
+        "ARCHITECTED": 1.3
+    }
+}

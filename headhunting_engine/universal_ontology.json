@@ -1,0 +1,239 @@
+{
+    "sectors": {
+        "TECH_SW": {
+            "domains": [
+                "SW_BACKEND",
+                "SW_FRONTEND",
+                "SW_PLATFORM",
+                "INFRA_DEVOPS"
+            ],
+            "patterns": [
+                "MSA_Architecture",
+                "API_Optimization",
+                "Concurrency_Handling",
+                "Distributed_System_Design",
+                "Event_Driven_Architecture",
+                "CI_CD_Pipeline",
+                "Container_Orchestration",
+                "IaC",
+                "Frontend_Performance",
+                "Mobile_Architecture",
+                "SDK_Framework_Design"
+            ]
+        },
+        "TECH_HW": {
+            "domains": [
+                "HW_PCB",
+                "HW_SYSTEM_INTEGRATION",
+                "EMBEDDED_FW"
+            ],
+            "patterns": [
+                "PCB_Schematic_Design",
+                "Signal_Integrity",
+                "Hardware_Bring_Up",
+                "Board_Validation",
+                "BSP_Development",
+                "Driver_Development",
+                "RTOS_Integration",
+                "Bootloader_Development",
+                "Hardware_System_Architecture"
+            ]
+        },
+        "SEMICONDUCTOR": {
+            "domains": [
+                "CHIP_DESIGN",
+                "VERIFICATION",
+                "PHYSICAL_DESIGN",
+                "ANALOG",
+                "SYSTEM_SW"
+            ],
+            "patterns": [
+                "RTL_Design",
+                "SoC_Architecture",
+                "NPU_Design",
+                "ASIC_Design",
+                "IP_Integration",
+                "Bus_Architecture",
+                "Cache_Design",
+                "DV_Methodology",
+                "UVM_Testbench",
+                "Coverage_Driven_Verification",
+                "Formal_Verification",
+                "Assertion_Based_Verification",
+                "Physical_Design",
+                "Floorplanning",
+                "Place_and_Route",
+                "Timing_Closure",
+                "Static_Timing_Analysis",
+                "Analog_Mixed_Signal",
+                "PLL_Design",
+                "SerDes",
+                "Compiler_Development",
+                "OS_Kernel",
+                "Hypervisor",
+                "ISA_Architecture",
+                "Toolchain_Development",
+                "Power_Optimization",
+                "Performance_Modeling",
+                "Pre_Silicon_Validation",
+                "Post_Silicon_Debug",
+                "DFT",
+                "ATPG"
+            ]
+        },
+        "DATA_AI": {
+            "domains": [
+                "DATA_ENGINEERING",
+                "DATA_SCIENCE",
+                "AI_ML_RESEARCH",
+                "AI_ENGINEERING",
+                "DATA_ANALYTICS"
+            ],
+            "patterns": [
+                "Data_Pipeline_Building",
+                "ETL_Architecture",
+                "Stream_Processing",
+                "Data_Lake_Design",
+                "Data_Mesh_Architecture",
+                "ML_Model_Development",
+                "Statistical_Modeling",
+                "Experiment_Design",
+                "A_B_Testing",
+                "LLM_Fine_Tuning",
+                "LLM_Pretraining",
+                "RAG_Architecture",
+                "Multimodal_Model_Research",
+                "Reinforcement_Learning",
+                "MLOps_Platform",
+                "Model_Serving",
+                "Inference_Optimization",
+                "Feature_Store_Design",
+                "KPI_Framework_Design",
+                "Customer_Segmentation",
+                "Cohort_Analysis"
+            ]
+        },
+        "PRODUCT": {
+            "domains": [
+                "PO_PM",
+                "SERVICE_PLANNING",
+                "TECHNICAL_PM",
+                "PRODUCT_ANALYTICS"
+            ],
+            "patterns": [
+                "Product_Roadmap_Design",
+                "Feature_Prioritization",
+                "User_Research",
+                "Usability_Testing",
+                "Go_To_Market_Strategy",
+                "Product_Launch",
+                "Technical_Requirement_Specification",
+                "Cross_Functional_Coordination",
+                "Metrics_Framework",
+                "Retention_Analysis"
+            ]
+        },
+        "BUSINESS": {
+            "domains": [
+                "SALES_BD",
+                "MARKETING_GROWTH",
+                "SCM_LOGISTICS"
+            ],
+            "patterns": [
+                "Enterprise_Sales",
+                "Partnership_Development",
+                "Revenue_Pipeline_Management",
+                "Deal_Structuring",
+                "Growth_Hacking",
+                "Performance_Marketing",
+                "Brand_Strategy",
+                "CRM_Management",
+                "Supply_Chain_Optimization",
+                "Vendor_Management",
+                "Demand_Planning"
+            ]
+        },
+        "SECURITY": {
+            "domains": [
+                "SECURITY_ENGINEERING",
+                "SECURITY_OPERATIONS",
+                "COMPLIANCE"
+            ],
+            "patterns": [
+                "Penetration_Testing",
+                "Vulnerability_Assessment",
+                "Security_Architecture_Design",
+                "Zero_Trust",
+                "SOC_Operations",
+                "Incident_Response",
+                "Threat_Intelligence",
+                "SIEM_Management",
+                "Regulatory_Compliance",
+                "ISMS_Certification",
+                "Cloud_Security",
+                "Container_Security",
+                "Secure_Code_Review",
+                "DevSecOps"
+            ]
+        },
+        "CORPORATE": {
+            "domains": [
+                "FINANCE_ACCOUNTING",
+                "HRM_HRD",
+                "LEGAL",
+                "STRATEGY_MA",
+                "GA_ADMIN"
+            ],
+            "patterns": [
+                "FP_and_A",
+                "Financial_Modeling",
+                "IR_Management",
+                "M_and_A_Due_Diligence",
+                "Deal_Structuring",
+                "Talent_Acquisition",
+                "Organizational_Development",
+                "Compensation_Benefit_Design",
+                "HRBP",
+                "Contract_Management",
+                "IP_Management",
+                "Regulatory_Affairs",
+                "Litigation_Management",
+                "Corporate_Strategy",
+                "New_Business_Development",
+                "Facility_Operations",
+                "Asset_Management"
+            ]
+        },
+        "CREATIVE": {
+            "domains": [
+                "UX_UI_DESIGN",
+                "BRAND_DESIGN",
+                "CONTENT"
+            ],
+            "patterns": [
+                "UX_Research",
+                "Interaction_Design",
+                "Usability_Testing",
+                "Design_System_Architecture",
+                "Component_Library",
+                "Brand_Identity",
+                "Visual_Communication",
+                "Motion_Design",
+                "Video_Production",
+                "Content_Strategy"
+            ]
+        }
+    },
+    "depth_weights": {
+        "Owned": 1.0,
+        "Led": 0.85,
+        "Applied": 0.65,
+        "Assisted": 0.40,
+        "Mentioned": 0.20
+    },
+    "impact_types": {
+        "Quantitative": "Technical/Product/Sales/Marketing/Finance metrics",
+        "Qualitative": "HR/Legal/Strategy/GA cases/risks",
+        "Hybrid": "Data/Operations/SCM/Security mixed"
+    }
+}

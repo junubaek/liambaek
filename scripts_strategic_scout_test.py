@@ -20,7 +20,10 @@ def test_solo_control_flow():
     scorer = Scorer(vm)
     scarcity_engine = ScarcityEngine(snapshot_path)
     
-    scout = StrategicScout(scorer, scarcity_engine, pool_path)
+    from headhunting_engine.analytics.risk_engine import JDRiskEngine
+    risk_engine = JDRiskEngine(scarcity_engine, pool_path)
+    
+    scout = StrategicScout(scorer, scarcity_engine, risk_engine, pool_path)
 
     # 1. New JD Simulation (AI Backend Engineer)
     new_jd = {
@@ -34,9 +37,9 @@ def test_solo_control_flow():
     # 2. Diagnose
     diagnosis = scout.diagnose_jd(new_jd["must"], new_jd["nice"])
     print(f"\n🔍 [Diagnosis Results]")
-    print(f"- Difficulty: {diagnosis['difficulty_level']}")
-    print(f"- JD Scarcity: {diagnosis['jd_scarcity_score']}")
-    print(f"- Expected Sourcing: {diagnosis['expected_sourcing_weeks']} weeks")
+    print(f"- Difficulty: {diagnosis['forecast']['difficulty_level']}")
+    print(f"- JD Scarcity: {diagnosis['transparency_layer']['scarcity_index']}")
+    print(f"- Expected Sourcing: {diagnosis['forecast']['expected_sourcing_weeks']} weeks")
 
     # 3. Match & Analysis
     analysis = scout.match_and_analyze(new_jd["must"], new_jd["nice"])

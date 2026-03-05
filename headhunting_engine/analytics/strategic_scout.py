@@ -88,8 +88,9 @@ class StrategicScout:
         }
         
         # 3. Tier 3 - Elite Layer
-        s_matched = len([m for m in matches if m.get("grade") == "S"])
-        a_matched = len([m for m in matches if m.get("grade") == "A"])
+        match_list = matches.get("top_candidates", [])
+        s_matched = len([m for m in match_list if m.get("grade") == "S"])
+        a_matched = len([m for m in match_list if m.get("grade") == "A"])
         
         # 4. Consistency Alerts
         alerts = transparency.get("consistency_alerts", [])

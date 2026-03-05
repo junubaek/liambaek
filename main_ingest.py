@@ -4,7 +4,9 @@ import time
 from connectors.notion_api import HeadhunterDB
 from connectors.notion_api import HeadhunterDB
 from connectors.openai_api import OpenAIClient
-from connectors.pinecone_api import PineconeClient
+from headhunting_engine.connectors.qdrant_connector import QdrantConnector
+from headhunting_engine.data_core import AnalyticsDB
+from app.utils.candidate_extractor import CandidatePatternExtractor
 
 from classification_rules import ALLOWED_ROLES, ALLOWED_DOMAINS, get_role_cluster, validate_role, validate_domains
 
@@ -85,12 +87,8 @@ def main():
     notion_db = HeadhunterDB()
     openai = OpenAIClient(secrets["OPENAI_API_KEY"])
     
-    # Fix Pinecone Host URL
-    pc_host = secrets.get("PINECONE_HOST", "")
-    if not pc_host.startswith("https://"):
-        pc_host = f"https://{pc_host}"
-    
-    pinecone = PineconeClient(secrets["PINECONE_API_KEY"], pc_host)
+    qdrant = QdrantConnector()
+    qdrant.ensure_collection()
     
     try:
         # 3. Fetch Candidates
@@ -150,11 +148,17 @@ def main():
                     if 'parser_instance' not in globals():
                         from connectors.openai_api import OpenAIClient
                         from resume_parser import ResumeParser
+                        from headhunting_engine.data_core import AnalyticsDB
+                        from app.utils.candidate_extractor import CandidatePatternExtractor
                         import json
                         with open("secrets.json", "r") as f:
                             secrets = json.load(f)
                         _openai = OpenAIClient(secrets["OPENAI_API_KEY"])
                         globals()['parser_instance'] = ResumeParser(_openai)
+                        globals()['analytics_db'] = AnalyticsDB()
+                        from app.utils.candidate_role_classifier import CandidateRoleClassifier
+                        globals()['pattern_extractor'] = CandidatePatternExtractor()
+                        globals()['role_classifier'] = CandidateRoleClassifier(_openai)
                     
                     structured_data = globals()['parser_instance'].parse(combined_text)
                     # print(f"  -> Extracted {len(structured_data.get('skills', []))} skills")
@@ -174,93 +178,46 @@ def main():
                 domain_list = validate_domains(position, raw_domains)
                 skills = ai_result.get("skills", [])
                 
-                # Update Notion
+                # 3. Quality Score & Metadata [v5]
+                quality = globals()['parser_instance'].calculate_quality_score(structured_data)
+                
+                # Update Notion with Quality Score
                 props_update = {
                     "포지션": {"select": {"name": position}},
                     "Domain": {"multi_select": [{"name": d} for d in domain_list]},
                     "Role Cluster": {"select": {"name": role_cluster}},
-                    "AI_Generated": {"checkbox": True}
+                    "AI_Generated": {"checkbox": True},
+                    "Data Quality": {"select": {"name": quality["status"]}}
                 }
                 notion_db.update_candidate(cand_id, props_update)
 
-                # 4. Upsert Vectors
-                vectors_to_upsert = []
-                import hashlib
-                compact_id = hashlib.md5(name.encode()).hexdigest()[:10]
+                # 4. Pattern Indexing & Role Classification [v5.2]
+                tenant_id = secrets.get("TENANT_ID", "default")
                 
-                # A. Summary Vector (Base Profile)
-                domain_str = ", ".join(domain_list)
-                summary_text = f"""
-                Name: {name}
-                Role: {position}
-                Cluster: {role_cluster}
-                Domain: {domain_str}
-                Total Exp: {structured_data.get('total_years_experience', 0)} years
-                Summary: {structured_data.get('summary', '')}
-                Skills: {', '.join(skills)}
-                Resume Body: {full_text[:3000]}
-                """
+                # A. Pattern Extraction
+                indexable_patterns = globals()['pattern_extractor'].extract_indexable_patterns(structured_data)
+                globals()['analytics_db'].save_candidate_patterns(cand_id, indexable_patterns, tenant_id=tenant_id)
                 
-                if not structured_data:
-                    structured_data = {}
+                # B. Role Classification (Symmetric to JD)
+                role_cluster_v5 = globals()['role_classifier'].classify_candidate(combined_text)
+                globals()['analytics_db'].update_candidate_role(cand_id, role_cluster_v5, tenant_id=tenant_id)
+                
+                print(f"  -> Indexed {len(indexable_patterns)} patterns | Role: {role_cluster_v5} for {name}")
 
+                # 5. Upsert Multi-tenant Vectors (Qdrant)
+                tenant_id = secrets.get("TENANT_ID", "default")
+                
+                # A. Summary Vector
+                summary_text = f"Candidate: {name}\nRole: {position}\nPatterns: {json.dumps(structured_data.get('experience_patterns', []))}"
                 emb_summary = openai.embed_content(summary_text)
                 if emb_summary:
-                    basics = structured_data.get("basics") or {}
-                    
-                    meta_summary = {
-                        "candidate_id": cand_id, # Link to Notion ID
+                    meta = {
                         "name": name,
-                        "type": "summary",
                         "position": position,
-                        "role_cluster": role_cluster,
-                        "domain": domain_list,
-                        "summary": (structured_data.get("summary") or "")[:1000],
-                        # [Phase 2] Rich Metadata for Filtering
-                        "total_years": int(basics.get("total_years_experience") or 0),
-                        "skills": (structured_data.get("skills") or [])[:50], 
-                        "companies": [job.get("company") for job in (structured_data.get("work_experience") or []) if job.get("company")],
-                        "degrees": [edu.get("degree") for edu in (structured_data.get("education") or []) if edu.get("degree")],
-                        
-                        # Legacy fields for backward compatibility with Scorer
-                        "skill_score": float(cand.get('skill_score', 0) or 0),
-                        "experience_bonus": float(cand.get('experience_bonus', 0) or 0)
+                        "quality": quality["status"],
+                        "tenant_id": tenant_id
                     }
-                    vectors_to_upsert.append({
-                        "id": compact_id,
-                        "values": emb_summary,
-                        "metadata": meta_summary
-                    })
-                
-                # B. Experience Vectors
-                work_exp = structured_data.get('work_experience') or []
-                for idx_exp, exp in enumerate(work_exp):
-                    exp_role = exp.get('role') or 'Unknown Role'
-                    exp_company = exp.get('company') or 'Unknown Company'
-                    
-                    exp_text = f"Role: {exp_role}\nCompany: {exp_company}\nDescription: {exp.get('description') or ''}"
-                    emb_exp = openai.embed_content(exp_text)
-                    
-                    if emb_exp:
-                        meta_exp = {
-                            "candidate_id": cand_id,
-                            "name": name,
-                            "type": "experience",
-                            "position": position, 
-                            "role_cluster": role_cluster,
-                            "company": exp_company,
-                            "exp_role": exp_role,
-                            "duration": int(exp.get('duration_years') or 0)
-                        }
-                        vectors_to_upsert.append({
-                            "id": f"{compact_id}_exp_{idx_exp}",
-                            "values": emb_exp,
-                            "metadata": meta_exp
-                        })
-
-                # Upsert remaining for this candidate (Inside TRY)
-                if vectors_to_upsert:
-                     pinecone.upsert(vectors_to_upsert)
+                    qdrant.upsert_candidate(cand_id, emb_summary, meta, tenant_id=tenant_id)
                  
             except Exception as e:
                 print(f"  [!] Error processing {name}: {e}")

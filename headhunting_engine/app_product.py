@@ -17,23 +17,20 @@ from connectors.notion_api import HeadhunterDB
 from headhunting_engine.data_core import AnalyticsDB
 from headhunting_engine.lifecycle_engine import LifecycleEngine
 from headhunting_engine.strategic_alert_agent import StrategicAlertAgent
-from jd_analyzer_v3 import JDAnalyzerV3
-from search_pipeline_v3 import SearchPipelineV3
+from jd_analyzer_v4 import JDAnalyzerV4
+from search_pipeline_v4 import SearchPipelineV4
 from connectors.openai_api import OpenAIClient
 from connectors.pinecone_api import PineconeClient
 
 # Page Config
-st.set_page_config(page_title="Antigravity v4.0 | Product Mode", layout="wide")
+st.set_page_config(page_title="Antigravity v4.1 | Universal Hub", layout="wide")
 
 # CSS for 3-Panel aesthetics
 st.markdown("""
 <style>
     .panel-container { background-color: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; height: 100%; }
     .metric-card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 10px; }
-    .status-badge { padding: 4px 8px; border-radius: 999px; font-size: 11px; font-weight: bold; }
-    .status-cold { background: #fee2e2; color: #991b1b; }
-    .status-warm { background: #fef3c7; color: #92400e; }
-    .status-hired { background: #dcfce7; color: #166534; }
+    .pattern-tag { background: #eff6ff; color: #1e40af; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-right: 5px; border: 1px solid #bfdbfe; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -63,51 +60,65 @@ with st.sidebar:
     st.markdown("---")
     
     st.subheader("🤖 Agent Status")
-    st.success("Maintenance Agent: Active")
-    st.success("Strategic Alert: Monitoring")
+    st.success("Universal Matcher: V4 (Active)")
+    st.success("Experience Parser: Enabled")
     
     with st.expander("Recent Alerts", expanded=True):
-        # Simulated alert fetch for UI demo
         st.error("🚨 Backend S-Level Depletion (12%)")
         st.warning("⚠️ JD Drift: 'Toss FP&A' (-8.5%)")
 
 # Main Dashboard
-st.title("🌌 Matching Engine | Product V4")
+st.title("🌌 Universal AI Engine | V4.1")
 
-col1, col2, col3 = st.columns([1, 2.5, 1.2])
+col1, col2, col3 = st.columns([1.2, 2.3, 1.2])
 
-# Panel 1: Risk Core
+# Panel 1: Risk & Pattern Analysis
 with col1:
     st.markdown('<div class="panel-container">', unsafe_allow_html=True)
-    st.subheader("🧠 Panel 1: Risk Core")
+    st.subheader("🧠 Panel 1: Patterns & Risk")
     
-    jd_input = st.text_area("Analyze New JD", height=200, placeholder="Paste JD here...")
+    jd_input = st.text_area("Analyze New JD", height=200, placeholder="Paste JD here (Any job role)...")
     
-    if st.button("RUN ANALYSIS", use_container_width=True):
-        with st.spinner("Calculating Risk Metrics..."):
-            # Real JD analysis
-            analyzer = JDAnalyzerV3(openai)
+    if st.button("RUN UNIVERSAL 7-AXIS ANALYSIS", use_container_width=True):
+        with st.spinner("Executing 7-Axis Intelligence Extraction..."):
+            analyzer = JDAnalyzerV4(openai)
             analysis = analyzer.analyze(jd_input)
             st.session_state.analysis = analysis
             
-            # Static metrics for now, will link to real scarcity later
-            st.metric("Scarcity", "0.82", "+0.14", delta_color="inverse")
-            st.metric("Elite Density", "3.2%", "-1.1%", delta_color="inverse")
-            st.metric("Success Prob", "8.5%")
+            # Show 7-Axis Result
+            st.markdown("### **🎯 7-Axis Analysis**")
             
-            st.info("**Drift Warning**: Pool is aging. Scarcity rising.")
+            cols_7 = st.columns(2)
+            with cols_7[0]:
+                st.write(f"**Family**: {analysis.get('role_family')}")
+                st.write(f"**Seniority**: {analysis.get('seniority_required')} yrs")
+            with cols_7[1]:
+                st.write(f"**Level**: {analysis.get('leadership_level')}")
+                st.write(f"**Domain**: {', '.join(analysis.get('functional_domains', []))}")
+            
+            st.markdown("---")
+            st.markdown("#### **Experience Patterns**")
+            for p in analysis.get("experience_patterns", []):
+                st.markdown(f"✅ **{p['pattern']}** ({p['min_complexity']})")
+                
+            st.markdown("#### **Impact & Constraints**")
+            impact = analysis.get("impact_requirements", {})
+            st.write(f"📊 **Scale**: {impact.get('scale_type')}")
+            if analysis.get("hard_constraints"):
+                st.warning(f"⚠️ **Hard**: {', '.join(analysis.get('hard_constraints'))}")
+            
     st.markdown('</div>', unsafe_allow_html=True)
 
 # Panel 2: Candidate Table
 with col2:
     st.markdown('<div class="panel-container">', unsafe_allow_html=True)
-    st.subheader("📋 Panel 2: Candidate Intelligence")
+    st.subheader("📋 Panel 2: Experience-Based Matching (V4)")
     
     if 'analysis' in st.session_state:
         # Run search
-        query_string = f"{st.session_state.analysis.get('role')} {' '.join(st.session_state.analysis.get('must'))}"
+        query_string = f"{st.session_state.analysis.get('role_family')} {' '.join([p['pattern'] for p in st.session_state.analysis.get('experience_patterns', [])])}"
         vector = openai.embed_content(query_string)
-        pipeline = SearchPipelineV3(pc)
+        pipeline = SearchPipelineV4(pc)
         results, _ = pipeline.run(st.session_state.analysis, vector, top_k=50)
         
         # Build DataFrame for display
@@ -115,45 +126,47 @@ with col2:
         for i, res in enumerate(results[:15]):
             data = res['data']
             rev_res = lifecycle.predict_revenue_probability(res['rpl_score'])
+            score_m = res.get('score_breakdown', {})
             
             df_data.append({
                 "Rank": i+1,
-                "Name": data.get('name'),
-                "RPL": f"{res['rpl_score']:.1f}",
-                "Revenue %": f"{rev_res['revenue_percentage']}%",
-                "State": "Warm" if i < 3 else "Cold",
-                "Last Contact": "3 days ago"
+                "Name": data.get('basics', {}).get('name', f"Candidate_{res['id'][:4]}"),
+                "Experience Match": f"{res['rpl_score']:.1f}%",
+                "Domain": f"{score_m.get('df', 0):.0f}",
+                "Pattern": f"{score_m.get('epm', 0):.0f}",
+                "Impact": f"{score_m.get('if', 0):.0f}",
+                "Elite": "S-Tier" if score_m.get('em', 1) > 1 else "Standard"
             })
         
         df = pd.DataFrame(df_data)
-        st.table(df)
+        st.dataframe(df, use_container_width=True, hide_index=True)
     else:
-        st.info("JD를 입력하고 요건 분석을 먼저 실행해 주세요.")
+        st.info("JD를 입력하여 '범용 경험 분석'을 먼저 실행해 주세요.")
     
     st.markdown('</div>', unsafe_allow_html=True)
 
 # Panel 3: Strategy Output
 with col3:
     st.markdown('<div class="panel-container">', unsafe_allow_html=True)
-    st.subheader("🔥 Panel 3: Strategy")
+    st.subheader("🔥 Panel 3: Universal Strategy")
     
     if 'analysis' in st.session_state:
+        st.markdown(f"### **{st.session_state.analysis.get('domain')} Strategy**")
+        st.info(f"Targeting **{st.session_state.analysis.get('seniority')}** level experts.")
+        
+        clues = st.session_state.analysis.get("strategy_clues", [])
+        if clues:
+            for clue in clues:
+                st.markdown(f"- {clue}")
+        
+        st.markdown("---")
         st.markdown("""
-        ### **Sourcing Action**
-        - **Internal Pool**: 12 candidates found.
-        - **Action**: Direct reach-out recommended.
-        
-        ### **Salary Pressure**
-        - Market Median: 85M KRW
-        - JD Target: 75M KRW
-        - **Warning**: High pressure (+13.3%)
-        
         ### **Strategic Recommendation**
-        > "Backend S급 인재의 Scarcity가 0.82로 급증했습니다. 연봉 제안 범위를 상향하거나, 외부 Sourcing 채널을 가동해야 합니다."
+        > "이 JD는 Skill보다 **Experience Pattern(경험 패턴)** 매칭이 핵심입니다. 특히 상위 레벨의 리딩 경험 보증이 성공 확률을 결정합니다."
         """)
         
-        if st.button("Generate Notion Report"):
-            st.toast("Report generated in Notion!")
+        if st.button("Generate Strategy Report"):
+            st.toast("Report generated!")
     else:
         st.write("Strategy will appear after analysis.")
         

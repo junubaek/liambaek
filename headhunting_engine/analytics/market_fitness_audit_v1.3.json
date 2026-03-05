@@ -1,23 +1,18 @@
 {
   "score_stats": {
     "raw": {
-      "mean": 49.36,
-      "std": 11.86,
+      "mean": 49.3,
+      "std": 11.66,
       "min": 30.0,
       "max": 90.0
     },
     "normalized": {
-      "mean": 64.87,
-      "std": 9.68
+      "mean": 64.85,
+      "std": 9.63
     }
   },
   "extreme_candidates": {
     "top_5_percent_raw": [
-      {
-        "name": "김 민 규",
-        "score": 90.0,
-        "position": "head of smarthome R&D"
-      },
       {
         "name": "박 현 규",
         "score": 90.0,
@@ -26,12 +21,27 @@
       {
         "name": "서영종 (SEO YEONG JONG)",
         "score": 90.0,
-        "position": "본부장 (상무) at 우리에프아이에스"
+        "position": "본부장 (상무)"
+      },
+      {
+        "name": "김 민 규",
+        "score": 85.0,
+        "position": "head of smarthome R&D"
+      },
+      {
+        "name": "김준형",
+        "score": 85.0,
+        "position": "CTO"
       },
       {
         "name": "Jaeyoung Lee",
         "score": 85.0,
         "position": "Principal Research Engineer"
+      },
+      {
+        "name": "Sungjoo Kang",
+        "score": 85.0,
+        "position": "Managing Partner & Head of Operations"
       },
       {
         "name": "Jihyeon Lee",
@@ -44,19 +54,9 @@
         "position": "Co-Founder / AI Lead"
       },
       {
-        "name": "Aron Sung (Jang Hyun)",
-        "score": 80.0,
-        "position": "Senior Manager"
-      },
-      {
         "name": "백해용",
         "score": 80.0,
-        "position": "Developer at LINE Plus"
-      },
-      {
-        "name": "박종모",
-        "score": 80.0,
-        "position": "실장, 경영지원실(재무, SCM)"
+        "position": "Redis Cluster Management Developer"
       },
       {
         "name": "김율",
@@ -64,14 +64,14 @@
         "position": "Business Operation Logistics Leader"
       },
       {
+        "name": "Jun Hyung Kim",
+        "score": 80.0,
+        "position": "Project Leader (Team Lead)"
+      },
+      {
         "name": "Yongseok Koh",
         "score": 78.0,
         "position": "Principal SW Development Engineer"
-      },
-      {
-        "name": "Kyongjoo Oh",
-        "score": 78.0,
-        "position": "Principle Software Engineer"
       },
       {
         "name": "김 남 균",
@@ -79,9 +79,14 @@
         "position": "System Engineer"
       },
       {
-        "name": "이도현",
+        "name": "Unknown",
         "score": 77.0,
-        "position": "선임"
+        "position": "Senior Manager at CJ대한통운"
+      },
+      {
+        "name": "정창희",
+        "score": 77.0,
+        "position": "Senior Backend Engineer"
       },
       {
         "name": "서미리",
@@ -94,24 +99,24 @@
         "position": "개인화Project Owner (차장)"
       },
       {
-        "name": "주형우",
-        "score": 77.0,
-        "position": "Back-end Developer / 개발팀 팀장"
-      },
-      {
         "name": "문주원",
         "score": 77.0,
         "position": "ERP Solution Architect"
       },
       {
-        "name": "Nathan (Yong Jun) Lee",
+        "name": "Unknown",
         "score": 77.0,
-        "position": "Vice President, Trader"
+        "position": "면세점팀 팀장"
+      },
+      {
+        "name": "김경운(金庚云)",
+        "score": 77.0,
+        "position": "팀장, 병원운영팀"
       },
       {
         "name": "김동윤(Kim, Dong-yun)",
         "score": 77.0,
-        "position": "과장 (Manager) at 하나투어"
+        "position": "과장 (Manager) in Membership Marketing Team"
       },
       {
         "name": "Jae Yoon Lee",
@@ -122,6 +127,11 @@
         "name": "Candidate Name",
         "score": 75.0,
         "position": "CPO, AI SaaS 센터장"
+      },
+      {
+        "name": "Aron Sung (Jang Hyun)",
+        "score": 75.0,
+        "position": "Senior Manager"
       },
       {
         "name": "정지은",
@@ -139,39 +149,24 @@
         "position": "Head of Overseas Sales"
       },
       {
-        "name": "곽 훈",
-        "score": 75.0,
-        "position": "해외영업총괄 상무"
-      },
-      {
         "name": "심 동 철",
         "score": 75.0,
         "position": "팀장, 제조팀 (프로세스기술 / 선행개발)"
       },
       {
-        "name": "Sungjoo Kang",
+        "name": "신웅섭",
         "score": 75.0,
-        "position": "Managing Partner & Head of Operations"
+        "position": "선임, CDO 오퍼레이션DX팀"
       },
       {
-        "name": "김성환",
+        "name": "송병채",
         "score": 75.0,
-        "position": "보안Part Leader"
+        "position": "AI기술담당 개인화기술팀 선임"
       },
       {
-        "name": "송병채 (Song Byungchae)",
+        "name": "김형은 (Hyungeun Kim)",
         "score": 75.0,
-        "position": "AI기술담당 개인화기술팀 선임 (Senior AI Technology Manager)"
-      },
-      {
-        "name": "이영숙 (LI YINGSHU)",
-        "score": 75.0,
-        "position": "사업PM / 매니저"
-      },
-      {
-        "name": "Jun Hyung Kim",
-        "score": 75.0,
-        "position": "Project Leader (Team Lead)"
+        "position": "이사 (Director), 운영 전략, Strategy, Ops. and PMI/M&A"
       },
       {
         "name": "심상우",
@@ -179,9 +174,19 @@
         "position": "사업총괄본부/본부장(CSO)/전무"
       },
       {
-        "name": "Shin-Young (Shin) Kim",
+        "name": "Shin-Young Kim",
         "score": 75.0,
         "position": "Executive Director"
+      },
+      {
+        "name": "오세규",
+        "score": 75.0,
+        "position": "Vice President of Finance"
+      },
+      {
+        "name": "정종우",
+        "score": 75.0,
+        "position": "Director (Global Accounting & Consolidation)"
       },
       {
         "name": "박 기 홍",
@@ -206,57 +211,32 @@
       {
         "name": "구 성 회",
         "score": 75.0,
-        "position": "헝가리법인장"
-      },
-      {
-        "name": "노 동 수",
-        "score": 75.0,
-        "position": "Business Development"
+        "position": "부장"
       },
       {
         "name": "소민식 (So, Min-sik)",
         "score": 75.0,
-        "position": "Manager, Live Selection Team at Coupang"
+        "position": "Manager, Live Selection Team"
       },
       {
-        "name": "정혜전 (HEYJEON JEONG)",
+        "name": "Candidate Name",
         "score": 75.0,
-        "position": "대외협력 디렉터 (Director of External Relations)"
-      },
-      {
-        "name": "최재웅",
-        "score": 75.0,
-        "position": "파트장, 브랜드마케팅팀"
+        "position": "부장 (Manager)"
       },
       {
         "name": "석소은",
         "score": 75.0,
-        "position": "부장 (팀장)"
+        "position": "부장 (팀장) at O! GREAT"
       },
       {
         "name": "황보현",
         "score": 75.0,
-        "position": "디지털 마케팅 팀 과장"
-      },
-      {
-        "name": "Candidate Name",
-        "score": 75.0,
-        "position": "Data Analyst / Project Lead"
+        "position": "디지털 마케팅팀 과장"
       },
       {
         "name": "강 은 태",
         "score": 75.0,
-        "position": "부장"
-      },
-      {
-        "name": "Candidate Name",
-        "score": 75.0,
-        "position": "Overseas Sales Director"
-      },
-      {
-        "name": "Candidate Name",
-        "score": 75.0,
-        "position": "Head of Overseas Sales Team"
+        "position": "부장, 소형전지생산1팀"
       },
       {
         "name": "강동현",
@@ -279,19 +259,24 @@
         "position": "Principal Engineer"
       },
       {
+        "name": "정태영",
+        "score": 73.0,
+        "position": "수석 연구원"
+      },
+      {
         "name": "Kun Joo",
         "score": 73.0,
         "position": "Principal Engineer"
       },
       {
+        "name": "Kyongjoo Oh",
+        "score": 73.0,
+        "position": "Principle Software Engineer"
+      },
+      {
         "name": "Seokhyun Kang",
         "score": 73.0,
         "position": "Project Manager at Samsung Electronics"
-      },
-      {
-        "name": "강 철",
-        "score": 73.0,
-        "position": "Data Engineer"
       },
       {
         "name": "Byungseok Roh",
@@ -301,7 +286,7 @@
       {
         "name": "Candidate Name",
         "score": 73.0,
-        "position": "과장 (Manager) at CJ올리브네트웍스"
+        "position": "과장 (Manager) in Next ERP FCM2팀"
       },
       {
         "name": "국 래 헌",
@@ -309,36 +294,86 @@
         "position": "TA (Technical Architect)"
       },
       {
-        "name": "안용운",
-        "score": 73.0,
-        "position": "CTO, CISO"
-      },
-      {
         "name": "Chae jun",
         "score": 73.0,
         "position": "Product Owner, Data Analytics Platform"
       },
       {
-        "name": "박하진",
+        "name": "이도현",
         "score": 72.0,
-        "position": "Front end Developer"
+        "position": "선임"
+      },
+      {
+        "name": "Youngin Kim, Ph.D.",
+        "score": 72.0,
+        "position": "System Architect"
+      },
+      {
+        "name": "Jiho Kim",
+        "score": 72.0,
+        "position": "System Architect, AI Infra TF"
       },
       {
         "name": "김서영",
         "score": 72.0,
         "position": "Back end Engineer"
+      },
+      {
+        "name": "김서영",
+        "score": 72.0,
+        "position": "Back end Engineer"
+      },
+      {
+        "name": "김완희 (Wan-hee Kim)",
+        "score": 72.0,
+        "position": "Technical PM"
       }
     ],
     "bottom_10_percent_raw": [
       {
-        "name": "김 용 석",
-        "score": 33.0,
-        "position": "iOS 리더"
+        "name": "Kim Kwang Tae",
+        "score": 35.0,
+        "position": "Staff / Trading and oversea Sale Team"
       },
       {
-        "name": "고 수 호",
+        "name": "Min Jeong, Kim",
+        "score": 35.0,
+        "position": "Air Import Worker"
+      },
+      {
+        "name": "Kim SunJi",
+        "score": 35.0,
+        "position": "Web Designer"
+      },
+      {
+        "name": "김 선 중",
+        "score": 35.0,
+        "position": "대리"
+      },
+      {
+        "name": "김영진",
+        "score": 35.0,
+        "position": "대리"
+      },
+      {
+        "name": "김용운 / Kim YongWoon",
+        "score": 35.0,
+        "position": "과장 / Manager"
+      },
+      {
+        "name": "Candidate Name",
         "score": 33.0,
-        "position": "책임"
+        "position": "Product Manager"
+      },
+      {
+        "name": "Jeeyoun Chung",
+        "score": 33.0,
+        "position": "Factory Support"
+      },
+      {
+        "name": "최재필",
+        "score": 33.0,
+        "position": "CTO"
       },
       {
         "name": "류한별",
@@ -346,9 +381,19 @@
         "position": "Backend Engineer"
       },
       {
-        "name": "Dong-Hyuk Lee",
+        "name": "배 호 연",
         "score": 33.0,
-        "position": "Backend, iOS Engineer"
+        "position": "데이터분석가"
+      },
+      {
+        "name": "신장용",
+        "score": 33.0,
+        "position": "브랜드&그로스 마케터"
+      },
+      {
+        "name": "Unknown",
+        "score": 33.0,
+        "position": "Web Planning"
       },
       {
         "name": "김은선",
@@ -356,14 +401,14 @@
         "position": "프리랜서 통역사"
       },
       {
+        "name": "김선애",
+        "score": 32.0,
+        "position": "차장(팀원) at ㈜몽고식품"
+      },
+      {
         "name": "Unknown",
         "score": 32.0,
         "position": "Sales Manager"
-      },
-      {
-        "name": "유 지 승",
-        "score": 32.0,
-        "position": "Web운영팀"
       },
       {
         "name": "조경찬",
@@ -393,12 +438,12 @@
       {
         "name": "Candidate Name",
         "score": 30.0,
-        "position": "ERP and Accounting System Developer"
+        "position": "ERP and Accounting Systems Developer"
       },
       {
-        "name": "고남수 (Ko Nam-Su)",
+        "name": "김 병 운",
         "score": 30.0,
-        "position": "대리 (Assistant Manager)"
+        "position": "리더, 고객데이터분석팀"
       },
       {
         "name": "Yong Hwa Lee",
@@ -409,6 +454,11 @@
         "name": "이유진",
         "score": 30.0,
         "position": "백엔드 개발자"
+      },
+      {
+        "name": "김소미",
+        "score": 30.0,
+        "position": "그로스마케터"
       },
       {
         "name": "박재국",
@@ -426,9 +476,19 @@
         "position": "In-house Interpreter"
       },
       {
+        "name": "SeungHae Roh",
+        "score": 30.0,
+        "position": "Research Executive at Kantar"
+      },
+      {
         "name": "Hye-eun, Shin",
         "score": 30.0,
         "position": "Interpreter"
+      },
+      {
+        "name": "원태연",
+        "score": 30.0,
+        "position": "인사기획팀 사원"
       },
       {
         "name": "Leo Lam",
@@ -436,7 +496,7 @@
         "position": "Senior Quality Assurance Engineer"
       },
       {
-        "name": "이태검",
+        "name": "이태검 (TaeGum Lee)",
         "score": 30.0,
         "position": "Frontend Engineer"
       },
@@ -448,7 +508,7 @@
       {
         "name": "이혜은",
         "score": 30.0,
-        "position": "뷰티VMD팀 대리/팀원"
+        "position": "대리/팀원, 뷰티VMD팀"
       },
       {
         "name": "이정우",
@@ -458,7 +518,7 @@
       {
         "name": "이소영",
         "score": 30.0,
-        "position": "선임 CONSULTANT (Entrue 컨설팅 통신/서비스그룹)"
+        "position": "선임 CONSULTANT"
       },
       {
         "name": "안선",
@@ -468,17 +528,12 @@
       {
         "name": "유승우",
         "score": 30.0,
-        "position": "본부장 (디지털마케팅본부)"
+        "position": "Buyer Growth 담당 팀장"
       },
       {
         "name": "Park Eunyung",
         "score": 30.0,
         "position": "Design Associate"
-      },
-      {
-        "name": "여성수",
-        "score": 30.0,
-        "position": "PM 책임연구원"
       },
       {
         "name": "이지성 JISEONG LE E",
@@ -498,7 +553,7 @@
       {
         "name": "홍승표",
         "score": 30.0,
-        "position": "매니저 (피플팀 GA Manager)"
+        "position": "GA Manager"
       },
       {
         "name": "곽미경",
@@ -516,24 +571,14 @@
         "position": "UI/UX Designer"
       },
       {
-        "name": "Jinyoung Kim",
-        "score": 30.0,
-        "position": "Researcher in Biomedical Engineering"
-      },
-      {
-        "name": "전은",
-        "score": 30.0,
-        "position": "팀장 (사업1본부/하이버 유닛/마케팅실)"
-      },
-      {
         "name": "장효",
         "score": 30.0,
         "position": "CISO/정보보호최고책임자"
       },
       {
-        "name": "Choi Min Seok",
+        "name": "최 민 석",
         "score": 30.0,
-        "position": "Service Planning Team Leader"
+        "position": "차장, 서비스기획팀"
       },
       {
         "name": "김별",
@@ -546,19 +591,9 @@
         "position": "차장(팀장)"
       },
       {
-        "name": "배종규",
-        "score": 30.0,
-        "position": "재무회계 담당자"
-      },
-      {
         "name": "염대현",
         "score": 30.0,
-        "position": "SCM 전문가"
-      },
-      {
-        "name": "이정민 (Lee, Jung-min)",
-        "score": 30.0,
-        "position": "웹개발팀 대리"
+        "position": "SCM 전문"
       },
       {
         "name": "박하나",
@@ -581,14 +616,14 @@
         "position": "UI / UX Designer"
       },
       {
-        "name": "최윤화",
-        "score": 30.0,
-        "position": "차온다사업팀 주임"
-      },
-      {
         "name": "이 광 교",
         "score": 30.0,
         "position": "사내변호사"
+      },
+      {
+        "name": "Unknown",
+        "score": 30.0,
+        "position": "공시업무 책임자, 관리회계 담당"
       },
       {
         "name": "주영희",
@@ -596,9 +631,24 @@
         "position": "실장 (마케팅실)"
       },
       {
+        "name": "김 용 석",
+        "score": 30.0,
+        "position": "iOS 리더"
+      },
+      {
+        "name": "고 수 호",
+        "score": 30.0,
+        "position": "책임"
+      },
+      {
         "name": "Candidate Name",
         "score": 30.0,
         "position": "Data Scientist"
+      },
+      {
+        "name": "이 영 훈",
+        "score": 30.0,
+        "position": "차장/파트장"
       },
       {
         "name": "장윤희",
@@ -621,24 +671,9 @@
         "position": "사원 (핀테크 개발팀)"
       },
       {
-        "name": "이경준",
-        "score": 30.0,
-        "position": "차장 (마케팅팀 BM파트)"
-      },
-      {
-        "name": "장성해",
-        "score": 30.0,
-        "position": "AML 총괄, CCO(소비자보호총괄)"
-      },
-      {
         "name": "Dea-Hwa Kwon",
         "score": 30.0,
         "position": "Chief Technical Officer"
-      },
-      {
-        "name": "신종수 (JongSoo, Shin)",
-        "score": 30.0,
-        "position": "정보전략팀"
       },
       {
         "name": "신종수 (Shin JongSoo)",
@@ -671,16 +706,6 @@
         "position": "과장/경영지원부"
       },
       {
-        "name": "조은이",
-        "score": 30.0,
-        "position": "대리, 전산팀"
-      },
-      {
-        "name": "곽효진",
-        "score": 30.0,
-        "position": "Web, UI/UX, Logo, Poster, Editorial Designer"
-      },
-      {
         "name": "Dea-Hwa Kwon",
         "score": 30.0,
         "position": "Chief Technical Officer"
@@ -708,12 +733,7 @@
       {
         "name": "김연화",
         "score": 30.0,
-        "position": "부원장 (강사)"
-      },
-      {
-        "name": "김 정 민",
-        "score": 30.0,
-        "position": "해외사업부 대리"
+        "position": "강사 (부원장)"
       },
       {
         "name": "김일식",
@@ -721,19 +741,14 @@
         "position": "Front-end Engineer"
       },
       {
-        "name": "Candidate Name",
+        "name": "Unknown",
         "score": 30.0,
-        "position": "팀원"
+        "position": "Team Member, Development Team"
       },
       {
         "name": "Kim Hyun Deuc",
         "score": 30.0,
         "position": "Android Developer"
-      },
-      {
-        "name": "Hyunkwan Roh",
-        "score": 30.0,
-        "position": "Front-End Developer"
       },
       {
         "name": "박창현",
@@ -751,19 +766,9 @@
         "position": "UI/UX 기획자"
       },
       {
-        "name": "윤지원",
+        "name": "양승석",
         "score": 30.0,
-        "position": "과장"
-      },
-      {
-        "name": "이대식",
-        "score": 30.0,
-        "position": "선임연구원"
-      },
-      {
-        "name": "이예준",
-        "score": 30.0,
-        "position": "Attorney at Law"
+        "position": "PD (Program Director)"
       },
       {
         "name": "이연희",
@@ -771,42 +776,27 @@
         "position": "Payroll 매니저"
       },
       {
-        "name": "이준호/Lee Jun Ho",
+        "name": "이예준",
         "score": 30.0,
-        "position": "대리"
+        "position": "Attorney at Law"
       },
       {
-        "name": "이한이",
+        "name": "Candidate Name",
         "score": 30.0,
-        "position": "컴퍼니매니저"
+        "position": "Designer"
       },
       {
-        "name": "이 홍 한 (Lee, Hong-han)",
+        "name": "이홍한 (Lee, Hong-han)",
         "score": 30.0,
-        "position": "부장 (Manager)"
+        "position": "부장 (Manager) at 에스케이인포섹㈜"
       },
       {
-        "name": "Lim Young Teak",
+        "name": "정경화 / Alicia Kyunghwa Jeong",
         "score": 30.0,
-        "position": "Researcher at Playworks"
+        "position": "Immigration Attorney"
       },
       {
-        "name": "정민정",
-        "score": 30.0,
-        "position": "Project Coordinator"
-      },
-      {
-        "name": "Jeong Han Ah",
-        "score": 30.0,
-        "position": "UX/UI Designer"
-      },
-      {
-        "name": "조 효 정",
-        "score": 30.0,
-        "position": "과장"
-      },
-      {
-        "name": "Jinsang",
+        "name": "Unknown",
         "score": 30.0,
         "position": "Full-stack Developer"
       },
@@ -816,19 +806,14 @@
         "position": "대리 (팀원)"
       },
       {
-        "name": "정진경",
-        "score": 30.0,
-        "position": "대리"
-      },
-      {
         "name": "박한솜 (Park hansom)",
         "score": 30.0,
         "position": "Product Designer"
       },
       {
-        "name": "은 민 지",
+        "name": "Seungjae Hong",
         "score": 30.0,
-        "position": "대리/마케팅전략실/마케팅전략팀"
+        "position": "Manager at Hyundai Heavy Industries"
       },
       {
         "name": "YooJin Her",
@@ -841,24 +826,19 @@
         "position": "구매팀 대리"
       },
       {
-        "name": "Seungjae Hong",
-        "score": 30.0,
-        "position": "Manager at Hyundai Heavy Industries"
-      },
-      {
-        "name": "Unknown",
+        "name": "Candidate Name",
         "score": 30.0,
         "position": "Employee at Libero System"
       },
       {
         "name": "최 예 린",
         "score": 30.0,
-        "position": "해외영업 담당"
+        "position": "해외영업팀"
       },
       {
         "name": "송 준 호",
         "score": 30.0,
-        "position": "Not specified"
+        "position": "Unspecified"
       },
       {
         "name": "최유진/Choi Yujin",
@@ -871,14 +851,29 @@
         "position": "리더(팀원)"
       },
       {
+        "name": "유 지 승",
+        "score": 30.0,
+        "position": "Web운영팀"
+      },
+      {
         "name": "조 재 영",
         "score": 30.0,
         "position": "프리랜서"
       },
       {
+        "name": "송다은",
+        "score": 30.0,
+        "position": "프리랜서 / 패키지디자인, 상세페이지디자인, 영상디자인"
+      },
+      {
         "name": "이 복 희",
         "score": 30.0,
         "position": "CS팀장"
+      },
+      {
+        "name": "MinJae Kang",
+        "score": 30.0,
+        "position": "Front-end Developer"
       },
       {
         "name": "강 선 구 (Kang, Sun ku)",
@@ -901,17 +896,12 @@
         "position": "대리"
       },
       {
-        "name": "김인섭/Kim inseob",
-        "score": 30.0,
-        "position": "프리랜서(전 직장 아이에스동서)"
-      },
-      {
         "name": "Koo Songhee",
         "score": 30.0,
         "position": "대리"
       },
       {
-        "name": "권경은/KYEONG EUN (KELLY) KWON",
+        "name": "Kyeong Eun (Kelly) Kwon",
         "score": 30.0,
         "position": "Main Designer"
       },
@@ -921,7 +911,7 @@
         "position": "재경부 대리"
       },
       {
-        "name": "Unknown",
+        "name": "Candidate Name",
         "score": 30.0,
         "position": "Freelance Security Consultant"
       },
@@ -931,12 +921,17 @@
         "position": "과장(팀장) at 코웰광학전자"
       },
       {
+        "name": "Kim Geon woo",
+        "score": 30.0,
+        "position": "Unknown"
+      },
+      {
         "name": "김 도형 / Kim Do Hyoung",
         "score": 30.0,
         "position": "대리"
       },
       {
-        "name": "Dong-Uk, Kim",
+        "name": "Dong-Uk Kim",
         "score": 30.0,
         "position": "Accountant"
       },
@@ -949,6 +944,11 @@
         "name": "김 상 호",
         "score": 30.0,
         "position": "기계설계 부문 대리"
+      },
+      {
+        "name": "김 성 렬",
+        "score": 30.0,
+        "position": "해외영업팀"
       },
       {
         "name": "Candidate Name",
@@ -968,42 +968,42 @@
     ]
   },
   "skill_depth_distribution": {
-    "Mentioned": 3815,
-    "Applied": 3893,
-    "Architected": 37,
-    "Total": 7745,
-    "Mentioned_pct": 49.3,
-    "Applied_pct": 50.3,
-    "Architected_pct": 0.5
+    "Mentioned": 3892,
+    "Applied": 3879,
+    "Architected": 34,
+    "Total": 7805,
+    "Mentioned_pct": 49.9,
+    "Applied_pct": 49.7,
+    "Architected_pct": 0.4
   },
   "penalty_frequency": {
-    "short_tenures": 438,
+    "short_tenures": 421,
     "no_quantified_impact": 0,
-    "unexplained_gap": 14,
-    "low_impact": 716,
-    "depth_inflation": 343,
+    "unexplained_gap": 15,
+    "low_impact": 723,
+    "depth_inflation": 362,
     "career_drift": 0,
-    "total_penalties_applied": 1511,
-    "short_tenures_pct": 34.3,
+    "total_penalties_applied": 1521,
+    "short_tenures_pct": 33.0,
     "no_quantified_impact_pct": 0.0,
-    "unexplained_gap_pct": 1.1,
-    "low_impact_pct": 56.1,
-    "depth_inflation_pct": 26.9,
+    "unexplained_gap_pct": 1.2,
+    "low_impact_pct": 56.7,
+    "depth_inflation_pct": 28.4,
     "career_drift_pct": 0.0,
-    "avg_penalties_per_cand": 1.18
+    "avg_penalties_per_cand": 1.19
   },
   "trajectory_distribution": {
+    "Stable": 435,
     "Ascending": 130,
-    "Stable": 428,
-    "Neutral": 719,
+    "Neutral": 711,
+    "Stable_pct": 34.1,
     "Ascending_pct": 10.2,
-    "Stable_pct": 33.5,
-    "Neutral_pct": 56.3
+    "Neutral_pct": 55.7
   },
   "grade_distribution": {
     "S": 63,
     "A": 192,
-    "B": 511,
+    "B": 510,
     "C": 319,
     "D": 192
   }
