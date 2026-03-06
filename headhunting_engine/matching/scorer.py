@@ -90,7 +90,15 @@ class Scorer:
         elif grade == "Declining": trajectory_bonus = -5.0
 
         # ... (Impact multiplier logic can be preserved or unified)
-        # Final Aggregation (v6.2.2: (BaseMatch) + TrajectoryBonus)
+        # Final Aggregation (v6.2.2 Weights: 45/30/25 + TrajectoryBonus)
+        if coverage_score <= 0:
+            return 0.0, {
+                "final_score": 0.0,
+                "pattern_coverage": 0.0,
+                "depth_impact": 0.0,
+                "context_fit": 0.0
+            }
+
         base_match = (
             coverage_score * 0.45 +
             depth_impact_score * 0.30 +
@@ -103,6 +111,5 @@ class Scorer:
             "final_score": round(final_score, 2),
             "pattern_coverage": round(coverage_score, 2),
             "depth_impact": round(depth_impact_score, 2),
-            "trajectory": round(trajectory_score, 2),
             "context_fit": round(context_score, 2)
         }

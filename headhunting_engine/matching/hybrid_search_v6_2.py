@@ -58,49 +58,57 @@ class HybridSearchV62:
         # 2. Ontology Scoring (Deterministic - 80% Weight)
     def run(self, jd_text: str, top_k: int = 10) -> List[Dict]:
         """
-        Executes the 3-Step Funnel:
-        1. Pre-filter by Hard Constraints
-        2. Ontology Scoring (80%)
+        [v6.2.3 Hardened] Executes the 3-Step Funnel:
+        1. Pre-filter by Sector/Hard Constraints (SQLite)
+        2. Ontology Scoring + 0-Coverage Exclusion (80%)
         3. Semantic Booster (20%)
         """
-        # STEP 1: Extract JD Signals via Gemini (Cross-Sector Support)
+        # STEP 1: Extract JD Signals via Gemini
         jd_context = self.jd_parser.parse_jd(jd_text)
         
-        # [v6.2-VS+] Cross-Sector Matching Logic
-        # The jd_context now contains primary_sector, secondary_sectors, etc.
+        # [v6.2.3] Hard Gate: Fetch only relevant candidates from DB
         candidates = self._pre_filter(jd_context)
         
-        # STEP 3: Ontology Scoring (80%)
+        # STEP 2 & 3: Ontology Scoring 
         scored_candidates = []
+        unique_ids = set()
+        
         for cand in candidates:
-            # We assume candidates in DB already have 'parsed_data' (patterns, sectors)
-            # If not, we would need to join or fetch from another table
-            # For this implementation, we use a helper to get candidate details
+            if cand['id'] in unique_ids: continue # [v6.2.3] Deduplication
+            
             cand_details = self._get_candidate_matching_data(cand['id'])
             if not cand_details: continue
             
-            ontology_score = self.scorer.calculate_score(cand_details, jd_context)
+            final_ontology_score, breakdown = self.scorer.calculate_score(cand_details, jd_context)
+            
+            # [v6.2.3] HARD GATE: Drop 0-coverage candidates immediately
+            if breakdown.get("pattern_coverage", 0) <= 0:
+                continue
+            
+            unique_ids.add(cand['id'])
             scored_candidates.append({
                 "id": cand['id'],
                 "name": cand['name'],
-                "ontology_score": ontology_score
+                "ontology_score": final_ontology_score,
+                "coverage": breakdown.get("pattern_coverage", 0),
+                "details": cand_details
             })
         
-        # Sort by ontology score to get candidates for semantic boosting
+        if not scored_candidates: return []
+        
+        # Sort and take top 50 for Vector Boosting
         scored_candidates.sort(key=lambda x: x['ontology_score'], reverse=True)
-        # Take top 50 for vector boosting to save costs/latency
         candidates_to_boost = scored_candidates[:50]
         
-        # STEP 4: Semantic Booster (20% Weight - v6.2.2)
-        # JD Embedding
-        jd_vector = self.oa.embed_content(jd_text) # Use OpenAI for embedding as per v6.2.2 spec
+        # [v6.2.3] Step 4: Semantic Booster
+        jd_vector = self.oa.embed_content(jd_text)
         
         final_results = []
         for cand in candidates_to_boost:
             vector_id = self._get_vector_id(cand['name'])
             semantic_score = self._get_semantic_score(vector_id, jd_vector)
             
-            # Final Blend: 80% Ontology + 20% Semantic
+            # 80/20 Blend
             final_score = (cand['ontology_score'] * 0.8) + (semantic_score * 100 * 0.2)
             
             final_results.append({
@@ -109,47 +117,46 @@ class HybridSearchV62:
                 "final_score": round(min(100.0, final_score), 2),
                 "ontology_score": round(cand['ontology_score'], 2),
                 "semantic_score": round(semantic_score * 100, 2),
-                "details": cand_details
+                "coverage": round(cand.get("coverage", 0), 2)
             })
             
         final_results.sort(key=lambda x: x['final_score'], reverse=True)
         return final_results[:top_k]
 
-    def _get_vector_id(self, name: str) -> str:
-        import hashlib
-        return hashlib.sha256(name.encode('utf-8')).hexdigest()
-
-    def _get_semantic_score(self, vector_id: str, jd_vector: List[float]) -> float:
-        """
-        Calculates cosine similarity between JD vector and Candidate vector.
-        """
-        try:
-            # In production, querying with filter is more efficient than fetching and calculating manually
-            resp = self.pinecone.query(
-                namespace="v6.2-vs",
-                vector=jd_vector,
-                filter={"name": {"$eq": vector_id}}, # This assumes we stored the hashed name as metadata or ID
-                top_k=1,
-                include_values=False
-            )
-            if resp and resp['matches']:
-                return resp['matches'][0]['score']
-        except Exception as e:
-            print(f"⚠️ Semantic score error for {vector_id}: {e}")
-        return 0.5 # Neutral fallback
-
     def _pre_filter(self, jd_context: Dict) -> List[Dict]:
         """
-        Hard Filtering (SQLite) - Location, Degree, etc.
+        [v6.2.3] Rigorous Hard Filtering via SQLite.
         """
         import sqlite3
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         
-        # Simplified filtering for PoC
-        # In reality, this would be a complex SQL query based on jd_context['hard_constraints']
-        query = "SELECT id, name FROM candidates LIMIT 500" 
-        cursor.execute(query)
+        # 1. Target Sectors
+        target_sectors = [jd_context["primary_sector"]] + jd_context.get("secondary_sectors", [])
+        placeholders = ", ".join(["?"] * len(target_sectors))
+        
+        # 2. Strict Sector + Distinct Query
+        # We search in parsed_data JSON for primary_sector matching
+        # Note: In production, primary_sector should be a dedicated indexed column.
+        # But for this version, we use a robust LIKE query or JSON extraction if possible.
+        query = f"""
+            SELECT DISTINCT id, name, parsed_data 
+            FROM candidates 
+            WHERE 1=1 
+        """
+        params = []
+        
+        # Add sector filter if available
+        if target_sectors:
+            sector_clauses = []
+            for s in target_sectors:
+                sector_clauses.append("parsed_data LIKE ?")
+                params.append(f'%"primary_sector": "{s}"%')
+            query += f" AND ({' OR '.join(sector_clauses)})"
+        
+        query += " LIMIT 500"
+        
+        cursor.execute(query, params)
         rows = cursor.fetchall()
         conn.close()
         
