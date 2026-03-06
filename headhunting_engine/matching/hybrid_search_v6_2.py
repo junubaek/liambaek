@@ -91,29 +91,31 @@ class HybridSearchV62:
         # Take top 50 for vector boosting to save costs/latency
         candidates_to_boost = scored_candidates[:50]
         
-        # STEP 4: Semantic Booster (20%)
+        # STEP 4: Semantic Booster (REMOVED TEMPORARILY in v6.2-D)
+        # To reactivate: Uncomment the following block and adjust the final_score blend.
+        """
         # JD Embedding
         jd_vector = self.openai.embed_content(jd_text)
         
-        final_results = []
+        final_results_with_boost = []
         for cand in candidates_to_boost:
-            # Fetch vector similarity from Pinecone
-            # IDs in Pinecone are SHA-256 hashes of names
             vector_id = self._get_vector_id(cand['name'])
-            
-            # Since Pinecone 'fetch' doesn't give similarity score to a query, 
-            # we use 'query' with a filter for the specific ID to get the score.
             semantic_score = self._get_semantic_score(vector_id, jd_vector)
             
             # Final Blend: 80% Ontology + 20% Semantic
             final_score = (cand['ontology_score'] * 0.8) + (semantic_score * 0.2)
-            
+            ...
+        """
+        
+        # [v6.2-D] 100% Deterministic Mode
+        final_results = []
+        for cand in candidates_to_boost:
             final_results.append({
                 "id": cand['id'],
                 "name": cand['name'],
-                "final_score": round(final_score, 2),
+                "final_score": round(cand['ontology_score'], 2),
                 "ontology_score": round(cand['ontology_score'], 2),
-                "semantic_score": round(semantic_score * 100, 2), # Scale to 0-100 for display
+                "semantic_score": 0.0, # Vector Search Disabled
                 "details": cand_details
             })
             
