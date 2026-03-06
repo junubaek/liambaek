@@ -125,7 +125,7 @@ class HybridSearchV62:
 
     def _pre_filter(self, jd_context: Dict) -> List[Dict]:
         """
-        [v6.2.3] Rigorous Hard Filtering via SQLite.
+        [v6.2.4 Fixed] Rigorous Hard Filtering via SQLite.
         """
         import sqlite3
         conn = sqlite3.connect(self.db_path)
@@ -133,24 +133,17 @@ class HybridSearchV62:
         
         # 1. Target Sectors
         target_sectors = [jd_context["primary_sector"]] + jd_context.get("secondary_sectors", [])
-        placeholders = ", ".join(["?"] * len(target_sectors))
         
         # 2. Strict Sector + Distinct Query
-        # We search in parsed_data JSON for primary_sector matching
-        # Note: In production, primary_sector should be a dedicated indexed column.
-        # But for this version, we use a robust LIKE query or JSON extraction if possible.
-        query = f"""
-            SELECT DISTINCT id, name, parsed_data 
-            FROM candidates 
-            WHERE 1=1 
-        """
+        # Using correct table 'candidate_snapshots' and column 'data_json'
+        query = "SELECT DISTINCT id, name FROM candidate_snapshots WHERE 1=1"
         params = []
         
-        # Add sector filter if available
         if target_sectors:
             sector_clauses = []
             for s in target_sectors:
-                sector_clauses.append("parsed_data LIKE ?")
+                # Search inside data_json for primary_sector
+                sector_clauses.append("data_json LIKE ?")
                 params.append(f'%"primary_sector": "{s}"%')
             query += f" AND ({' OR '.join(sector_clauses)})"
         
@@ -164,13 +157,13 @@ class HybridSearchV62:
 
     def _get_candidate_matching_data(self, cand_id: int) -> Dict:
         """
-        Fetches parsed candidate data for scoring.
+        [v6.2.4 Fixed] Fetches data_json from candidate_snapshots.
         """
         import sqlite3
         import json
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
-        cursor.execute("SELECT parsed_data FROM candidates WHERE id = ?", (cand_id,))
+        cursor.execute("SELECT data_json FROM candidate_snapshots WHERE id = ?", (cand_id,))
         row = cursor.fetchone()
         conn.close()
         

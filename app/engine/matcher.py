@@ -25,10 +25,12 @@ class Scorer:
                 import sqlite3
                 with sqlite3.connect("headhunting_engine/data/analytics.db", timeout=5) as conn:
                     cursor = conn.cursor()
-                    cursor.execute("SELECT pattern, depth FROM candidate_patterns WHERE candidate_id = ?", (candidate_id,))
-                    rows = cursor.fetchall()
-                    if rows:
-                        cand_patterns = {r[0]: r[1] for r in rows}
+                    cursor.execute("SELECT data_json FROM candidate_snapshots WHERE id = ?", (candidate_id,))
+                    row = cursor.fetchone()
+                    if row:
+                        full_data = json.loads(row[0])
+                        # Extract patterns from JSON
+                        cand_patterns = {p["pattern"]: p.get("depth", "Mentioned") for p in full_data.get("patterns", [])}
             except Exception as e:
                 print(f"Index Fetch Warning: {e}")
 
