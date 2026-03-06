@@ -36,6 +36,38 @@ class GeminiClient:
         with urllib.request.urlopen(req) as response:
             return json.loads(response.read().decode('utf-8'))
 
+    def get_chat_completion_json(self, prompt: str, model: str = "gemini-1.5-flash") -> dict:
+        """
+        [v6.2] Gemini Chat Completion with JSON output.
+        """
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={self.api_key}"
+        
+        payload = {
+            "contents": [{
+                "parts": [{"text": prompt}]
+            }],
+            "generationConfig": {
+                "response_mime_type": "application/json"
+            }
+        }
+        
+        data = json.dumps(payload).encode('utf-8')
+        headers = {"Content-Type": "application/json"}
+        
+        try:
+            req = urllib.request.Request(url, data=data, headers=headers)
+            with urllib.request.urlopen(req) as response:
+                result = json.loads(response.read().decode('utf-8'))
+                
+                # Extract text from Gemini response structure
+                if "candidates" in result and result["candidates"]:
+                    content_text = result["candidates"][0]["content"]["parts"][0]["text"]
+                    return json.loads(content_text)
+                return {}
+        except Exception as e:
+            print(f"❌ Gemini Chat Completion Error: {e}")
+            return {}
+
     def embed_content(self, text, task_type="RETRIEVAL_DOCUMENT"):
         # 1. If we already know what works, use it
         if self.working_config:

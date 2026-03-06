@@ -1,40 +1,54 @@
 import json
-from connectors.openai_api import OpenAIClient
+# Supports both OpenAI and Gemini clients
 
 class JDParserV3:
     """
     JD Parser v3: Extracts 7-axis recruitment signals from raw JD text.
-    Axes: Role Family, Seniority, Leadership, Domains, Patterns, Impact, Constraints.
+    v6.2: Supports both OpenAI and Gemini clients.
     """
-    def __init__(self, openai_client: OpenAIClient, ontology_path: str):
-        self.client = openai_client
+    def __init__(self, client, ontology_path: str):
+        self.client = client
         with open(ontology_path, 'r', encoding='utf-8') as f:
             self.ontology = json.load(f)
 
     def parse_jd(self, jd_text: str) -> dict:
-        role_families = ", ".join(self.ontology["role_families"])
-        
-        prompt = f"""
-You are a Senior Strategic Headhunter AI. Your task is to extract high-precision recruitment signals from a Job Description (JD) using the 7-Axis Universal Matching Framework.
+        sectors_list = list(self.ontology["sectors"].keys())
+        all_patterns = []
+        for s in sectors_list:
+            all_patterns.extend(self.ontology["sectors"][s]["patterns"])
+        all_patterns = sorted(list(set(all_patterns)))
 
-[DOMAIN KNOWLEDGE: UNIVERSAL ONTOLOGY v5]
-{json.dumps(self.ontology["ontology"], indent=2)}
+        prompt = f"""
+You are a Senior Strategic Headhunter AI. Your task is to extract high-precision recruitment signals from a Job Description (JD) using the AI Talent Intelligence OS v6.2 Universal Ontology.
+
+[9-SECTOR STRUCTURE]
+Sectors: {", ".join(sectors_list)}
+
+[MATCHING RULES: STRATEGY OVER TOOLS]
+1. Prioritize BUSINESS OBJECTIVES over Technical Tools. 
+   - Example: "KPI Design for Strategy" -> Sector: CORPORATE, Pattern: Corporate_Strategy / Metrics_Framework. 
+   - Do NOT just pick "DATA_AI" because they use SQL.
+2. Cross-Sector Flag: If the role bridges two worlds (e.g., AI + Semiconductor, Finance + Tech), set `cross_sector_flag` to true.
 
 [7-AXIS EXTRACTION RULES]
-1. role_family: Choose EXACTLY ONE from: {role_families}.
-2. seniority_required: Integer (Years of experience required).
-3. leadership_level: IC | Team Lead | Department Head | Executive.
-4. functional_domains: List of domains from ONTOLOGY that match the JD scope.
-5. experience_patterns: List of specific project/execution patterns from ONTOLOGY.
-6. impact_requirements: Dictionary of quantified requirements (e.g., "Budget": "500M KRW").
-7. hard_constraints: List of absolute deal-breakers (Degree, Location, Language).
+1. primary_sector: The dominant sector. Choose from: {", ".join(sectors_list)}.
+2. secondary_sectors: List of additional relevant sectors.
+3. cross_sector_flag: Boolean.
+4. seniority_required: Integer (Years of experience required).
+5. leadership_level: IC | Team Lead | Department Head | Executive.
+6. functional_domains: List of domains matching the JD's strategic scope.
+7. experience_patterns: List of AT LEAST 3-5 patterns from the ONTOLOGY that reflect the CORE WORK, not just tools.
+8. impact_requirements: Dictionary of quantified requirements.
+9. hard_constraints: List of absolute deal-breakers.
 
 [JD TEXT]
 {jd_text[:8000]}
 
 [OUTPUT_FORMAT_JSON]
 {{
-  "role_family": "",
+  "primary_sector": "",
+  "secondary_sectors": [],
+  "cross_sector_flag": false,
   "seniority_required": 0,
   "leadership_level": "",
   "functional_domains": [],
@@ -44,8 +58,13 @@ You are a Senior Strategic Headhunter AI. Your task is to extract high-precision
 }}
 """
         try:
-            # Use JSON mode for reliable extraction
-            parsed_data = self.client.get_chat_completion_json(prompt)
+            # Detect client type and use appropriate method
+            if hasattr(self.client, "get_chat_completion_json"):
+                # Both our OpenAIClient and GeminiClient now have this method
+                parsed_data = self.client.get_chat_completion_json(prompt)
+            else:
+                raise ValueError("Unsupported client type")
+            
             return parsed_data
         except Exception as e:
             print(f"❌ JD Parser v3 Error: {e}")

@@ -71,34 +71,33 @@ class Scorer:
 
         depth_impact_score = min(100, avg_depth * 100 * impact_multiplier)
 
-        # 3. Career Trajectory (20%)
-        # Calculation based on trajectory_grade and career_path_score
+        # 3. Career Trajectory (Trajectory Bonus - Independent Multiplier)
         trajectory_quality = candidate_data.get("career_path_quality", {})
         grade = trajectory_quality.get("trajectory_grade", "Neutral")
         path_score = trajectory_quality.get("career_path_score", 50)
         
-        grade_weights = {"Ascending": 1.2, "Stable": 1.0, "Neutral": 0.8, "Volatile": 0.5, "Declining": 0.2}
-        trajectory_score = min(100, path_score * grade_weights.get(grade, 1.0))
+        # Trajectory now acts as a bonus multiplier (up to 1.2x)
+        # instead of a fixed 20% component.
+        trajectory_bonus = 1.0
+        if grade == "Ascending": trajectory_bonus = 1.2
+        elif grade == "Stable": trajectory_bonus = 1.1
+        elif grade == "Volatile": trajectory_bonus = 0.8
+        elif grade == "Declining": trajectory_bonus = 0.5
 
-        # 4. Context Fit (15%)
-        # Context Fit (15%)
-        # Domain alignment + Cross-sector pattern coverage (Pattern-based boost)
+        # 4. Context Fit (25%)
+        # Primary sector match + Domain alignment
         primary_sector_match = candidate_data.get("candidate_profile", {}).get("primary_sector") == jd_context.get("sector")
-        
         context_score = 100 if primary_sector_match else 50
         
-        # Cross-Sector (Secondary sector coverage reflection)
-        if jd_context.get("cross_sector_requested") and candidate_data.get("candidate_profile", {}).get("cross_sector_flag"):
-            context_score = min(100, context_score + 20)
-
-        # Final Aggregation (Capped at 100.0)
-        final_score = (
-            coverage_score * 0.40 +
-            depth_impact_score * 0.25 +
-            trajectory_score * 0.20 +
-            context_score * 0.15
+        # Final Aggregation (v6.2-VS Weights: 45/30/25)
+        # Note: Trajectory is now a Multiplier on top of the base score
+        base_score = (
+            coverage_score * 0.45 +
+            depth_impact_score * 0.30 +
+            context_score * 0.25
         )
-        final_score = min(100.0, final_score)
+        
+        final_score = min(100.0, base_score * trajectory_bonus)
 
         return final_score, {
             "final_score": round(final_score, 2),
