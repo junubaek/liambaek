@@ -36,7 +36,7 @@ class GeminiClient:
         with urllib.request.urlopen(req) as response:
             return json.loads(response.read().decode('utf-8'))
 
-    def get_chat_completion_json(self, prompt: str, model: str = "gemini-2.0-flash") -> dict:
+    def get_chat_completion_json(self, prompt: str, model: str = "gemini-2.5-flash") -> dict:
         """
         [v6.2] Gemini Chat Completion with JSON output.
         """

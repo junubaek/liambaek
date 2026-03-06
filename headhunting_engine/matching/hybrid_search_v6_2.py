@@ -91,31 +91,24 @@ class HybridSearchV62:
         # Take top 50 for vector boosting to save costs/latency
         candidates_to_boost = scored_candidates[:50]
         
-        # STEP 4: Semantic Booster (REMOVED TEMPORARILY in v6.2-D)
-        # To reactivate: Uncomment the following block and adjust the final_score blend.
-        """
+        # STEP 4: Semantic Booster (20% Weight - v6.2.2)
         # JD Embedding
-        jd_vector = self.openai.embed_content(jd_text)
+        jd_vector = self.oa.embed_content(jd_text) # Use OpenAI for embedding as per v6.2.2 spec
         
-        final_results_with_boost = []
+        final_results = []
         for cand in candidates_to_boost:
             vector_id = self._get_vector_id(cand['name'])
             semantic_score = self._get_semantic_score(vector_id, jd_vector)
             
             # Final Blend: 80% Ontology + 20% Semantic
-            final_score = (cand['ontology_score'] * 0.8) + (semantic_score * 0.2)
-            ...
-        """
-        
-        # [v6.2-D] 100% Deterministic Mode
-        final_results = []
-        for cand in candidates_to_boost:
+            final_score = (cand['ontology_score'] * 0.8) + (semantic_score * 100 * 0.2)
+            
             final_results.append({
                 "id": cand['id'],
                 "name": cand['name'],
-                "final_score": round(cand['ontology_score'], 2),
+                "final_score": round(min(100.0, final_score), 2),
                 "ontology_score": round(cand['ontology_score'], 2),
-                "semantic_score": 0.0, # Vector Search Disabled
+                "semantic_score": round(semantic_score * 100, 2),
                 "details": cand_details
             })
             

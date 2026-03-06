@@ -62,20 +62,22 @@ class Scorer:
         target_sector = context_data.get("sector")
         context_score = 100 if cand_sector == target_sector else 50
         
-        # 4. Trajectory Bonus (Multiplier)
-        trajectory_bonus = 1.0
+        # 4. Trajectory Bonus (v6.2.2 Additive)
+        trajectory_bonus = 0.0
         grade = context_data.get("trajectory_grade", "Neutral")
-        if grade == "Ascending": trajectory_bonus = 1.2
-        elif grade == "Stable": trajectory_bonus = 1.1
+        if grade == "Ascending": trajectory_bonus = 8.0
+        elif grade == "Stable": trajectory_bonus = 3.0
+        elif grade == "Volatile": trajectory_bonus = -3.0
+        elif grade == "Declining": trajectory_bonus = -5.0
 
-        # Final Aggregation (v6.2-VS Weights: 45/30/25)
-        base_score = (
+        # Final Aggregation (v6.2.2 Weights: 45/30/25 + TrajectoryBonus)
+        base_match = (
             coverage_score * 0.45 +
             depth_impact_score * 0.30 +
             context_score * 0.25
         )
         
-        final_score = min(100.0, base_score * trajectory_bonus)
+        final_score = min(100.0, base_match + trajectory_bonus)
 
         return final_score, {
             "final_score": round(final_score, 2),

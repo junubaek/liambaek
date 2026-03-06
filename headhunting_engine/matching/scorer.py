@@ -78,26 +78,26 @@ class Scorer:
         
         # Trajectory now acts as a bonus multiplier (up to 1.2x)
         # instead of a fixed 20% component.
-        trajectory_bonus = 1.0
-        if grade == "Ascending": trajectory_bonus = 1.2
-        elif grade == "Stable": trajectory_bonus = 1.1
-        elif grade == "Volatile": trajectory_bonus = 0.8
-        elif grade == "Declining": trajectory_bonus = 0.5
-
-        # 4. Context Fit (25%)
-        # Primary sector match + Domain alignment
-        primary_sector_match = candidate_data.get("candidate_profile", {}).get("primary_sector") == jd_context.get("sector")
-        context_score = 100 if primary_sector_match else 50
+        # 3. Career Trajectory (Trajectory Bonus - v6.2.2 Additive)
+        trajectory_quality = candidate_data.get("career_path_quality", {})
+        grade = trajectory_quality.get("trajectory_grade", "Neutral")
         
-        # Final Aggregation (v6.2-VS Weights: 45/30/25)
-        # Note: Trajectory is now a Multiplier on top of the base score
-        base_score = (
+        # v6.2.2 Spec: Ascending +8 / Stable +3 / Neutral 0 / Volatile -3 / Declining -5
+        trajectory_bonus = 0.0
+        if grade == "Ascending": trajectory_bonus = 8.0
+        elif grade == "Stable": trajectory_bonus = 3.0
+        elif grade == "Volatile": trajectory_bonus = -3.0
+        elif grade == "Declining": trajectory_bonus = -5.0
+
+        # ... (Impact multiplier logic can be preserved or unified)
+        # Final Aggregation (v6.2.2: (BaseMatch) + TrajectoryBonus)
+        base_match = (
             coverage_score * 0.45 +
             depth_impact_score * 0.30 +
             context_score * 0.25
         )
         
-        final_score = min(100.0, base_score * trajectory_bonus)
+        final_score = min(100.0, base_match + trajectory_bonus)
 
         return final_score, {
             "final_score": round(final_score, 2),

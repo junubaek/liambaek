@@ -8,7 +8,7 @@ from connectors.gemini_api import GeminiClient
 import json
 import os
 
-app = FastAPI(title="AI Headhunting Engine v6.2-D (Deterministic)")
+app = FastAPI(title="AI Headhunting Engine v6.2.2")
 
 # Initialize global clients for performance
 with open("secrets.json", "r") as f:
@@ -27,7 +27,7 @@ HYBRID_ENGINE = HybridSearchV62(DB_PATH, PINECONE, OPENAI, ONTOLOGY_PATH, gemini
 
 @app.get("/")
 def read_root():
-    return {"status": "AI Talent Intelligence OS v6.2-D (Deterministic) Active"}
+    return {"status": "AI Talent Intelligence OS v6.2.2 (Hybrid) Active"}
 
 @app.post("/match/hybrid")
 def hybrid_match(jd_text: str, top_k: int = 10):
