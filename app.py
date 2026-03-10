@@ -430,27 +430,34 @@ with st.sidebar:
     st.sidebar.markdown("---")
     st.sidebar.subheader("🧠 JD 분석 엔진")
     
-    # [Fix 3.3] Detect Engine Change to force re-analysis
-    prev_engine = st.session_state.get("analysis_engine")
-    
-    analysis_engine = st.sidebar.radio(
+    # [JD Analysis Engine Selection]
+    # [Fix 3.3] Use key and on_change for stability
+    if "analysis_engine" not in st.session_state:
+        st.session_state.analysis_engine = "V5 (Standardized)"
+
+    def handle_engine_change():
+        if st.session_state.get("jd_text"):
+            st.session_state.step = "analyze"
+            # Toast will be shown here or after rerun
+            
+    engines = ["V2 (Expert)", "V3 (Experience)", "V5 (Standardized)"]
+    try:
+        current_idx = engines.index(st.session_state.analysis_engine)
+    except:
+        current_idx = 2
+
+    st.sidebar.radio(
         "분석 엔진 선택",
-        ["V2 (Expert)", "V3 (Experience)", "V5 (Standardized)"],
-        index=2,  # Default to V5
+        engines,
+        index=current_idx,
+        key="analysis_engine",
+        on_change=handle_engine_change,
         help="""
         **V2 (Expert)**: JD에서 직접적인 키워드를 추출합니다.
         **V3 (Experience)**: 이력서에서 검증 가능한 경험을 추론합니다.
         **V5 (Standardized)**: [NEW] 우리가 정의한 표준 Taxonomy(Pattern ID)로 JD를 분석합니다.
         """
     )
-    
-    if prev_engine and prev_engine != analysis_engine:
-        # Engine changed! Reset to forced analysis if we already have JD
-        if st.session_state.get("jd_text"):
-            st.session_state.step = "analyze"
-            st.toast(f"🔄 엔진 변경 ({analysis_engine}): 재분석을 위해 초기화되었습니다.")
-
-    st.session_state["analysis_engine"] = analysis_engine
 
     # [NEW] Debug Expander in Sidebar
     with st.expander("디버그 정보", expanded=False):
@@ -1189,7 +1196,8 @@ with col_main:
         with st.spinner("🤖 AI가 JD를 분석하여 '서류 통과 기준'을 수립 중입니다..."):
             try:
                 # [PHASE 3] Engine Selection (V2 vs V3 vs V5)
-                engine = st.session_state.get("analysis_engine", "V3 (Experience)")
+                # [Fix] Default to V5 consistently
+                engine = st.session_state.get("analysis_engine", "V5 (Standardized)")
                 if "V5" in engine:
                     analyzer = jd_analyzer_v5.JDAnalyzerV5(openai)
                     print("LOG: Using JD Analysis Engine V5 (Standardized)")
