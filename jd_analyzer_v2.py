@@ -104,7 +104,7 @@ class JDAnalyzerV2:
     Output JSON Format:
     {{
         "role_cluster": "Inferred Role",
-        "years_range": {"min": 0, "max": 3},
+        "years_range": {{"min": 0, "max": 3}},
         "must_skills": ["Skill 1", "Skill 2"],
         "nice_skills": ["Skill 3", "Skill 4"],
         "primary_role": "Job Title",
