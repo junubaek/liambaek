@@ -47,12 +47,12 @@ class JDAnalyzer:
         """
         Uses LLM to extract structured data from JD text.
         """
-        prompt = f"""
+        prompt = """
         You are a **Senior Executive Search Partner** (Headhunter) in Korea with 20+ years of experience.
         Your goal is to infer the **REAL** requirements behind the Job Description (JD) and identifying hidden signals.
         
         [JOB DESCRIPTION]
-        {jd_text[:4000]}
+        """ + jd_text[:4000] + """
         
         [TASK]
         1. **Domain Detection**: Identify the specific industry/domain (e.g., "Semiconductor / NPU", "Fintech").
@@ -67,11 +67,11 @@ class JDAnalyzer:
         Analyze the JD and extract the following fields. **All output values must be in Korean (Example: "Project Manager" -> "프로젝트 매니저").**
         
         [OUTPUT FORMAT - STRICT JSON]
-        {{
+        {
             "primary_role": "String (Official Title in Korean, e.g. 백엔드 개발자)",
             "inferred_role": "String (The REAL role title in Korean, e.g. 고성능 서버 엔지니어)",
             "seniority": "String (Junior, Senior, Lead, Executive - in Korean)",
-            "min_years": Integer (0 if unsure),
+            "min_years": "Integer (0 if unsure)",
             "domain": "String (Specific Domain in Korean, e.g. 핀테크)",
             "must_skills": ["Critical Skill 1", "Critical Skill 2", ...],
             "nice_skills": ["Bonus Skill 1", "Bonus Skill 2", ...],
@@ -82,7 +82,7 @@ class JDAnalyzer:
                 "Query 2 (Skill focus)",
                 "Query 3 (Domain focus)"
             ]
-        }}
+        }
         """
         
         try:

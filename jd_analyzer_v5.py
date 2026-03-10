@@ -25,13 +25,13 @@ class JDAnalyzerV5:
             allowed_patterns.extend(sector_data.get("patterns", []))
         allowed_patterns = sorted(list(set(allowed_patterns)))
 
-        system_prompt = f"""
+        system_prompt = """
 You are a structured hiring signal extraction engine (Standardized v5.3).
 Convert the Job Description into precise 7-Axis signals.
 
 [CRITICAL: ALLOWED EXPERIENCE PATTERNS]
 You MUST ONLY use patterns from this list if they match the JD. Do NOT invent new pattern names.
-Allowed Patterns: {", ".join(allowed_patterns)}
+Allowed Patterns: """ + ", ".join(allowed_patterns) + """
 
 [7-AXIS DEFINITION]
 1. Role Family: Single dominant category (e.g., SW_Backend, Strategy_Planning, Sales_B2B, Finance_Accounting).
@@ -43,22 +43,22 @@ Allowed Patterns: {", ".join(allowed_patterns)}
 7. Hard Constraints: Non-negotiable requirements (Specific certifications, degree, industry experience).
 
 Output JSON:
-{{
+{
   "role_family": "",
   "seniority_required": 0,
   "leadership_level": "",
   "functional_domains": [],
   "experience_patterns": [],
-  "impact_requirements": {{
+  "impact_requirements": {
     "scale_type": "Budget | Headcount | Revenue | Branches | Area",
     "quant_signal_required": true
-  }},
+  },
   "hard_constraints": [],
   "risk_factors": [],
   "strategy_clues": []
-}}
+}
 """
-        user_prompt = f"Analyze this JD and map to standardized patterns:\n{jd_text[:8000]}"
+        user_prompt = "Analyze this JD and map to standardized patterns:\n" + jd_text[:8000]
         
         try:
             response = self.openai.get_chat_completion(system_prompt, user_prompt)

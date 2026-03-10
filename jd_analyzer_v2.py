@@ -59,7 +59,7 @@ class JDAnalyzerV2:
         """
         Uses LLM with Domain Expert Prompting (Few-Shot) to extract deep insights.
         """
-        prompt = f"""
+        prompt = """
         You are a **Domain Expert Headhunter** specialized in interpreting ambiguous Job Descriptions (JDs).
         Your capability goes beyond keyword extraction; you create a "Role Embedding" by understanding the *implicit* requirements.
 
@@ -102,24 +102,24 @@ class JDAnalyzerV2:
         - **Nice**: Preferred skills or domains.
 
     Output JSON Format:
-    {{
+    {
         "role_cluster": "Inferred Role",
-        "years_range": {{"min": 0, "max": 3}},
+        "years_range": {"min": 0, "max": 3},
         "must_skills": ["Skill 1", "Skill 2"],
         "nice_skills": ["Skill 3", "Skill 4"],
         "primary_role": "Job Title",
         "domain_experience": ["Domain 1"],
         "hidden_signals": ["Context 1", "Context 2"], 
         "negative_signals": ["Signal 1"],
-        "search_contract": {{
+        "search_contract": {
             "role_family": "PM/PO",
             "product_type": "B2C",
             "domain_optional": ["Insurance"],
             "must_core": ["Service Planning", "JIRA"],
             "nice": ["SQL", "Data Analysis"]
-        }},
+        },
         "confidence_score": 90
-    }}
+    }
         
         **Case 2: Senior Backend (Clear)**
         - Input: "Server dev. Python/Django. No Juniors (5y+ only)."
@@ -130,13 +130,13 @@ class JDAnalyzerV2:
             - Negative Signals: ["Junior (Under 5 years experience)"]
             - Hidden Signals: ["Scalability focus"]
             - Search Contract:
-                {{
+                {
                     "role_family": "Engineering",
                     "product_type": "Platform",
                     "domain_optional": [],
                     "must_core": ["Python", "Django"],
                     "nice": ["AWS"]
-                }}
+                }
             - Confidence: 95
 
         [ANALYSIS STEPS]
@@ -146,18 +146,18 @@ class JDAnalyzerV2:
         4. **Negative Signal**: Explicit disqualifiers only.
 
         [JOB DESCRIPTION]
-        {jd_text[:5000]}
+        """ + jd_text[:5000] + """
 
         [OUTPUT FORMAT - STRICT JSON]
         (Values must be in Korean for User readability, except standard Tech terms)
-        {{
+        {
             "primary_role": "String (Official Title)",
             "inferred_role": "String (Functional Role, e.g. '서비스 기획자' or 'B2B PM')",
             "role_cluster": "String (Standard Category, e.g. 'Planning/PM')",
             "seniority": "String (e.g. '5년차 이상' or 'Senior')",
             "years_range": {
-                "min": Integer (0 if undefined or 'Under N years'),
-                "max": Integer (null if undefined or 'Over N years')
+                "min": "Integer (0 if undefined or 'Under N years')",
+                "max": "Integer (null if undefined or 'Over N years')"
             },
             "domain": "String (e.g. '핀테크 Payment')",
             "must_skills": ["Hard Skill 1", "Hard Skill 2", ...],
@@ -165,20 +165,20 @@ class JDAnalyzerV2:
             "hidden_signals": ["Work Context Noun 1", "Work Context Noun 2", ...],
             "negative_signals": ["Explicit Disqualifier 1", ...],
             "wrong_roles": ["This role is NOT X", ...],
-            "search_contract": {{
+            "search_contract": {
                 "role_family": "String (PM/PO, Backend, Frontend, etc.)",
                 "product_type": "String (B2B, B2C, Platform, etc.)",
                 "domain_optional": ["String (Insurance, Fintech, etc.)"],
                 "must_core": ["Critical Skill 1", "Critical Skill 2"],
                 "nice": ["Nice Skill 1"]
-            }},
-            "confidence_score": Integer (0-100),
+            },
+            "confidence_score": "Integer (0-100)",
             "search_queries": [
                 "Query 1 (Semantic/Broad)",
                 "Query 2 (Skill Focused)",
                 "Query 3 (Domain Focused)"
             ]
-        }}
+        }
         """
         
         try:
