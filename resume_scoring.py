@@ -37,9 +37,29 @@ def calculate_rpl(jd_analysis, resume_metadata, vector_score=0.0):
     """
     resume_str = str(resume_metadata).lower()
     
-    # 1. Core Signals (Max 60) - Prioritize 'must' (user editable)
-    core_signals = jd_analysis.get("must") or jd_analysis.get("core_signals") or []
+    # [V6.1] Pattern Match (Max 20)
+    # If patterns are in jd_analysis, we add a specific check
+    target_patterns = jd_analysis.get("patterns") or jd_analysis.get("experience_patterns") or []
+    pattern_score = 0
+    pattern_weight = 0.20 if target_patterns else 0.0
     
+    if target_patterns:
+        # Check metadata for patterns (stored as list or JSON string)
+        cand_patterns = resume_metadata.get("experience_patterns", [])
+        if isinstance(cand_patterns, str):
+            try: cand_patterns = json.loads(cand_patterns)
+            except: cand_patterns = []
+        
+        match_count = len(set(target_patterns).intersection(set(cand_patterns)))
+        # Proportional score: 1.0 if >= 2 patterns match
+        pattern_score = min(1.0, match_count / 2.0) * 20
+        
+        # Adjust weights: Core (40), Supporting (25), Context (10) + Patterns (20) = 95 (+ Finance bonus)
+        core_weight = 40
+    else:
+        core_weight = 60
+        pattern_score = 0
+
     # Calculate Keyword Match Ratio
     hit_count = 0
     if core_signals:
@@ -55,14 +75,13 @@ def calculate_rpl(jd_analysis, resume_metadata, vector_score=0.0):
     sem_score = min(sem_score, 1.0)
     
     # [V6.0] Weighted Core Rate: Keywords are 70%, Semantic is 30%
-    # This ensures that even if vector similarity is high, missing keywords PULLS DOWN the score.
     if core_signals:
         final_core_rate = (keyword_match_rate * 0.7) + (sem_score * 0.3)
     else:
         # If no core signals (unlikely), rely on semantic
         final_core_rate = sem_score
     
-    core_score = final_core_rate * 60
+    core_score = final_core_rate * core_weight
     
     # 2. Supporting Signals (Max 25) - Prioritize 'nice' (user editable)
     supporting_signals = jd_analysis.get("nice") or jd_analysis.get("supporting_signals") or []
@@ -109,8 +128,9 @@ def calculate_rpl(jd_analysis, resume_metadata, vector_score=0.0):
         final_core_rate = min(1.0, final_core_rate + (finance_bonus / 100.0))
         core_score = final_core_rate * 60
 
-    final_score = core_score + support_score + context_score - risk_penalty
+    final_score = core_score + support_score + context_score + pattern_score - risk_penalty
     
+    # [Fix] Final Cap
     return max(10, min(100, int(final_score)))
 
 

@@ -65,11 +65,18 @@ Output JSON:
             clean_json = response.replace("```json", "").replace("```", "").strip()
             data = json.loads(clean_json)
             
-            # Compatibility Mapping
-            data["domain"] = data.get("role_family", "Unknown")
+            # Compatibility Mapping for app.py
+            data["domain"] = [data.get("role_family", "Unknown")]
             data["seniority"] = data.get("leadership_level", "Middle")
             data["patterns"] = data.get("experience_patterns", [])
             data["years_range"] = {"min": data.get("seniority_required", 0), "max": None}
+            data["must"] = data.get("functional_domains", [])
+            data["nice"] = data.get("hard_constraints", [])
+            data["role"] = data.get("role_family", "Unknown")
+            data["canonical_role"] = data.get("role_family", "Unknown")
+            data["core_signals"] = data.get("functional_domains", [])
+            data["must_skills"] = data.get("functional_domains", [])
+            data["inferred_role"] = data.get("role_family", "Unknown")
             
             return data
         except Exception as e:

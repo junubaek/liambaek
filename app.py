@@ -1166,7 +1166,11 @@ with col_main:
                         )
                     st.session_state.recommended_cutline = rec_cut
                     
-                    # 6. Store Results
+                    # 6. Store Results & Map Keys
+                    # [Fix] Ensure 'ai_reason' is populated from 'explanation' for UI
+                    for r in raw_results:
+                        r['ai_reason'] = r.get('explanation', 'AI Analysis Pending...')
+                    
                     st.session_state.search_results = raw_results
                     st.session_state.formatted_matches = raw_results # For compatibility
                     
@@ -1184,9 +1188,12 @@ with col_main:
     elif st.session_state.step == "analyze":
         with st.spinner("🤖 AI가 JD를 분석하여 '서류 통과 기준'을 수립 중입니다..."):
             try:
-                # [PHASE 3] Engine Selection (V2 vs V3)
+                # [PHASE 3] Engine Selection (V2 vs V3 vs V5)
                 engine = st.session_state.get("analysis_engine", "V3 (Experience)")
-                if "V3" in engine:
+                if "V5" in engine:
+                    analyzer = jd_analyzer_v5.JDAnalyzerV5(openai)
+                    print("LOG: Using JD Analysis Engine V5 (Standardized)")
+                elif "V3" in engine:
                     analyzer = jd_analyzer_v3.JDAnalyzerV3(openai)
                     print("LOG: Using JD Analysis Engine V3 (Experience)")
                 else:
