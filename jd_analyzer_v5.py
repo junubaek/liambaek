@@ -69,18 +69,40 @@ Output JSON:
             clean_json = response.replace("```json", "").replace("```", "").strip()
             data = json.loads(clean_json)
             
-            # Compatibility Mapping for app.py
-            data["domain"] = [data.get("role_family", "Unknown")]
-            data["seniority"] = data.get("leadership_level", "Middle")
-            data["patterns"] = data.get("experience_patterns", [])
-            data["years_range"] = {"min": data.get("seniority_required", 0), "max": None}
+            # Compatibility Mapping (Fat Dictionary for all app versions)
             data["must"] = data.get("functional_domains", [])
+            data["must_have"] = data["must"]
+            data["must_skills"] = data["must"]
+            data["core_signals"] = data["must"]
+            
             data["nice"] = data.get("hard_constraints", [])
+            data["nice_to_have"] = data["nice"]
+            data["nice_skills"] = data["nice"]
+            data["supporting_signals"] = data["nice"]
+            
+            data["domain"] = [data.get("role_family", "Unknown")]
+            data["domains"] = data["domain"]
+            data["context_signals"] = data["domain"]
+            
             data["role"] = data.get("role_family", "Unknown")
-            data["canonical_role"] = data.get("role_family", "Unknown")
-            data["core_signals"] = data.get("functional_domains", [])
-            data["must_skills"] = data.get("functional_domains", [])
-            data["inferred_role"] = data.get("role_family", "Unknown")
+            data["primary_role"] = data["role"]
+            data["canonical_role"] = data["role"]
+            data["inferred_role"] = data["role"]
+            data["role_family"] = data["role"]
+            
+            data["seniority"] = data.get("leadership_level", "Middle")
+            data["years_range"] = {"min": data.get("seniority_required", 0), "max": None}
+            
+            # Missing fields in V5 (Initialize for UI)
+            data["hidden_signals"] = data.get("strategy_clues", [])
+            data["negative_signals"] = data.get("risk_factors", [])
+            data["wrong_roles"] = []
+            data["confidence_score"] = 100
+            data["ambiguity"] = False
+            data["search_contract"] = {
+                "role_family": data["role"],
+                "must_core": data["must"]
+            }
             
             return data
         except Exception as e:

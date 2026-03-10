@@ -649,6 +649,49 @@ def get_role_aliases(role_name):
             return aliases
             
     return []
+
+# --- Unified Analysis Helper ---
+def perform_analysis(jd_text, engine_choice, openai_client):
+    """
+    Unified entry point for JD analysis.
+    Returns a 'Fat Dictionary' compatible with all app logic.
+    """
+    if "V5" in engine_choice:
+        analyzer = jd_analyzer_v5.JDAnalyzerV5(openai_client)
+        raw_result = analyzer.analyze(jd_text)
+        return raw_result
+    elif "V3" in engine_choice:
+        analyzer = jd_analyzer_v3.JDAnalyzerV3(openai_client)
+        raw = analyzer.analyze(jd_text)
+        # Standardize V3 for legacy UI
+        parsed = {
+            "must": raw.get("core_signals", []),
+            "must_have": raw.get("core_signals", []),
+            "nice": raw.get("supporting_signals", []),
+            "nice_to_have": raw.get("supporting_signals", []),
+            "domain": raw.get("context_signals", []),
+            "domains": raw.get("context_signals", []),
+            "role": raw.get("canonical_role", "Engineer"),
+            "primary_role": raw.get("canonical_role", "Engineer"),
+            "inferred_role": raw.get("inferred_role", ""),
+            "seniority": extract_seniority(raw, jd_text),
+            "years_range": raw.get("years_range", {"min": 0, "max": None}),
+            "confidence_score": raw.get("confidence_score", 100),
+            "ambiguity": raw.get("ambiguity", False),
+            "search_contract": raw.get("search_contract", {}),
+            "hidden_signals": raw.get("hidden_signals", []),
+            "negative_signals": raw.get("negative_signals", []),
+            "wrong_roles": raw.get("wrong_roles", [])
+        }
+        return parsed
+    else:
+        # Fallback to JDPipeline (V2)
+        from jd_parser.pipeline import JDPipeline
+        pipeline = JDPipeline()
+        # [Fix] Explicitly use V2
+        analyzer_v2 = jd_analyzer_v2.JDAnalyzerV2(openai_client)
+        raw = analyzer_v2.analyze(jd_text)
+        return raw
 def get_notion_url(notion_client, page_id: str) -> str:
     try:
         page = notion_client.get_page(page_id)
@@ -812,50 +855,11 @@ with col_main:
                 
                 with st.spinner("🤖 JD 분석 중입니다 (AI 역할 추론 / 숨겨진 의도 파악)..."):
                     try:
-                        # [PHASE 3 Refactor] Use explicit engine choice to avoid monkey-patch instability
-                        engine_choice = st.session_state.get("analysis_engine", "V3 (Experience)")
+                        engine_choice = st.session_state.get("analysis_engine", "V5 (Standardized)")
+                        analysis_data_current = perform_analysis(jd_input, engine_choice, openai)
                         
-                        if "V3" in engine_choice:
-                            analyzer = jd_analyzer_v3.JDAnalyzerV3(openai)
-                            raw = analyzer.analyze(jd_input)
-                            # Standardize for the legacy UI flow
-                            parsed_jd = {
-                                "must_have": raw.get("core_signals", []),
-                                "nice_to_have": raw.get("supporting_signals", []),
-                                "domains": raw.get("context_signals", []),
-                                "primary_role": raw.get("canonical_role", "Engineer"),
-                                "raw_extracted": raw,
-                                "years_range": raw.get("years_range", {"min": 0, "max": None}),
-                                "confidence_score": raw.get("confidence_score", 100),
-                                "ambiguity": raw.get("ambiguity", False),
-                                "search_contract": raw.get("search_contract", {})
-                            }
-                        else:
-                            # Fallback to JDPipeline (V1/V2)
-                            parsed_jd = jd_pipeline.parse(jd_input)
-                            raw = parsed_jd.get("raw_extracted", {})
-
-                         # Map parsed results to session state
-                        d_list = parsed_jd.get("domains", []) or parsed_jd.get("domain_candidates", []) or [raw.get("domain", "General")]
-                        if isinstance(d_list, str): d_list = [d_list]
-                        
-                        analysis_data_current = {
-                            "must": parsed_jd.get("must_have", []) or raw.get("must_skills", []), 
-                            "nice": parsed_jd.get("nice_to_have", []) or raw.get("nice_skills", []),
-                            "domain": d_list,
-                            "role": parsed_jd.get("primary_role", raw.get("primary_role", "Engineer")),
-                            "inferred_role": raw.get("inferred_role", ""), 
-                            "hidden_signals": raw.get("hidden_signals", []), 
-                            "negative_signals": raw.get("negative_signals", []), 
-                            "wrong_roles": raw.get("wrong_roles", []), 
-                            "seniority": extract_seniority(parsed_jd, jd_input),
-                            "years_range": parsed_jd.get("years_range", {"min": 0, "max": None}),
-                            "confidence_score": parsed_jd.get("confidence_score", 0),
-                            "ambiguity": parsed_jd.get("ambiguity", False),
-                            "search_contract": parsed_jd.get("search_contract", {})
-                        }
                         st.session_state.analysis_data_v3 = analysis_data_current
-                        st.session_state.analysis_data = analysis_data_current # [PHASE 3] Back-sync for Reranker Compatibility
+                        st.session_state.analysis_data = analysis_data_current # Compatibility
                         
                         st.session_state.step = "review" # Move to next step
                         st.rerun()
@@ -1192,22 +1196,11 @@ with col_main:
     elif st.session_state.step == "analyze":
         with st.spinner("🤖 AI가 JD를 분석하여 '서류 통과 기준'을 수립 중입니다..."):
             try:
-                # [PHASE 3] Engine Selection (V2 vs V3 vs V5)
-                # [Fix] Default to V5 consistently
                 engine = st.session_state.get("analysis_engine", "V5 (Standardized)")
-                if "V5" in engine:
-                    analyzer = jd_analyzer_v5.JDAnalyzerV5(openai)
-                    print("LOG: Using JD Analysis Engine V5 (Standardized)")
-                elif "V3" in engine:
-                    analyzer = jd_analyzer_v3.JDAnalyzerV3(openai)
-                    print("LOG: Using JD Analysis Engine V3 (Experience)")
-                else:
-                    analyzer = JDAnalyzerV2(openai)
-                    print("LOG: Using JD Analysis Engine V2 (Expert)")
-                
-                # [Fix 3.4] Use session state JD text
                 jd_to_analyze = st.session_state.get("jd_text", "")
-                analysis_result = analyzer.analyze(jd_to_analyze)
+                
+                # Use Unified Helper
+                analysis_result = perform_analysis(jd_to_analyze, engine, openai)
                 
                 # Store in Session State
                 st.session_state.analysis_data_v3 = analysis_result
