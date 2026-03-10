@@ -56,9 +56,10 @@ def calculate_rpl(jd_analysis, resume_metadata, vector_score=0.0):
         
         # Adjust weights: Core (40), Supporting (25), Context (10) + Patterns (20) = 95 (+ Finance bonus)
         core_weight = 40
-    else:
-        core_weight = 60
         pattern_score = 0
+
+    # 1. Core Signals (Max 40/60) - Prioritize 'must' (user editable)
+    core_signals = jd_analysis.get("must") or jd_analysis.get("must_skills") or jd_analysis.get("core_signals") or []
 
     # Calculate Keyword Match Ratio
     hit_count = 0
@@ -74,9 +75,10 @@ def calculate_rpl(jd_analysis, resume_metadata, vector_score=0.0):
     sem_score = max(0, (vector_score - 0.65) / 0.2)
     sem_score = min(sem_score, 1.0)
     
-    # [V6.0] Weighted Core Rate: Keywords are 70%, Semantic is 30%
+    # [V6.0] Weighted Core Rate: 40% Keywords, 60% Semantic
+    # Switched from 70/30 to 40/60 because current Pinecone metadata is often sparse.
     if core_signals:
-        final_core_rate = (keyword_match_rate * 0.7) + (sem_score * 0.3)
+        final_core_rate = (keyword_match_rate * 0.4) + (sem_score * 0.6)
     else:
         # If no core signals (unlikely), rely on semantic
         final_core_rate = sem_score

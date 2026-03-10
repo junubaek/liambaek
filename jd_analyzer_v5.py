@@ -42,18 +42,22 @@ Allowed Patterns: """ + ", ".join(allowed_patterns) + """
 6. Impact Requirements: Quantitative scale/scope (Budget scale, Headcount, Project scope).
 7. Hard Constraints: Non-negotiable requirements (Specific certifications, degree, industry experience).
 
+[LANGUAGE RULE]
+- If the JD is in Korean, extract 'role_family', 'functional_domains', and 'hard_constraints' in Korean.
+- 'experience_patterns' MUST ALWAYS be in English from the allowed list.
+
 Output JSON:
 {
-  "role_family": "",
+  "role_family": "Korean Name",
   "seniority_required": 0,
-  "leadership_level": "",
-  "functional_domains": [],
-  "experience_patterns": [],
+  "leadership_level": "Korean Name",
+  "functional_domains": ["Korean Domain 1", ...],
+  "experience_patterns": ["English_Pattern_From_List", ...],
   "impact_requirements": {
     "scale_type": "Budget | Headcount | Revenue | Branches | Area",
     "quant_signal_required": true
   },
-  "hard_constraints": [],
+  "hard_constraints": ["Korean Constraint 1", ...],
   "risk_factors": [],
   "strategy_clues": []
 }
