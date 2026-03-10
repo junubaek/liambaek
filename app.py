@@ -708,12 +708,9 @@ with col_sidebar:
     st.caption(f"🚀 Version: **{APP_VERSION}**")
     st.markdown("---")
     
-    st.session_state.analysis_engine = st.radio(
-        "분석 엔진 선택 (Engine Selection)",
-        ["V3 (Experience)", "V2 (Expert)"],
-        index=0 if st.session_state.get("analysis_engine", "V3") == "V3 (Experience)" else 1,
-        help="V3는 검증 가능한 경험 중심, V2는 포괄적 역량 중심 분석입니다."
-    )
+    # Display selected engine (Selection is now in the actual sidebar)
+    st.info(f"선택된 엔진: **{st.session_state.get('analysis_engine', 'V5 (Standardized)')}**")
+    st.caption("변경하시려면 왼쪽 사이드바를 이용해 주세요.")
     st.markdown("---")
     # 3. Home Button (Reset)
     if st.button("🏠 New Search", key="btn_home", use_container_width=True):
