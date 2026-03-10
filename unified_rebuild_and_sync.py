@@ -158,11 +158,14 @@ def unified_process():
                 print(f"  ❌ Failed to parse {name_base}.")
                 continue
 
-            # Step D: Sync to Notion (Consolidated Hub)
+            # Step D: Sync to Notion (Consolidated Hub v6.3.3)
+            # Format patterns as Rich Text (Functional-Only)
+            patterns_text = "\n".join([f"• {p['pattern']}" for p in v62_data.get("patterns", [])[:15]])
+            
             props = {
                 "이름": {"title": [{"text": {"content": name_base}}]},
                 "Primary Sector": {"select": {"name": v62_data.get("candidate_profile", {}).get("primary_sector", "Unclassified")}},
-                "Experience Patterns": {"multi_select": [{"name": p["pattern"]} for p in v62_data.get("patterns", [])[:10]]},
+                "Experience Patterns": {"rich_text": [{"text": {"content": patterns_text}}]},
                 "Trajectory Grade": {"select": {"name": v62_data.get("career_path_quality", {}).get("trajectory_grade", "Neutral")}},
                 "v6.2 Score": {"number": v62_data.get("career_path_quality", {}).get("career_path_score", 0)},
                 "구글드라이브 링크": {"url": drive_link}

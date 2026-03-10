@@ -39,6 +39,20 @@ class NotionClient:
             
         return self._request("POST", "pages", payload)
 
+    def create_discovery_page(self, db_id, temp_name, source, sector, raw_text, scarcity="Medium", adjacency=0.0):
+        """Creates a page in the Market Trend Discovery Hub (v6.3.3)."""
+        properties = {
+            "임시 패턴명": {"title": [{"text": {"content": temp_name}}]},
+            "발견 출처": {"select": {"name": source}},
+            "섹터": {"select": {"name": sector}},
+            "희소성 예측": {"select": {"name": scarcity}},
+            "유사도 (Adjacency)": {"number": adjacency},
+            "원문 데이터": {"rich_text": [{"text": {"content": raw_text[:2000]}}]},
+            "상태": {"select": {"name": "New"}},
+            "발견 횟수": {"number": 1}
+        }
+        return self.create_page(db_id, properties)
+
     def get_page(self, page_id):
         """Retrieves a Page object."""
         return self._request("GET", f"pages/{page_id}")

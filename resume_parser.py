@@ -15,8 +15,13 @@ class ResumeParser:
              return {}
 
         prompt = f"""
-You are a Senior Experience Extraction Engine (AI Talent Intelligence OS v6.2).
-Your task is to convert the resume into a structured Experience Graph focusing on strategic patterns, impact types, and career trajectories.
+You are a Senior Experience Extraction Engine (AI Talent Intelligence OS v6.3.3).
+Your task is to convert the resume into a structured Experience Graph focusing on strategic functional patterns, hard skills, and career trajectories.
+
+[CRITICAL: FUNCTIONAL-ONLY PRINCIPLE]
+- EXCLUDE SOFT SKILLS: Completely ignore terms like Communication, Teamwork, Leadership (as an attitude), Passion, Sincerity, Collaboration, Problem Solving (as an attitude).
+- FOCUS ON HARD SKILLS: Extract specific tools, frameworks, protocols, technical architectures (e.g., RTL Design, LLM Fine-tuning, MCP Protocol).
+- FOCUS ON FUNCTIONAL PATTERNS: Extract concrete business or technical actions and achievements (e.g., API Latency Optimization, KPI Framework Design, Yield Rate Improvement).
 
 [RESUME TEXT]
 {resume_text[:12000]}
@@ -25,19 +30,20 @@ Your task is to convert the resume into a structured Experience Graph focusing o
 Output JSON:
 {{
   "candidate_profile": {{
-    "primary_sector": "TECH_SW | TECH_HW | SEMICONDUCTOR | DATA_AI | PRODUCT | BUSINESS | SECURITY | CORPORATE | CREATIVE",
+    "primary_sector": "Pick one OR more (separated by |) from: TECH_SW | TECH_HW | SEMICONDUCTOR | DATA_AI | PRODUCT | BUSINESS | SECURITY | CORPORATE | CREATIVE",
     "secondary_sectors": [],
     "cross_sector_flag": bool,
     "cross_sector_type": "Optional type (e.g., AI_Semiconductor, DevSecOps)",
     "total_years_experience": 0,
-    "current_leadership_level": "IC | Team Lead | Department Head | Executive"
+    "current_leadership_level": "IC | Team Lead | Department Head | Executive",
+    "experience_summary": "1) Achievement A... 2) Role B... (Numbered list summary focusing on FUNCTIONAL results)"
   }},
   "patterns": [
     {{
-      "pattern": "Standardized Pattern (e.g., RTL_Design, LLM_Fine_Tuning)",
+      "pattern": "Standardized Functional Pattern",
       "depth": "Owned | Led | Applied | Assisted | Mentioned",
       "depth_weight": 0.0,
-      "impact": "Quantified or Qualitative description",
+      "impact": "Quantified or Qualitative functional result",
       "impact_type": "Quantitative | Qualitative | Hybrid",
       "tools": []
     }}
@@ -52,12 +58,12 @@ Output JSON:
   }}
 }}
 
-[DEPTH RULES (v6.2)]
-- Owned (1.00): Architected entire system, defined technical direction, final decision authority.
-- Led (0.85): Core contributor, technical lead, mentoring, driving design of key modules.
-- Applied (0.65): Independent implementation, built and deployed in production.
-- Assisted (0.40): Contributed as team member, supported design/implementation under guidance.
-- Mentioned (0.20): Familiar with, knowledge of, listed in skills without deep project detail.
+[DEPTH RULES (v6.3)]
+- Owned (1.00): Architected system, defined technical/business direction, final authority.
+- Led (0.85): Core contributor, tech lead, driving design of functional modules.
+- Applied (0.65): Independent implementation of functional tasks.
+- Assisted (0.40): Supported functional implementation under guidance.
+- Mentioned (0.20): Knowledge of tool/task without deep functional evidence.
 
 [IMPACT TYPE RULES]
 - Quantitative: TPS, Latency, MAU, Revenue, PPA, Tape-out success (Tech/Product/Sales/Finance).

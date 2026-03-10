@@ -16,8 +16,9 @@ from search_strategy import decide_search_strategy
 from feedback_weight import calculate_feedback_weight
 from jd_analyzer import JDAnalyzer
 from jd_analyzer_v2 import JDAnalyzerV2 # [Phase 2.1]
-# [PHASE 3] New Modules Import
 import jd_analyzer_v3
+import jd_analyzer_v5 # [PHASE 3.2]
+import matcher_v3      # [PHASE 3.3]
 from resume_scoring import calculate_rpl
 from explanation_engine import generate_explanation
 from search_pipeline_v3 import SearchPipelineV3
@@ -133,9 +134,13 @@ def get_jd_pipeline():
         try:
              import streamlit as st
              # Priority: analysis_engine radio button
-             engine_choice = st.session_state.get("analysis_engine", "V3 (Experience)")
+             engine_choice = st.session_state.get("analysis_engine", "V5 (Standardized)")
              
-             if engine_choice == "V3 (Experience)":
+             if engine_choice == "V5 (Standardized)": # [NEW]
+                 print(f"LOG: [Step 1] Using JDAnalyzerV5 (Taxonomy Engine) for JD: {jd_text[:30]}...")
+                 analyzer_instance_v5 = jd_analyzer_v5.JDAnalyzerV5(pipeline.client)
+                 return analyzer_instance_v5.analyze(jd_text)
+             elif engine_choice == "V3 (Experience)":
                  print(f"LOG: [Step 1] Using JDAnalyzerV3 (Experience Mode) for JD: {jd_text[:30]}...")
                  return analyzer_instance_v3.analyze(jd_text)
              elif engine_choice == "V2 (Expert)":
@@ -179,7 +184,7 @@ SCORING_RULES = load_scoring_rules()
 
 # --- [HOTFIX] Version Control & Cache Clearing ---
 # --- [HOTFIX] Version Control & Cache Clearing ---
-APP_VERSION = "3.6.2 (Enhanced Role Mapping)" # Knowledge Base Update
+APP_VERSION = "3.7.0 (Pattern-Aware Matcher)" # V5 & V3.3 Implementation
 if "app_version" not in st.session_state or st.session_state.app_version != APP_VERSION:
     st.cache_resource.clear()
     for key in list(st.session_state.keys()):
@@ -430,11 +435,12 @@ with st.sidebar:
     
     analysis_engine = st.sidebar.radio(
         "분석 엔진 선택",
-        ["V2 (Expert)", "V3 (Experience)"],
-        index=1,  # Default to V3
+        ["V2 (Expert)", "V3 (Experience)", "V5 (Standardized)"],
+        index=2,  # Default to V5
         help="""
         **V2 (Expert)**: JD에서 직접적인 키워드를 추출합니다.
-        **V3 (Experience)**: 이력서에서 검증 가능한 'Product Owner', 'Jira' 같은 실질적 경험을 추론합니다.
+        **V3 (Experience)**: 이력서에서 검증 가능한 경험을 추론합니다.
+        **V5 (Standardized)**: [NEW] 우리가 정의한 표준 Taxonomy(Pattern ID)로 JD를 분석합니다.
         """
     )
     

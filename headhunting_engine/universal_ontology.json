@@ -110,7 +110,10 @@
                 "Feature_Store_Design",
                 "KPI_Framework_Design",
                 "Customer_Segmentation",
-                "Cohort_Analysis"
+                "Cohort_Analysis",
+                "Cloud_DevOps_Security",
+                "Product_UX_Analytics",
+                "Project_Lifecycle"
             ]
         },
         "PRODUCT": {
@@ -130,7 +133,10 @@
                 "Technical_Requirement_Specification",
                 "Cross_Functional_Coordination",
                 "Metrics_Framework",
-                "Retention_Analysis"
+                "Retention_Analysis",
+                "Product_UX_Analytics",
+                "Project_Lifecycle",
+                "Service_Planning"
             ]
         },
         "BUSINESS": {
@@ -150,7 +156,15 @@
                 "CRM_Management",
                 "Supply_Chain_Optimization",
                 "Vendor_Management",
-                "Demand_Planning"
+                "Demand_Planning",
+                "Business_Strategy_Sales",
+                "Project_Lifecycle",
+                "Market_Analysis",
+                "Strategic_Market_Intelligence",
+                "Financial_Reporting",
+                "Inventory_Management",
+                "Cost_Management",
+                "Supply_Chain_Management"
             ]
         },
         "SECURITY": {
@@ -188,7 +202,7 @@
                 "FP_and_A",
                 "Financial_Modeling",
                 "IR_Management",
-                "M_and_A_Due_Diligence",
+                "M&A_Due_Diligence",
                 "Deal_Structuring",
                 "Talent_Acquisition",
                 "Organizational_Development",
@@ -201,7 +215,12 @@
                 "Corporate_Strategy",
                 "New_Business_Development",
                 "Facility_Operations",
-                "Asset_Management"
+                "Asset_Management",
+                "Leadership_HRM",
+                "Legal_Advisory",
+                "Corporate_Law",
+                "Financial_Reporting",
+                "Corporate_Governance"
             ]
         },
         "CREATIVE": {

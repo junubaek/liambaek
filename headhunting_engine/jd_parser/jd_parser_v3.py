@@ -19,42 +19,42 @@ class JDParserV3:
         all_patterns = sorted(list(set(all_patterns)))
 
         prompt = f"""
-You are a Senior Strategic Headhunter AI. Your task is to extract high-precision recruitment signals from a Job Description (JD) using the AI Talent Intelligence OS v6.2 Universal Ontology.
+You are a Senior Strategic Headhunter AI. Your task is to extract high-precision recruitment signals from a Job Description (JD) using the AI Talent Intelligence OS v6.3.3 Universal Ontology.
+
+[CRITICAL: FUNCTIONAL-ONLY PRINCIPLE]
+- EXCLUDE SOFT SKILLS: Completely ignore terms like Communication, Teamwork, Leadership (as an attitude), Passion, Sincerity, Collaboration, Problem Solving (as an attitude).
+- FOCUS ON HARD SKILLS: Extract specific tools, frameworks, protocols, technical architectures (e.g., RTL Design, LLM Fine-tuning, MCP Protocol).
+- FOCUS ON FUNCTIONAL PATTERNS: Extract concrete business or technical requirements and outcomes (e.g., API Latency Optimization, KPI Framework Design, Yield Rate Improvement).
 
 [9-SECTOR STRUCTURE]
 Sectors: {", ".join(sectors_list)}
 
-[MATCHING RULES: STRATEGY VS ENGINEERING]
-1. Prioritize BUSINESS OBJECTIVES over Technical Tools. 
-   - If JD mentions "KPI", "Strategy", "Insights", "Business Plan" -> Sector: CORPORATE/DATA_AI. 
-   - DO NOT extract "Data_Pipeline_Building" unless the JD specifically mentions building E/L/T architecture.
-   - For Analyst roles, prioritize: Corporate_Strategy, Metrics_Framework, Product_Analytics, KPI_Framework_Design.
+[MATCHING RULES: STRATEGIC FUNCTIONALITY]
+1. Prioritize FUNCTIONAL OBJECTIVES over Abstract Descriptions. 
+   - If JD mentions "KPI", "Strategy", "Insights" -> Sector: CORPORATE/DATA_AI. 
+   - Focus on hard deliverables: "Metrics Framework", "Product Analytics", "Yield Optimization".
 2. Cross-Sector Flag: If the role bridges two worlds (e.g., AI + Semiconductor, Finance + Tech), set `cross_sector_flag` to true.
 
 [7-AXIS EXTRACTION RULES]
-1. primary_sector: The dominant sector. Choose from: {", ".join(sectors_list)}.
-2. secondary_sectors: List of additional relevant sectors.
-3. cross_sector_flag: Boolean.
-4. seniority_required: Integer (Years of experience required).
-5. leadership_level: IC | Team Lead | Department Head | Executive.
-6. functional_domains: List of domains matching the JD's strategic scope.
-7. experience_patterns: List 5-8 patterns from the ONTOLOGY. 
-   - CRITICAL: List the "Non-negotiable" (Must-have) patterns first.
-8. impact_requirements: Dictionary of quantified requirements.
-9. hard_constraints: List of absolute deal-breakers.
-
+...
 [JD TEXT]
 {jd_text[:8000]}
 
 [OUTPUT_FORMAT_JSON]
 {{
-  "primary_sector": "",
+  "jd_profile": {{
+    "job_title": "",
+    "primary_sector": "",
+    "is_new_trend_detected": false
+  }},
   "secondary_sectors": [],
   "cross_sector_flag": false,
   "seniority_required": 0,
   "leadership_level": "",
   "functional_domains": [],
+  "must_patterns": [],
   "experience_patterns": [],
+  "discovered_demands": [],
   "impact_requirements": {{}},
   "hard_constraints": []
 }}
@@ -71,13 +71,21 @@ Sectors: {", ".join(sectors_list)}
         except Exception as e:
             print(f"❌ JD Parser v3 Error: {e}")
             return {
-                "role_family": "Unclassified",
+                "jd_profile": {
+                    "job_title": "Unclassified",
+                    "primary_sector": "Unclassified",
+                    "is_new_trend_detected": False
+                },
+                "secondary_sectors": [],
+                "cross_sector_flag": False,
                 "seniority_required": 0,
                 "leadership_level": "IC",
                 "functional_domains": [],
+                "must_patterns": [],
                 "experience_patterns": [],
                 "impact_requirements": {},
-                "hard_constraints": ["Parsing Error"]
+                "hard_constraints": ["Parsing Error"],
+                "discovered_demands": []
             }
 
 if __name__ == "__main__":
